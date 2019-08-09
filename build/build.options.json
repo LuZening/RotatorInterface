@@ -1,0 +1,10 @@
+{
+  "builtInLibrariesFolders": "C:\\Program Files (x86)\\Arduino\\libraries",
+  "customBuildProperties": "build.path=c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build,build.warn_data_percentage=75,runtime.tools.xtensa-lx106-elf-gcc.path=C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\xtensa-lx106-elf-gcc\\2.5.0-3-20ed2b9,runtime.tools.python.path=C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\python\\3.7.2-post1,runtime.tools.mkspiffs.path=C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\mkspiffs\\2.5.0-3-20ed2b9",
+  "fqbn": "esp8266:esp8266:generic:xtal=80,vt=flash,exception=enabled,ssl=basic,ResetMethod=ck,CrystalFreq=26,FlashFreq=40,FlashMode=qio,eesz=4M1M,led=0,sdk=nonosdk222,ip=hb2f,dbg=Serial,lvl=None____,wipe=none,baud=115200",
+  "hardwareFolders": "C:\\Program Files (x86)\\Arduino\\hardware,C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\libraries",
+  "runtime.ide.version": "10805",
+  "sketchLocation": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino",
+  "toolsFolders": "C:\\Program Files (x86)\\Arduino\\tools-builder,C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr,C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages"
+}

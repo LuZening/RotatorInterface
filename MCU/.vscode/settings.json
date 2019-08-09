@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "vector": "cpp",
+        "array": "cpp",
+        "xstring": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "type_traits": "cpp",
+        "xhash": "cpp",
+        "xutility": "cpp",
+        "functional": "cpp"
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+}

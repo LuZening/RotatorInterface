@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+
+<head>
+    <meta charset="US-ASCII">
+    <title>Rotator Configuration</title>
+    <script type="text/javascript">window.onload = function () {get_config(); }</script>
+</head>
+
+<body>
+    <script src="get_sensor.js"></script>
+    <script src="send_task.js"></script>
+    <div>
+        <h3>Position: <span id="deg">---</span>&deg;</h3>
+        <h3>ADC Value: <span id="ADC">---</span></h3>
+    </div>
+    <div>
+        <button onmousedown="on_mousedown_CCW();" onmouseup="on_mouseup_manual();">&lt;&lt;(CCW)</button>
+        <button onmousedown="on_mousedown_CW();" onmouseup="on_mouseup_manual();">(CW)&gt;&gt;</button>
+    </div>
+    <br>
+    <form method="GET" action="/calibrate">
+        <input type="checkbox" name="auto" style="height:0px;width:0px">
+        <input type="submit" value="Auto Calibration">
+    </form>
+    <form method="GET" action="/calibrate">
+        <input type="checkbox" name="manual" style="height:0px;width:0px">
+        <input type="submit" value="Manual Calibration">
+    </form>
+    <form method="GET" action="/calibrate">
+        <input type="checkbox" name="stop" style="height:0px;width:0px">
+        <input type="submit" value="Stop">
+    </form>
+    <h3>Step I</h3>
+    <form method="POST" action="/calibrate" enctype="application/x-www-form-urlencoded">
+        <table border="1">
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>ADC max</td>
+                <td><input id="ADC_max" name="ADC_max" type="number"></td>
+                <td><button type="button" onclick="set_ADC_max();">Set</button></td>
+            </tr>
+            <tr>
+                <td>ADC min</td>
+                <td><input id="ADC_min" name="ADC_min" type="number"></td>
+                <td><button type="button" onclick="set_ADC_min();">Set</button></td>
+            </tr>
+            <tr>
+                <td>North (0&deg;)</td>
+                <td><input id="ADC_zero" name="ADC_zero" type="number"></td>
+                <td><button type="button" onclick="set_ADC_zero();">Set</button></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="save" style="height:50px;width:100px">
+    </form>
+    <h3>Step 2</h3>
+    <form method="POST" action="/calibrate" enctype="application/x-www-form-urlencoded">
+        <table border="1">
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>CW Limit</td>
+                <td><input id="CW_lim" name="CW_lim" type="number"></td>
+                <td><button type="button" onclick="set_CW_lim();">Set</button></td>
+            </tr>
+            <tr>
+                <td>CCW Limit</td>
+                <td><input id="CCW_lim" name="CCW_lim" type="number"></td>
+                <td><button type="button" onclick="set_CCW_lim();">Set</button></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="save" style="height:50px;width:100px">
+    </form>
+    <script>
+        function get_config() {
+            
+        };
+        function set_ADC_max() {
+            document.getElementById("ADC_max").value = Number(document.getElementById("ADC").innerText);
+        };
+        function set_ADC_min() {
+            document.getElementById("ADC_min").value = Number(document.getElementById("ADC").innerText);
+        };
+        function set_ADC_zero() {
+            document.getElementById("ADC_zero").value = Number(document.getElementById("ADC").innerText);
+        };
+        function set_CW_lim()
+        {
+            document.getElementById("CW_lim").value = Number(azu_orig);
+        };
+        function set_CCW_lim()
+        {
+            document.getElementById("CCW_lim").value = Number(azu_orig);
+        };
+    </script>
+</body>
