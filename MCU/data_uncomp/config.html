@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+
+<head>
+    <meta charset="US-ASCII">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Rotator Configuration</title>
+    <script type="text/javascript">window.onload = function () { get_config(); }</script>
+    <script src="get_sensor.js"></script>
+    <script src="send_task.js"></script>
+    <script src="button.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Rotator configurations</h1>
+    </div>
+    <hr>
+    <div>
+        <h2>Network configurations</h2>
+        <form id="fm_netconfig" action="/setconfig" method="POST" onsubmit="return test_config();"
+            enctype="application/x-www-form-urlencoded">
+            Identity (name):
+            <input type="text" id="name" name="name" maxlength="31"><br>
+            Wi-Fi SSID:
+            <input type="text" id="ssid" name="ssid" maxlength="31"><br>
+            Wi-Fi Password:
+            <input type="password" id="passwd" name="passwd" maxlength="31"><br>
+            <input type="submit" value="Save">
+        </form>
+
+        <script type="text/javascript">
+            function test_config() {
+                var name = document.getElementById('name').value;
+                var name_pattern = new RegExp(/^[a-zA-Z0-9 ]+$/);
+                var ssid = document.getElementById('ssid').value;
+                var ssid_pattern = new RegExp(/^[a-zA-Z0-9_]+$/);
+                var passwd = document.getElementById('passwd').value;
+                var passwd_pattern = new RegExp(/^[a-zA-Z0-9_]+$/)
+                if (!name_pattern.test(name)) {
+                    alert("Name can only contain letters, numbers and spaces.");
+                    return false;
+                }
+                if (!ssid_pattern.test(ssid)) {
+                    alert("SSID can only contain letters, numbers and underscores.");
+                    return false;
+                }
+                if (!passwd_pattern.test(passwd)) {
+                    alert("Password can only contain letters, numbers and underscores.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+        <div>
+            <hr>
+            <div>
+                <h2>Electronic Parameters</h2>
+                <form id="fm_params" action="/setconfig" method="POST" enctype="application/x-www-form-urlencoded">
+                    <table border="1">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Potentiometer wiring type:</td>
+                            <td><input type="radio" name="pot_type" value=0>2 terminals
+                                <input type="radio" name="pot_type" value=1>3 terminals<br></td>
+                        </tr>
+                        <tr>
+                            <td>Inverse Potentiometer Readouts (Normal: CW->ADC++):</td>
+                            <td><input type="radio" name="inverse_ADC" value=0>Normal
+                                <input type="radio" name="inverse_ADC" value=1>Inverse<br></td>
+                        </tr>
+                        <tr>
+                            <td>Enable multiple rounds:</td>
+                            <td><input type="radio" name="multi_rounds" value=0>Disable
+                                <input type="radio" name="multi_rounds" value=1>Enable<br></td>
+                        </tr>
+                        <tr>
+                            <td>Antenna load (break engagement delay):</td>
+                            <td><input type="range" id="break_delay" name="break_delay" min=500 max=3000 step=100>
+                                <span id="break_delay_display"></span>ms</td>
+                            <script>
+                                e_break_delay_display = document.getElementById("break_delay_display");
+                                e_break_delay = document.getElementById("break_delay");
+                                e_break_delay.addEventListener("input", e => {
+                                    e_break_delay_display.innerText = e_break_delay.value;
+                                });
+                            </script>
+                        </tr>
+                        <tr>
+                            <td>Pre-dividing resistor:</td>
+                            <td><input type="number" id="R_0" name="R_0"></td>
+                        </tr>
+                        <tr>
+                            <td>Zero Elevation resistor:</td>
+                            <td><input type="number" id="R_c" name="R_c"></td>
+                        </tr>
+                        <tr>
+                            <td>Maximum potentiometer resistance:</td>
+                            <td><input type="number" id="R_max" name="R_max"></td>
+                        </tr>
+                        <tr>
+                            <td>Minimum potentiometer resistance:</td>
+                            <td><span id="R_min"></span></td>
+                        </tr>
+                        <tr>
+                            <td> <input type="submit" value="Save"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <hr>
+            <div>
+                <h2>Calibration</h2>
+                <div>
+                    <h3>Position: <span id="deg">---</span>&deg;</h3>
+                    <h3>ADC Value: <span id="ADC">---</span></h3>
+                </div>
+                <div>
+                    <button class="large_narrow" id="btn_CCW_lock">&#x1f510;&lt;&lt;</button>
+                    <button class="large" id="btn_CCW">&#8634;(CCW)</button>
+                    <button class="large" id="btn_CW">(CW)&#8635;</button>
+                    <button class="large_narrow" id="btn_CW_lock">&gt;&gt;&#x1f510;</button>
+                    <script>
+                        b = document.getElementById("btn_CCW");
+                        b.addEventListener(buttonPressEvent, e => { on_mousedown_CCW(); });
+                        b.addEventListener(buttonReleaseEvent, e => { on_mouseup_manual(); });
+                        b = document.getElementById("btn_CW");
+                        b.addEventListener(buttonPressEvent, e => { on_mousedown_CW(); });
+                        b.addEventListener(buttonReleaseEvent, e => { on_mouseup_manual(); });
+                        var lock_btn_lisener_gen = (
+                            function (bt, dir){
+                                var pressed = false;
+                                return () => {
+                                    pressed = !pressed; 
+                                    console.log(bt.id, pressed);
+                                    if(pressed)
+                                    { 
+                                        bt.style.borderStyle="inset";
+                                        send_task_manual(dir * 100);                                        
+                                    }
+                                    else
+                                    {
+                                        bt.style.borderStyle="outset";
+                                        send_task_stop();                                        
+                                    }
+                                };
+                            });
+                        b = document.getElementById("btn_CCW_lock");
+                        b.onclick = (e => {return lock_btn_lisener_gen(e, -1)})(b) ;
+                        b = document.getElementById("btn_CW_lock");
+                        b.onclick = (e => {return lock_btn_lisener_gen(e, 1)})(b) ;
+                    </script>
+                </div>
+                <br>
+                <form method="GET" action="/setconfig">
+                    <input type="input" hidden name="auto" style="height:0px;width:0px">
+                    <input type="submit" value="Auto Calibration">
+                </form>
+                <form method="GET" action="/setconfig">
+                    <input type="input" hidden name="manual" style="height:0px;width:0px">
+                    <input type="submit" value="Manual Calibration">
+                </form>
+                <form method="GET" action="/setconfig">
+                    <input type="input" hidden name="stop" style="height:0px;width:0px">
+                    <input type="submit" value="Stop Calibration">
+                </form>
+                <form method="GET" action="/setconfig">
+                    <input type="input" hidden name="CLR_rounds" style="height:0px;width:0px">
+                    <input type="submit" value="Clear Rounds">
+                </form>
+                <h3>Calibration mode: <span id="is_calib">OFF</span></h3>
+                <h3>Step I</h3>
+                <form method="POST" action="/setconfig" enctype="application/x-www-form-urlencoded">
+                    <table border="1">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>ADC max</td>
+                            <td><input id="ADC_max" name="ADC_max" type="number"></td>
+                            <td><button type="button" onclick="set_ADC_max();">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>ADC min</td>
+                            <td><input id="ADC_min" name="ADC_min" type="number"></td>
+                            <td><button type="button" onclick="set_ADC_min();">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>North (0&deg;)</td>
+                            <td><input id="ADC_zero" name="ADC_zero" type="number"></td>
+                            <td><button type="button" onclick="set_ADC_zero();">Set</button></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <input type="submit" value="save" style="height:50px;width:100px">
+                </form>
+                <h3>Step 2</h3>
+                <form method="POST" action="/setconfig" enctype="application/x-www-form-urlencoded">
+                    <table border="1">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>CW Limit</td>
+                            <td><input id="CW_lim" name="CW_lim" type="number"></td>
+                            <td><button type="button" onclick="set_CW_lim();">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>CCW Limit</td>
+                            <td><input id="CCW_lim" name="CCW_lim" type="number"></td>
+                            <td><button type="button" onclick="set_CCW_lim();">Set</button></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <input type="submit" value="save" style="height:50px;width:100px">
+                </form>
+                <script>
+                    function set_ADC_max() {
+                        document.getElementById("ADC_max").value = Number(document.getElementById("ADC").innerText);
+                    };
+                    function set_ADC_min() {
+                        document.getElementById("ADC_min").value = Number(document.getElementById("ADC").innerText);
+                    };
+                    function set_ADC_zero() {
+                        document.getElementById("ADC_zero").value = Number(document.getElementById("ADC").innerText);
+                    };
+                    function set_CW_lim() {
+                        document.getElementById("CW_lim").value = Number(azu_orig);
+                    };
+                    function set_CCW_lim() {
+                        document.getElementById("CCW_lim").value = Number(azu_orig);
+                    };
+                </script>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <h2> Save and reboot </h2>
+            <form method="GET" action="/reset">
+                <input type="submit" value="Save and reboot">
+            </form>
+        </div>
+        <script>
+            // send reset signal
+            // retrieve current configurations
+            function get_config() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    s_recv = this.responseText;
+                    if (this.status == 200 && s_recv.length > 2) {
+                        // parse the recieved text
+                        // name=%s&ssid=%s&ip=%s&pot_type=%d&ADC_min=%d&ADC_max=%d&degree=%d
+                        if (!s_recv.includes("ssid")) {
+                            alert("No configurations avaliable. Make a new one.");
+                        }
+                        else if (s_recv.includes("name")) {
+                            s_name = s_recv.match(/name=(.*?)[&\n]/)[1];
+                            s_ssid = s_recv.match(/ssid=(.*?)[&\n]/)[1];
+                            s_ip = s_recv.match(/ip=(.*?)[&\n]/)[1];
+                            s_pot_type = s_recv.match(/pot_type=(\d*?)[&\n]/)[1];
+                            s_multi_rounds = s_recv.match(/multi_rounds=(\d*?)[&\n]/)[1];
+                            s_break_engage_defer = s_recv.match(/break_delay=(\d*?)[&\n]/)[1];
+                            s_R_0 = s_recv.match(/R_0=(.*?)[&\n]/)[1];
+                            s_R_c = s_recv.match(/R_c=(.*?)[&\n]/)[1];
+                            s_R_max = s_recv.match(/R_max=(.*?)[&\n]/)[1];
+                            s_R_min = s_recv.match(/R_min=(.*?)[&\n]/)[1];
+                            s_ADC_min = s_recv.match(/ADC_min=(\d*?)[&\n]/)[1];
+                            s_ADC_max = s_recv.match(/ADC_max=(\d*?)[&\n]/)[1];
+                            s_inverse_ADC = s_recv.match(/inverse_ADC=(\d*?)[&\n]/)[1];
+                            s_degree = s_recv.match(/degree=(-*\d*?)[&\n]/)[1];
+                            s_CW_lim = s_recv.match(/CW_lim=(-*\d*?)[&\n]/)[1];
+                            s_CCW_lim = s_recv.match(/CCW_lim=(-*\d*?)[&\n]/)[1];
+                            document.getElementById("name").value = s_name;
+                            document.getElementById("ssid").value = s_ssid;
+                            document.getElementsByName("pot_type")[Number(s_pot_type)].checked = true;
+                            document.getElementsByName("inverse_ADC")[Number(s_inverse_ADC)].checked = true;
+                            document.getElementsByName("multi_rounds")[Number(s_multi_rounds)].checked = true;
+                            document.getElementById("break_delay").value = Number(s_break_engage_defer);
+                            document.getElementById("break_delay_display").innerText = s_break_engage_defer;
+                            document.getElementById("R_0").value = Number(s_R_0);
+                            document.getElementById("R_c").value = Number(s_R_c);
+                            document.getElementById("R_max").value = Number(s_R_max);
+                            document.getElementById("R_min").innerText = s_R_min;
+                            document.getElementById("ADC_min").value = Number(s_ADC_min);
+                            document.getElementById("ADC_max").value = Number(s_ADC_max);
+                            document.getElementById("CW_lim").value = Number(s_CW_lim);
+                            document.getElementById("CCW_lim").value = Number(s_CCW_lim);
+                        }
+                        s_is_calib = s_recv.match(/is_calib=(\d+)[&\n]/)[1];
+                        if (Number(s_is_calib) > 0) {
+                            document.getElementById("is_calib").innerText = "ON";
+                        }
+                    }
+                }
+                xhttp.open("GET", "getconfig", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send();
+            }
+        </script>
+</body>

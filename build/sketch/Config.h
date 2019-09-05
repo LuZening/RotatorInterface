@@ -25,8 +25,10 @@ struct Config
     unsigned int ADC_max;
     unsigned int ADC_zero;
     unsigned int ADC_sensor_gap;
+    bool inverse_ADC;
     int deg_limit_CW;
     int deg_limit_CCW;
+    int break_engage_defer;
     bool is_ADC_calibrated;
     // network access
     char s_name[32];

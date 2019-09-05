@@ -6,7 +6,7 @@
 #define TARGET 2
 #define CALIBRATE 3
 #define NULL_TASK 0
-#define INFINITE_TIME 0xffffff
+#define INFINITE_TIME 0x7ffffff
 #define MANUAL_INTERVAL 10000          // ms
 #define MAX_SPEED 255
 struct Task
@@ -20,5 +20,6 @@ struct Task
 
 void init_task(Task* p);
 void set_task(Task* p, int type, int n_to, int n_speed);
+extern struct Task task_slot;
 
 #endif

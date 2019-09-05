@@ -14,8 +14,8 @@
 #define MOT_DEADZONE 10
 #define TIMEOUT_BREAK_RELEASE 200
 #define INTERVAL_HANDLE_MOTOR 10
-#define BREAK_RELEASE_DELAY 500
-#define BREAK_ENGAGE_DELAY 500
+#define BREAK_RELEASE_DELAY 300
+#define BREAK_ENGAGE_DELAY 300
 
 #include "Lib595.h"
 // TODO: status update
@@ -26,7 +26,7 @@ struct Motor
     int pin_motor_P;
     int pin_motor_N;
     bool is_break_released;
-    int timeout_break_release;
+    int break_engage_defer; // the interval between motor stop and break engagement
     int status;
 };
 

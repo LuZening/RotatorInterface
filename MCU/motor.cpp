@@ -11,9 +11,10 @@ void init_motor(struct Motor* pmotor, int pin_break, int pin_motor_N, int pin_mo
 
 void engage_break(struct Motor* pmotor)
 {
-    delay(BREAK_ENGAGE_DELAY);
     SET_PIN(pmotor->pin_break, MOTOR_OFF);
+    delay(BREAK_ENGAGE_DELAY);
     pmotor->is_break_released = false;
+    pmotor->break_engage_defer = 0;
 }
 
 void release_break(struct Motor* pmotor)
@@ -21,21 +22,6 @@ void release_break(struct Motor* pmotor)
     SET_PIN(pmotor->pin_break, MOTOR_ON);
     delay(BREAK_RELEASE_DELAY);
     pmotor->is_break_released = true;
-    /*
-    if(pmotor->timeout_break_release <= 0)
-    {
-        SET_PIN(pmotor->pin_break, MOTOR_ON);
-        pmotor->timeout_break_release = TIMEOUT_BREAK_RELEASE;
-    }
-    else
-    {
-        pmotor->timeout_break_release -= INTERVAL_HANDLE_MOTOR;
-        if(pmotor->timeout_break_release <= 0)
-        {
-            pmotor->is_break_released = true;
-        }
-    }
-    */
 }
 
 bool is_break_released(struct Motor* pmotor)
@@ -69,7 +55,6 @@ bool stop_motor(struct Motor* pmotor)
 {
     SET_PIN(pmotor->pin_motor_P, MOTOR_OFF);
     SET_PIN(pmotor->pin_motor_N, MOTOR_OFF);
-    engage_break(pmotor);
     pmotor->status = MOT_IDLE;
     return true;
 }

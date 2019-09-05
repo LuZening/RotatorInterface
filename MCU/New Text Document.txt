@@ -1,0 +1,33 @@
+SPIFFS_close: fd=1
+SPIFFS_close: fd=1
+WS connected 1
+WS PONG 22
+M 333
+command recved!
+M
+333
+command M
+
+Fatal exception 28(LoadProhibitedCause):
+epc1=0x40227adb, epc2=0x00000000, epc3=0x00000000, excvaddr=0x00000001, depc=0x00000000
+
+Exception (28):
+epc1=0x40227adb epc2=0x00000000 epc3=0x00000000 excvaddr=0x00000001 depc=0x00000000
+
+>>>stack>>>
+
+ctx: cont
+sp: 3ffffd80 end: 3fffffc0 offset: 01a0
+3fffff20:  00000001 3ffefce8 3ffefce8 40217f7c  
+3fffff30:  3ffe865d 3ffefce8 3ffef3ac 3ffef4f4  
+3fffff40:  3ffe8fca 3ffef4ac 3ffef3ac 40201c56  
+3fffff50:  0000000d 000000fa 40251a74 3ffef554  
+3fffff60:  4021a7b3 7f9c8e96 3ffe84f4 1a93b7b0  
+3fffff70:  4320d2e4 3ffefb44 3ffef554 40204431  
+3fffff80:  45d1745d 403436bf 402239b0 0104a8c0  
+3fffff90:  00000000 00000000 00000001 3ffefe24  
+3fffffa0:  3fffdad0 00000000 3ffefdf0 4021a1e4  
+3fffffb0:  feefeffe feefeffe 3ffe8588 4010079d  
+<<<stack<<<
+
+ ets Jan  8 2013,rst cause:2, boot mode:(3,0)

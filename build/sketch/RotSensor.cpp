@@ -20,6 +20,7 @@ RotSensor::RotSensor(PotType pot_type, unsigned long update_interval)
     ADC_T1 = (ADC_max - ADC_min) * 1 / 3 + ADC_min;
     ADC_Q3 = (ADC_max - ADC_min) * 3 / 4 + ADC_min;
     ADC_T2 = (ADC_max - ADC_min) * 2 / 3 + ADC_min;
+    inverse_ADC = false;
     ADC_zero = 0;
     idx_data = 0;
     n_data = 0;
@@ -291,10 +292,13 @@ float RotSensor::ADC2res_scale(int n)
         A_max = (float)ADC_max / n;
         r = X_max * R_0 / (A_max - X_max);
         x = (r - R_min) / (R_max - R_min);
-        return x;
     case THREE_TERMINALS:
-        return (float)(n - ADC_min) / ADC_max;
+        x = (float)(n - ADC_min) / ADC_max;
     }
+    if (inverse_ADC)
+        return 1. - x;
+    else
+        return x;
 }
 
 int RotSensor::ADC2deg(int n)

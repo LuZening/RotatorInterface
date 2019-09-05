@@ -19,8 +19,8 @@ void load_active_params(union ActiveWriteBlock* p_actprm)
     // find the page number
     ACK_polling_AT24C(pEEPROM);
     page_active = read_AT24C(pEEPROM, 0);
-    Serial.print("EEPROM PAGE ACTIVE:");
-    Serial.println(page_active);
+    // Serial.print("EEPROM PAGE ACTIVE:");
+    // Serial.println(page_active);
     if(page_active < PAGE_ACTIVE_BEGIN)
     {
         page_active = PAGE_ACTIVE_BEGIN;

@@ -75,6 +75,7 @@ class RotSensor
     float ADC_per_degree;
     // 0 degree calibration point
     int ADC_zero; // SAVE
+    bool inverse_ADC; // SAVE if ADC is inversed
     float X_max; // X_max = R_max / (R_max + R0)
     float X_min; // X_min = R_min / (R_min + R0)
     float ADC_maxmin; // ADC_maxmin = ADC_max / ADC_min
