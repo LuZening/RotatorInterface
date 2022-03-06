@@ -59,7 +59,7 @@ bool read_direction_command(int argc, char **argv)
     delay(10);
     while(degree < 0)
         degree += 360;
-    sprintf(p485->tx_buffer, "%03d", degree); 
+    sprintf(p485->tx_buffer, "%03d\r\n", degree); 
     send_serial485(p485, p485->tx_buffer);
     return true;
 }

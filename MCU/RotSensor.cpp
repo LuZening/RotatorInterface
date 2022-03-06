@@ -74,13 +74,15 @@ void RotSensor::update_result(int r)
     }
     if (degree == DEGREE_INVALID)
         return;
-    if (degree >= deg_limit_F && stat_limit_F < LIMIT_STATE_STAGE) // reached the forward limit
+    if (degree >= deg_limit_F) // reached the forward limit
     {
-        stat_limit_F++;
+        if(stat_limit_F < LIMIT_STATE_STAGE)
+            stat_limit_F++;
     }
-    else if (degree <= deg_limit_B && stat_limit_B < LIMIT_STATE_STAGE) // reached the backward limit
+    else if (degree <= deg_limit_B) // reached the backward limit
     {
-        stat_limit_B++;
+        if(stat_limit_B < LIMIT_STATE_STAGE)
+            stat_limit_B++;
     }
     else // within the range
     {
@@ -97,15 +99,15 @@ void RotSensor::set_ADC_range(int inf, int sup, int zero)
     ADC_zero = zero;
     update_ADC();
     // DEBUG
-    Serial.printf("ADC_max=%d,ADC_min=%d,ADC_zero=%d,X_zero=%d,X_sup=%d,X_zero=%d,X_inf=%d,deg_inf=%d,deg_zero=%d,deg_sup=%d\n",
-                  sup, inf, zero,
-                  (int)(X_zero * 100),
-                  (int)(ADC2res_scale(ADC_max) * 100),
-                  (int)(ADC2res_scale(ADC_zero) * 100),
-                  (int)(ADC2res_scale(ADC_min) * 100),
-                  ADC2deg(ADC_min),
-                  ADC2deg(ADC_zero),
-                  ADC2deg(ADC_max));
+    // Serial.printf("ADC_max=%d,ADC_min=%d,ADC_zero=%d,X_zero=%d,X_sup=%d,X_zero=%d,X_inf=%d,deg_inf=%d,deg_zero=%d,deg_sup=%d\n",
+    //               sup, inf, zero,
+    //               (int)(X_zero * 100),
+    //               (int)(ADC2res_scale(ADC_max) * 100),
+    //               (int)(ADC2res_scale(ADC_zero) * 100),
+    //               (int)(ADC2res_scale(ADC_min) * 100),
+    //               ADC2deg(ADC_min),
+    //               ADC2deg(ADC_zero),
+    //               ADC2deg(ADC_max));
 }
 void RotSensor::update_ADC() // TODO: modify
 {
@@ -122,11 +124,11 @@ void RotSensor::update_ADC() // TODO: modify
     R_min = (int)(X_max * R_0 / (ADC_maxmin - X_max) + 0.5);
     X_min = (float)R_min / (float)(R_min + R_0);
     X_zero = ADC2res_scale(ADC_zero);
-    Serial.printf("A=%d, X_max=%d, R_min=%d, X_min=%d\n",
-                   (int)(ADC_maxmin * 100),
-                   (int)(X_max * 100),
-                   (int)(R_min * 100),
-                   (int)(X_min * 100));
+    // Serial.printf("A=%d, X_max=%d, R_min=%d, X_min=%d\n",
+    //                (int)(ADC_maxmin * 100),
+    //                (int)(X_max * 100),
+    //                (int)(R_min * 100),
+    //                (int)(X_min * 100));
     is_ADC_calibrated = true;
     is_stable = true;
 }

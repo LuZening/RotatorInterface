@@ -249,7 +249,7 @@ void RotSensor::append_ADC_reading(int data)
 
 int RotSensor::get_degree()
 {
-    return degree;
+    return deg_results->get_latest();
 }
 
 int RotSensor::get_ADC()

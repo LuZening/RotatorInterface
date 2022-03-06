@@ -51,10 +51,11 @@ void begin_serial485(struct Serial485 *p485, HardwareSerial *pSerial, uint baud,
 void send_serial485(struct Serial485 *p485, const char *str)
 {
     p485->state_RW = DE;
-    digitalWrite(p485->pin_RW, DE);
     int len_content = strlen(str);
-    delay(10);
+
+    digitalWrite(p485->pin_RW, DE);
     p485->pSerial->write(str);
+    delay(20);
     // the routine will not clear the RW/DE register
     // cleaning will be done by repeaded timer routine
     p485->timeout_tx += (len_content + ((len_content > 20) ? (20) : (len_content))) * 10 * 1000 / p485->baud + 1;

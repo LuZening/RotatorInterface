@@ -1,25 +1,31 @@
 # 1 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 # 1 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 
+
+
+//#define __DEBUG_
 // TIMER FREQUENCY = CPU FREQ / 16
 
-# 5 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 6 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 7 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 8 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 9 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 10 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 11 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 12 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-
-
+# 13 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 14 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 15 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 16 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 17 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 18 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 19 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 
+
+
+
+# 20 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 21 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 22 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 23 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 24 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+
+# 26 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+
 
 
 
@@ -27,9 +33,7 @@
 
 
 // pin number of 485 Read/write switch
-
-
-
+# 42 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 // Limit Switch Input
 
 
@@ -74,6 +78,12 @@
 IPAddress AP_IP(192, 168, 4, 1);
 IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
+
+
+
+
+
+
 
 // global variables
 byte stat_LED_stat = 0; // 0: OFF, 255: ON, 1-254 BLINKS PER SEC
@@ -187,7 +197,7 @@ bool handleFileRead(AsyncWebServerRequest *r, String path)
     if (SPIFFS.exists(path_gz))
     {
         AsyncWebServerResponse *response = r->beginResponse(SPIFFS, path_gz, contentType);
-        response->addHeader(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "188" "." "0" "\""))) = ("Content-Encoding"); &__c[0];}))))), ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "188" "." "1" "\""))) = ("gzip"); &__c[0];}))))));
+        response->addHeader(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "205" "." "0" "\""))) = ("Content-Encoding"); &__c[0];}))))), ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "205" "." "1" "\""))) = ("gzip"); &__c[0];}))))));
         r->send(response);
         return true;
     }
@@ -205,85 +215,85 @@ void onSetConfig(AsyncWebServerRequest *r)
     int n_params = 0;
     if (r->method() == HTTP_POST)
     {
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "206" "." "2" "\""))) = ("name"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "223" "." "2" "\""))) = ("name"); &__c[0];})))))))
         {
-            strcpy(p_cfg->body.s_name, r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "208" "." "3" "\""))) = ("name"); &__c[0];})))))).c_str());
+            strcpy(p_cfg->body.s_name, r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "225" "." "3" "\""))) = ("name"); &__c[0];})))))).c_str());
             ++n_params;
             is_config = true;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "212" "." "4" "\""))) = ("ssid"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "229" "." "4" "\""))) = ("ssid"); &__c[0];})))))))
         {
-            strcpy(p_cfg->body.s_ssid, r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "214" "." "5" "\""))) = ("ssid"); &__c[0];})))))).c_str());
+            strcpy(p_cfg->body.s_ssid, r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "231" "." "5" "\""))) = ("ssid"); &__c[0];})))))).c_str());
             // Serial.printf("ssid=%s\r\n", p_cfg->body.s_ssid);
             ++n_params;
             is_config = true;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "219" "." "6" "\""))) = ("passwd"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "236" "." "6" "\""))) = ("passwd"); &__c[0];})))))))
         {
-            strcpy(p_cfg->body.s_password, r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "221" "." "7" "\""))) = ("passwd"); &__c[0];})))))).c_str());
+            strcpy(p_cfg->body.s_password, r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "238" "." "7" "\""))) = ("passwd"); &__c[0];})))))).c_str());
             ++n_params;
             strcpy(p_cfg->body.s_id, "VORTEX2");
             p_cfg->body.is_WiFi_set = true;
             is_config = true;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "227" "." "8" "\""))) = ("pot_type"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "244" "." "8" "\""))) = ("pot_type"); &__c[0];})))))))
         {
-            p_cfg->body.pot_type = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "229" "." "9" "\""))) = ("pot_type"); &__c[0];})))))).toInt();
+            p_cfg->body.pot_type = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "246" "." "9" "\""))) = ("pot_type"); &__c[0];})))))).toInt();
             prot_sensor->pot_type = (PotType)p_cfg->body.pot_type;
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "233" "." "10" "\""))) = ("multi_rounds"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "250" "." "10" "\""))) = ("multi_rounds"); &__c[0];})))))))
         {
-            p_cfg->body.allow_multi_rounds = (r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "235" "." "11" "\""))) = ("multi_rounds"); &__c[0];})))))).toInt() > 0);
+            p_cfg->body.allow_multi_rounds = (r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "252" "." "11" "\""))) = ("multi_rounds"); &__c[0];})))))).toInt() > 0);
             prot_sensor->allow_multi_rounds = p_cfg->body.allow_multi_rounds;
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "239" "." "12" "\""))) = ("break_delay"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "256" "." "12" "\""))) = ("break_delay"); &__c[0];})))))))
         {
-            p_cfg->body.break_engage_defer = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "241" "." "13" "\""))) = ("break_delay"); &__c[0];})))))).toInt();
+            p_cfg->body.break_engage_defer = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "258" "." "13" "\""))) = ("break_delay"); &__c[0];})))))).toInt();
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "244" "." "14" "\""))) = ("R_0"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "261" "." "14" "\""))) = ("R_0"); &__c[0];})))))))
         {
-            prot_sensor->R_0 = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "246" "." "15" "\""))) = ("R_0"); &__c[0];})))))).toInt();
+            prot_sensor->R_0 = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "263" "." "15" "\""))) = ("R_0"); &__c[0];})))))).toInt();
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "249" "." "16" "\""))) = ("R_c"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "266" "." "16" "\""))) = ("R_c"); &__c[0];})))))))
         {
-            prot_sensor->R_c = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "251" "." "17" "\""))) = ("R_c"); &__c[0];})))))).toInt();
+            prot_sensor->R_c = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "268" "." "17" "\""))) = ("R_c"); &__c[0];})))))).toInt();
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "254" "." "18" "\""))) = ("R_max"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "271" "." "18" "\""))) = ("R_max"); &__c[0];})))))))
         {
-            prot_sensor->R_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "256" "." "19" "\""))) = ("R_max"); &__c[0];})))))).toInt();
+            prot_sensor->R_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "273" "." "19" "\""))) = ("R_max"); &__c[0];})))))).toInt();
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "259" "." "20" "\""))) = ("R_min"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "276" "." "20" "\""))) = ("R_min"); &__c[0];})))))))
         {
-            prot_sensor->R_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "261" "." "21" "\""))) = ("R_min"); &__c[0];})))))).toInt();
+            prot_sensor->R_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "278" "." "21" "\""))) = ("R_min"); &__c[0];})))))).toInt();
             ++n_params;
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "264" "." "22" "\""))) = ("inverse_ADC"); &__c[0];})))))))
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "281" "." "22" "\""))) = ("inverse_ADC"); &__c[0];})))))))
         {
-            prot_sensor->inverse_ADC = (bool)(r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "266" "." "23" "\""))) = ("inverse_ADC"); &__c[0];})))))).toInt());
+            prot_sensor->inverse_ADC = (bool)(r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "283" "." "23" "\""))) = ("inverse_ADC"); &__c[0];})))))).toInt());
             ++n_params;
         }
         // Calibration Step I
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "270" "." "24" "\""))) = ("ADC_max"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "270" "." "25" "\""))) = ("ADC_min"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "270" "." "26" "\""))) = ("ADC_zero"); &__c[0];}))))))) // Step I
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "287" "." "24" "\""))) = ("ADC_max"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "287" "." "25" "\""))) = ("ADC_min"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "287" "." "26" "\""))) = ("ADC_zero"); &__c[0];}))))))) // Step I
         {
-            int ADC_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "272" "." "27" "\""))) = ("ADC_max"); &__c[0];})))))).toInt();
-            int ADC_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "273" "." "28" "\""))) = ("ADC_min"); &__c[0];})))))).toInt();
-            int ADC_zero = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "274" "." "29" "\""))) = ("ADC_zero"); &__c[0];})))))).toInt();
+            int ADC_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "289" "." "27" "\""))) = ("ADC_max"); &__c[0];})))))).toInt();
+            int ADC_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "290" "." "28" "\""))) = ("ADC_min"); &__c[0];})))))).toInt();
+            int ADC_zero = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "291" "." "29" "\""))) = ("ADC_zero"); &__c[0];})))))).toInt();
             p_cfg->body.ADC_min = ADC_min;
             p_cfg->body.ADC_max = ADC_max;
             p_cfg->body.ADC_zero = ADC_zero;
             prot_sensor->set_ADC_range(ADC_min, ADC_max, ADC_zero);
         }
         // Calibration Step 2
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "281" "." "30" "\""))) = ("CW_lim"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "281" "." "31" "\""))) = ("CCW_lim"); &__c[0];}))))))) // Step 2
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "298" "." "30" "\""))) = ("CW_lim"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "298" "." "31" "\""))) = ("CCW_lim"); &__c[0];}))))))) // Step 2
         {
-            int CW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "283" "." "32" "\""))) = ("CW_lim"); &__c[0];})))))).toInt();
-            int CCW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "284" "." "33" "\""))) = ("CCW_lim"); &__c[0];})))))).toInt();
+            int CW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "300" "." "32" "\""))) = ("CW_lim"); &__c[0];})))))).toInt();
+            int CCW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "301" "." "33" "\""))) = ("CCW_lim"); &__c[0];})))))).toInt();
             p_cfg->body.deg_limit_CW = CW_lim;
             p_cfg->body.deg_limit_CCW = CCW_lim;
             prot_sensor->deg_limit_F = CW_lim;
@@ -293,11 +303,11 @@ void onSetConfig(AsyncWebServerRequest *r)
     else if (r->method() == HTTP_GET)
     {
         /* code */
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "294" "." "34" "\""))) = ("manual"); &__c[0];}))))))) // manual calibration
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "311" "." "34" "\""))) = ("manual"); &__c[0];}))))))) // manual calibration
         {
             is_calibrating = true;
         }
-        else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "298" "." "35" "\""))) = ("auto"); &__c[0];})))))))
+        else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "315" "." "35" "\""))) = ("auto"); &__c[0];})))))))
         {
             if ((!is_calibrating) && pmotor->status == 0)
             {
@@ -305,18 +315,18 @@ void onSetConfig(AsyncWebServerRequest *r)
             }
             else
             {
-                r->send(300, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "306" "." "36" "\""))) = ("system is busy"); &__c[0];}))))));
+                r->send(300, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "323" "." "36" "\""))) = ("system is busy"); &__c[0];}))))));
                 return;
             }
         }
-        else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "310" "." "37" "\""))) = ("stop"); &__c[0];})))))))
+        else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "327" "." "37" "\""))) = ("stop"); &__c[0];})))))))
         {
             is_calibrating = false;
             is_auto_calibrating = false;
             cal_edge_count = 0;
             task_slot.type = 0;
         }
-        else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "317" "." "38" "\""))) = ("CLR_rounds"); &__c[0];}))))))) // clear n_rounds = 0
+        else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "334" "." "38" "\""))) = ("CLR_rounds"); &__c[0];}))))))) // clear n_rounds = 0
         {
             prot_sensor->n_rounds = 0;
         }
@@ -329,34 +339,37 @@ void onGetConfig(AsyncWebServerRequest *r)
 {
     if (!is_config)
     {
-        r->send(300, "text/plain", "");
-        return;
+        sprintf_P(s_httpbuffer, (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "347" "." "39" "\""))) = ("is_calib=%d\n\n"); &__c[0];})), (int)is_calibrating);
     }
-    sprintf_P(s_httpbuffer, (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "333" "." "39" "\""))) = ("name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n"); &__c[0];})),
-            p_cfg->body.s_name,
-            p_cfg->body.s_ssid,
-            s_ip.c_str(),
-            WiFi.RSSI(),
-            (int)prot_sensor->pot_type,
-            (int)prot_sensor->allow_multi_rounds,
-            p_cfg->body.break_engage_defer,
-            prot_sensor->R_0,
-            prot_sensor->R_c,
-            prot_sensor->R_max,
-            prot_sensor->R_min,
-            prot_sensor->ADC_min,
-            prot_sensor->ADC_max,
-            prot_sensor->ADC_zero,
-            (int)prot_sensor->inverse_ADC,
-            (int)(prot_sensor->degree),
-            prot_sensor->deg_limit_F,
-            prot_sensor->deg_limit_B,
-            (int)is_calibrating);
+    else
+    {
+        sprintf_P(s_httpbuffer, (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "351" "." "40" "\""))) = ("name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n\n"); &__c[0];})),
+                p_cfg->body.s_name,
+                p_cfg->body.s_ssid,
+                s_ip.c_str(),
+                WiFi.RSSI(),
+                (int)prot_sensor->pot_type,
+                (int)prot_sensor->allow_multi_rounds,
+                p_cfg->body.break_engage_defer,
+                prot_sensor->R_0,
+                prot_sensor->R_c,
+                prot_sensor->R_max,
+                prot_sensor->R_min,
+                prot_sensor->ADC_min,
+                prot_sensor->ADC_max,
+                prot_sensor->ADC_zero,
+                (int)prot_sensor->inverse_ADC,
+                (int)(prot_sensor->degree),
+                prot_sensor->deg_limit_F,
+                prot_sensor->deg_limit_B,
+                (int)is_calibrating);
+    }
     r->send(200, "text/plain", s_httpbuffer);
+
 }
 char *sensorData()
 {
-    sprintf_P(s_httpbuffer, (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "357" "." "40" "\""))) = ("azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n"); &__c[0];})),
+    sprintf_P(s_httpbuffer, (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "377" "." "41" "\""))) = ("azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n\n"); &__c[0];})),
             prot_sensor->get_degree(),
             prot_sensor->get_ADC(),
             ((pmotor->status == 0) ? (0) : (1)),
@@ -393,26 +406,26 @@ void onTask(AsyncWebServerRequest *r)
     // type: (M)anual OR (T)arget
     // to: CW(+sec) CCW(-sec) OR degree (0-360)
     // speed: (0-255)
-    if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "394" "." "41" "\""))) = ("type"); &__c[0];})))))) && r->hasArg("to") && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "394" "." "42" "\""))) = ("speed"); &__c[0];})))))))
+    if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "414" "." "42" "\""))) = ("type"); &__c[0];})))))) && r->hasArg("to") && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "414" "." "43" "\""))) = ("speed"); &__c[0];})))))))
     {
         float deg = prot_sensor->degree;
-        int type = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "397" "." "43" "\""))) = ("type"); &__c[0];})))))).toInt();
+        int type = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "417" "." "44" "\""))) = ("type"); &__c[0];})))))).toInt();
         int to = r->arg("to").toInt();
         int to_2, to_3;
-        int speed = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "400" "." "44" "\""))) = ("speed"); &__c[0];})))))).toInt();
+        int speed = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "420" "." "45" "\""))) = ("speed"); &__c[0];})))))).toInt();
         // create a task object
         if ((speed >= 0 && speed <= 255) && (type == 1 || type == 2 || type == 0))
         {
             if (type == 1 &&
-                to <= 10000 /* ms*/ &&
-                to >= -10000 /* ms*/) // Task Type 1: Manual control
+                to <= 75000 /* ms*/ &&
+                to >= -75000 /* ms*/) // Task Type 1: Manual control
             {
                 // create a manual control task object
                 task_slot.type = 1;
                 task_slot.n_to = to;
                 task_slot.n_speed = speed;
                 task_slot.is_executed = false;
-                log_debug("Manual task recieved\n");
+                do { (void)0; } while (0);
             }
             else if (type == 2 && to >= 0 && to <= 360) // Task Type 2: To a target
             {
@@ -456,7 +469,7 @@ void onTask(AsyncWebServerRequest *r)
                 }
                 task_slot.n_to = (((((to_2 - deg) >= 0) ? ((to_2 - deg)) : (-(to_2 - deg))) < (((to - deg) >= 0) ? ((to - deg)) : (-(to - deg)))) ? (to_2) : (to));
                 task_slot.is_executed = false;
-                log_debug("Target task recieved\n");
+                do { (void)0; } while (0);
             }
             else if (type == 0)
             {
@@ -464,25 +477,25 @@ void onTask(AsyncWebServerRequest *r)
                 task_slot.is_executed = false;
                 task_slot.n_to = 0;
             }
-            r->send(200, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "465" "." "45" "\""))) = ("task created\n"); &__c[0];}))))));
+            r->send(200, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "485" "." "46" "\""))) = ("task created\n"); &__c[0];}))))));
         }
         else
         {
-            r->send(400, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "469" "." "46" "\""))) = ("invalid parameters\n"); &__c[0];}))))));
+            r->send(400, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "489" "." "47" "\""))) = ("invalid parameters\n"); &__c[0];}))))));
         }
     }
-    r->send(400, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "472" "." "47" "\""))) = ("Bad request\n"); &__c[0];}))))));
+    r->send(400, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "492" "." "48" "\""))) = ("Bad request\n"); &__c[0];}))))));
 }
 
 void onHomepage(AsyncWebServerRequest *r)
 {
     if (is_config)
     {
-        handleFileRead(r, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "479" "." "48" "\""))) = ("/index.html"); &__c[0];}))))));
+        handleFileRead(r, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "499" "." "49" "\""))) = ("/index.html"); &__c[0];}))))));
     }
     else
     {
-        handleFileRead(r, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "483" "." "49" "\""))) = ("/config.html"); &__c[0];}))))));
+        handleFileRead(r, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "503" "." "50" "\""))) = ("/config.html"); &__c[0];}))))));
     }
 }
 
@@ -495,7 +508,7 @@ void onDebug485(AsyncWebServerRequest *r)
 void onStatus(AsyncWebServerRequest *r)
 {
     sprintf_P(s_httpbuffer,
-            (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "496" "." "50" "\""))) = ("Free Memory=%d\nWiFi mode=%d\nRSSI=%d\n\n"); &__c[0];})),
+            (__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "516" "." "51" "\""))) = ("Free Memory=%d\nWiFi mode=%d\nRSSI=%d\n\n"); &__c[0];})),
             ESP.getFreeHeap(), WiFi.getMode(), WiFi.RSSI());
     r->send(200, "text/plain", s_httpbuffer);
 }
@@ -504,7 +517,7 @@ void onNotFound(AsyncWebServerRequest *r)
 {
     if (!handleFileRead(r, r->url())) // if no file matches the request, return with ERROR 404
     {
-        String message(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "505" "." "51" "\""))) = ("AsyncServer: File Not Found\n\n"); &__c[0];}))))));
+        String message(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "525" "." "52" "\""))) = ("AsyncServer: File Not Found\n\n"); &__c[0];}))))));
         message += "URI: ";
         message += r->url();
         message += "\nMethod: ";
@@ -523,7 +536,7 @@ void onNotFound(AsyncWebServerRequest *r)
 // Save config and reset
 void onReset(AsyncWebServerRequest *r)
 {
-    r->send(200, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "524" "." "52" "\""))) = ("Restarting...\n"); &__c[0];}))))));
+    r->send(200, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "544" "." "53" "\""))) = ("Restarting...\n"); &__c[0];}))))));
     // Serial.println("Reset...");
     sync_config(p_cfg);
     sync_active_params(p_actprm);
@@ -554,12 +567,12 @@ void onCalibrate(AsyncWebServerRequest *r)
 {
     if (r->method() == HTTP_POST)
     {
-        String message(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "555" "." "53" "\""))) = ("ADC calibrate:"); &__c[0];}))))));
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "556" "." "54" "\""))) = ("ADC_max"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "556" "." "55" "\""))) = ("ADC_min"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "556" "." "56" "\""))) = ("ADC_zero"); &__c[0];}))))))) // Step I
+        String message(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "575" "." "54" "\""))) = ("ADC calibrate:"); &__c[0];}))))));
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "576" "." "55" "\""))) = ("ADC_max"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "576" "." "56" "\""))) = ("ADC_min"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "576" "." "57" "\""))) = ("ADC_zero"); &__c[0];}))))))) // Step I
         {
-            int ADC_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "558" "." "57" "\""))) = ("ADC_max"); &__c[0];})))))).toInt();
-            int ADC_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "559" "." "58" "\""))) = ("ADC_min"); &__c[0];})))))).toInt();
-            int ADC_zero = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "560" "." "59" "\""))) = ("ADC_zero"); &__c[0];})))))).toInt();
+            int ADC_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "578" "." "58" "\""))) = ("ADC_max"); &__c[0];})))))).toInt();
+            int ADC_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "579" "." "59" "\""))) = ("ADC_min"); &__c[0];})))))).toInt();
+            int ADC_zero = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "580" "." "60" "\""))) = ("ADC_zero"); &__c[0];})))))).toInt();
             message += "\nADC_max: ";
             message += ADC_max;
             message += "\nADC_min: ";
@@ -579,10 +592,10 @@ void onCalibrate(AsyncWebServerRequest *r)
             message += "\n\n";
             r->send(200, message);
         }
-        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "580" "." "60" "\""))) = ("CW_lim"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "580" "." "61" "\""))) = ("CCW_lim"); &__c[0];}))))))) // Step 2
+        if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "600" "." "61" "\""))) = ("CW_lim"); &__c[0];})))))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "600" "." "62" "\""))) = ("CCW_lim"); &__c[0];}))))))) // Step 2
         {
-            int CW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "582" "." "62" "\""))) = ("CW_lim"); &__c[0];})))))).toInt();
-            int CCW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "583" "." "63" "\""))) = ("CCW_lim"); &__c[0];})))))).toInt();
+            int CW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "602" "." "63" "\""))) = ("CW_lim"); &__c[0];})))))).toInt();
+            int CCW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "603" "." "64" "\""))) = ("CCW_lim"); &__c[0];})))))).toInt();
             message += "\nCW_lim: ";
             message += CW_lim;
             message += "\nCCW_lim: ";
@@ -595,24 +608,24 @@ void onCalibrate(AsyncWebServerRequest *r)
             r->send(200, message);
         }
     }
-    else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "596" "." "64" "\""))) = ("manual"); &__c[0];}))))))) // manual calibration mode
+    else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "616" "." "65" "\""))) = ("manual"); &__c[0];}))))))) // manual calibration mode
     {
         is_calibrating = true;
         r->redirect("/calibrate");
     }
-    else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "601" "." "65" "\""))) = ("auto"); &__c[0];}))))))) // GET request to initialize calibration
+    else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "621" "." "66" "\""))) = ("auto"); &__c[0];}))))))) // GET request to initialize calibration
     {
         if ((!is_calibrating) && pmotor->status == 0)
         {
             begin_auto_calibrate();
-            r->send(200, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "606" "." "66" "\""))) = ("Auto calibration started\n"); &__c[0];}))))));
+            r->send(200, ((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "626" "." "67" "\""))) = ("Auto calibration started\n"); &__c[0];}))))));
         }
         else
         {
             r->send(300, "system is busy");
         }
     }
-    else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "613" "." "67" "\""))) = ("stop"); &__c[0];})))))))
+    else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "633" "." "68" "\""))) = ("stop"); &__c[0];})))))))
     {
         is_calibrating = false;
         sync_active_params(p_actprm);
@@ -663,13 +676,6 @@ void auto_calibration_turn_around()
         is_auto_calibrating = false;
         is_calibrating = false;
     }
-}
-
-void log_debug(const char *s)
-{
-
-
-
 }
 
 /*********************************************
@@ -731,20 +737,22 @@ void onTimer() // 50ms
         return;
 
     // TASK: Autosave EEPROM
-    time_unsaved_ms += 50000 /* us*/ /*us*/ / 1000;
-    if (time_unsaved_ms >= 60000)
+    /*
+    time_unsaved_ms += SCHED_INTERVAL / 1000;
+    if (time_unsaved_ms >= AUTOSAVE_INTERVAL_MS)
     {
         time_unsaved_ms = 0;
         int n_deg_diff = prot_sensor->degree - p_actprm->body.n_degree;
-        if (abs(n_deg_diff) >= 10)
+        if (abs(n_deg_diff) >= MOT_DEADZONE)
         {
             sync_active_params(p_actprm);
             save_active_params(p_actprm);
         }
     }
+    */
 
     // TASK: send web data 3 / sec
-    if (webSocket.count() > 0 && tick % ((1000000L / 50000 /* us*/ /*us*/) / 3) == 1)
+    if (tick % ((1000000L / 50000 /* us*/ /*us*/) / 3) == 1 && webSocket.count() > 0 && webSocket.availableForWriteAll())
     {
         webSocket.textAll(sensorData());
     }
@@ -759,19 +767,20 @@ void onTimer() // 50ms
         else if (n < prot_sensor->ADC_min)
             prot_sensor->ADC_min = n;
     }
+    int deg_now = prot_sensor->get_degree();
     // TASK: toggle limit protection
-    if ((!is_calibrating) && (pmotor->status == prot_sensor->is_limit()) && (prot_sensor->is_limit() != 0))
+    if ((!is_calibrating) && (pmotor->status == prot_sensor->is_limit() != 0) && (prot_sensor->is_limit() != 0))
     {
         // stop the task
-        log_debug("LOG: Limit triggered, attempt to stop\n");
+        do { (void)0; } while (0);
         if (stop_motor(pmotor))
         {
-            task_slot.type = 0;
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
+            task_slot.type = 0;
         }
     }
-    // TASK: timeout limit protection each 1 sec
-    if ((tick % (1000000L / 50000 /* us*/ /*us*/) == 3) &&
+    // TASK: timeout limit protection each 3 sec
+    if ((tick % (1000000L / 50000 /* us*/ /*us*/) == 2) &&
         (pmotor->status != 0) &&
         task_slot.type != 0 &&
         (is_calibrating == is_auto_calibrating)) // time limit tiggers either not calibrating or auto calibrating
@@ -780,12 +789,11 @@ void onTimer() // 50ms
         {
 
             // timeout limit protection triggered
-            if (++(prot_sensor->stat_limit_T) >= 3)
+            if (++(prot_sensor->stat_limit_T) >= 4)
             {
                 prot_sensor->stat_limit_T = 0;
-                log_debug("LOG: Time limit triggered, attempt to stop\n");
-                while (!stop_motor(pmotor))
-                    ;
+                do { (void)0; } while (0);
+                while (!stop_motor(pmotor));
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = 0;
                 if (is_calibrating && is_auto_calibrating)
@@ -800,7 +808,6 @@ void onTimer() // 50ms
         }
     }
     // TASK: judge if the task is completed
-    int deg_now = prot_sensor->degree;
     if (task_slot.type == 1)
     {
         if (task_slot.n_to > 0) // time decay of manual tasks
@@ -816,10 +823,9 @@ void onTimer() // 50ms
         else // when the life time of the manual task runs out, kill the task
         {
             task_slot.type = 0;
-            log_debug("Task completed\n");
-            while (!stop_motor(pmotor))
-                ;
+            while (!stop_motor(pmotor));
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer; // set break engage timeout flag
+            do { (void)0; } while (0);
             return;
         }
     }
@@ -831,7 +837,7 @@ void onTimer() // 50ms
             {
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = 0;
-                log_debug("Task completed\n");
+                do { (void)0; } while (0);
                 return;
             }
         }
@@ -869,14 +875,14 @@ void onTimer() // 50ms
                         run_CCW(pmotor);
                     }
                     task_slot.is_executed = true;
-                    log_debug("Manual task started\n");
+                    do { (void)0; } while (0);
                 }
                 else // kill the task if limit switches are toggled
                 {
                     if (stop_motor(pmotor))
                     {
                         pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
-                        log_debug("Task killed for limits\n");
+                        do { (void)0; } while (0);
                         task_slot.type = 0;
                     }
                 }
@@ -884,23 +890,17 @@ void onTimer() // 50ms
             case 2:
                 if (prot_sensor->is_ADC_calibrated)
                 {
-                    // CCW
-                    if (task_slot.n_to < deg_now - 10)
-                    {
-                        run_CCW(pmotor);
-                        log_debug("Target task created\n");
-                    }
-                    // CW
-                    else if (task_slot.n_to > deg_now + 10)
+                    // CW CCW
+                    if (task_slot.n_to > deg_now + 10 || task_slot.n_to < deg_now - 10)
                     {
                         run_CW(pmotor);
-                        log_debug("Target task created\n");
+                        do { (void)0; } while (0);
                     }
                     // DEADZONE
                     else
                     {
                         task_slot.type = 0;
-                        log_debug("Task killed for deadzone\n");
+                        do { (void)0; } while (0);
                     }
                     task_slot.is_executed = true;
                 }
@@ -924,7 +924,7 @@ void onTimer() // 50ms
                     ; // force stopping
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = 0;
-                log_debug("LOG: task cancelled\n");
+                do { (void)0; } while (0);
             }
         }
     }
@@ -951,7 +951,7 @@ void init_OTA()
         Serial.println("\nEnd");
     });
     ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
-        Serial.printf_P((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "952" "." "68" "\""))) = ("Progress: %u%%\r"); &__c[0];})), (progress / (total / 100)));
+        Serial.printf_P((__extension__({static const char __c[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom.text." "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" "." "959" "." "69" "\""))) = ("Progress: %u%%\r"); &__c[0];})), (progress / (total / 100)));
     });
     ArduinoOTA.onError([](ota_error_t error) {
         Serial.printf("Error[%u]: ", error);
@@ -984,7 +984,7 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
     if (type == WS_EVT_CONNECT)
     {
         // os_printf("WS connected %d\n", server->count());
-        client->ping();
+        client->keepAlivePeriod(90);
     }
     else if (type == WS_EVT_DISCONNECT)
     {
@@ -1011,6 +1011,7 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
         }
     }
 }
+
 
 void setup()
 {
@@ -1041,7 +1042,10 @@ void setup()
     // SPIFFS
     SPIFFS.begin();
     // 485
-    begin_serial485(p485, &Serial, 4800, 5, 50000 /* us*/ /*us*/ / 1000);
+    begin_serial485(p485, &Serial, 9600, 5, 50000 /* us*/ /*us*/ / 1000);
+
+
+
     //595
     begin_595(p595, 12, 13, 2, 4);
     // EEPROM
@@ -1107,8 +1111,8 @@ void setup()
             if (WiFi.status() == WL_CONNECTED)
             {
                 s_ip = WiFi.localIP().toString();
-                log_debug("WiFi connected  ");
-                log_debug(s_ip.c_str());
+                do { (void)0; } while (0);
+                do { (void)0; } while (0);
                 is_config = true;
                 is_wifi_conn = true;
                 // Turn on the LED
@@ -1125,7 +1129,7 @@ void setup()
     }
     else // not correctly configured. Initialize an Acess Point for configuration
     {
-        log_debug("check sign mismatch");
+        do { (void)0; } while (0);
         is_config = false;
         prot_sensor->is_ADC_calibrated = false;
         // empty the uninitialized strings
@@ -1147,7 +1151,7 @@ void setup()
             delay(100);
             WiFi.setOutputPower(20.5); // WiFi set to max TX power
             WiFi.softAPConfig(AP_IP, gateway, subnet);
-            log_debug("AP started");
+            do { (void)0; } while (0);
             s_ip = WiFi.softAPIP().toString();
             stat_LED_stat = 4;
             delay(2000);
@@ -1192,7 +1196,7 @@ void loop()
     {
         int ADC_reading = analogRead(A0);
         ticker_ADC = ticker_ADC_new;
-        ADC_smoothed = (ADC_reading - ADC_smoothed) * (2.0 / (16 + 1)) + ADC_smoothed;
+        ADC_smoothed = (ADC_reading - ADC_smoothed) * (2.0 / (32 + 1)) + ADC_smoothed;
     }
     if (ticker_new - ticker >= 50000 /* us*/ /*us*/)
     {

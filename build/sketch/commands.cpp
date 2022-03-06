@@ -55,7 +55,11 @@ bool stop_azi_rotation_command(int argc, char **argv)
 
 bool read_direction_command(int argc, char **argv)
 {
+    int degree = prot_sensor->get_degree();
     delay(10);
+    while(degree < 0)
+        degree += 360;
+    sprintf(p485->tx_buffer, "%03d", degree); 
     send_serial485(p485, p485->tx_buffer);
     return true;
 }

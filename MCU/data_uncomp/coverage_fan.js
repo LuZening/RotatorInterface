@@ -59,7 +59,8 @@ function azu_draw()
         var point_to = new point(pos_mouse.x, pos_mouse.y);
         point_to.sub(loc_origin);
         point_to.unify();
-        deg_task = Math.atan2(point_to.y, point_to.x) + 90; 
+        deg_task = deg(Math.atan2(point_to.y, point_to.x)) + 90;
+        while (deg_task < 0) deg_task += 360; 
         point_to.mult(X_SIZE/2);
         ctx.strokeStyle="rgba(114,109,209,0.5)";
         ctx.beginPath()

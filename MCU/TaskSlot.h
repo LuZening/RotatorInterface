@@ -7,7 +7,7 @@
 #define CALIBRATE 3
 #define NULL_TASK 0
 #define INFINITE_TIME 0x7ffffff
-#define MANUAL_INTERVAL 10000          // ms
+#define MANUAL_INTERVAL 75000          // ms
 #define MAX_SPEED 255
 struct Task
 {

@@ -1,4 +1,6 @@
+#define ESP8266
 #define __595
+
 //#define __DEBUG_
 // TIMER FREQUENCY = CPU FREQ / 16
 #define CYC_PER_US 5
@@ -83,6 +85,8 @@ IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
 #ifdef __DEBUG_
 #define LOG_DEBUG(fmt, ...) Serial.printf_P(PSTR(fmt), ## __VA_ARGS__)
+#elif __WEB_DEBUG_
+#define LOG_DEBUG(fmt, ...) do {webSocket.textAll(PSTR(fmt))} while(0)
 #else
 #define LOG_DEBUG(...) do { (void)0; } while (0)
 #endif
@@ -387,6 +391,8 @@ void onGetWiFiStatus(AsyncWebServerRequest *r)
     message += WiFi.getMode();
     message += "\nSSID=";
     message += WiFi.SSID();
+    message += "\nPassword=";
+    message += p_cfg->body.s_password;
     message += "\nIP=";
     message += s_ip;
     message += "\nRSSI=";
@@ -749,9 +755,9 @@ void onTimer() // 50ms
             save_active_params(p_actprm);
         }
     }
-
-    // TASK: send web data 3 / sec
-    if (tick % (TIMER_PER_SEC / 3) == 1 && webSocket.count() > 0 && webSocket.availableForWriteAll())
+   
+    // TASK: send web data 10 / sec
+    if (tick % (TIMER_PER_SEC / 5) == 1 && webSocket.count() > 0 && webSocket.availableForWriteAll())
     {
         webSocket.textAll(sensorData());
     }
@@ -768,10 +774,11 @@ void onTimer() // 50ms
     }
     int deg_now = prot_sensor->get_degree();
     // TASK: toggle limit protection
-    if ((!is_calibrating) && (pmotor->status == prot_sensor->is_limit()) && (prot_sensor->is_limit() != 0))
+    if ((!is_calibrating) && (pmotor->status == prot_sensor->is_limit() != 0) && (prot_sensor->is_limit() != 0))
     {
         // stop the task
         LOG_DEBUG("LOG: Limit triggered, attempt to stop\n");
+        webSocket.textAll("LOG: Limit triggered.");
         if (stop_motor(pmotor))
         {
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
@@ -788,12 +795,12 @@ void onTimer() // 50ms
         {
 
             // timeout limit protection triggered
-            if (++(prot_sensor->stat_limit_T) >= 3)
+            if (++(prot_sensor->stat_limit_T) >= 4)
             {
                 prot_sensor->stat_limit_T = 0;
                 LOG_DEBUG("LOG: Time limit triggered, attempt to stop\n");
-                while (!stop_motor(pmotor))
-                    ;
+                webSocket.textAll("LOG: Time limit triggered.");
+                while (!stop_motor(pmotor));
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = NULL_TASK;
                 if (is_calibrating && is_auto_calibrating)
@@ -984,7 +991,7 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
     if (type == WS_EVT_CONNECT)
     {
         // os_printf("WS connected %d\n", server->count());
-        client->ping();
+        client->keepAlivePeriod(90);
     }
     else if (type == WS_EVT_DISCONNECT)
     {
@@ -1011,6 +1018,7 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
         }
     }
 }
+
 
 void setup()
 {

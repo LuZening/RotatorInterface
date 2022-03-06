@@ -1,30 +1,73 @@
 const ws_uri = 'ws://' + location.hostname + '/ws';
 // create WS object
-var ws_conn = new WebSocket(ws_uri, ['arduino']);
+var ws_conn = new WebSocket(ws_uri);
 /***** config WS event handlers */
+var ws_reconnect = {
+    reconnect_interval: 5000, // 5s
+    intervalObj: null,
+    retry_count: 0,
+    reconnect: function (){
+        if(this.retry_count > 5)
+        {
+            console.log('WS reconnect all atempts failed.')
+            this.stop();
+            return;
+        }
+        if(ws_conn)
+        {
+            ws_conn.close();
+        }
+        this.retry_count ++;
+        ws_conn.open();
+    },
+    start: function (){
+        this.retry_count = 0;
+        this.intervalObj = setInterval(this.reconnect(), this.reconnect_interval);
+    },
+    stop: function (){clearInterval(this.intervalObj)}
+}
+
 var ws_heartCheck = {
-    timeout: 3000,//3000ms
-    timeoutObj: null,
+    timeout: 10000,//10s
+    intervalObj: null,
     reset: function(){
-        clearTimeout(this.timeoutObj);
+        clearInterval(this.intervalObj);
         this.start();
     },
     start: function(){
-        this.timeoutObj = setTimeout(function(){
+        this.intervalObj = setInterval(function(){
             ws_conn.send("ack");
         }, this.timeout)
     }
 }
+
+var ws_fallback = {
+    // timeout: 2000, //2s
+    // timeoutObj: null,
+    interval: 500, // 500ms
+    intervalObj: null,
+    start: function(){
+        this.intervalObj = setInterval(getSensorData(), this.interval);
+    },
+    stop: function(){
+        clearInterval(this.intervalObj);
+    }
+}
+
 ws_conn.onopen = function () {
+    ws_reconnect.stop();
     ws_heartCheck.start();
 };
+
 ws_conn.onerror = function (error) {
     console.log('WebSocket Error ', error);
 };
 ws_conn.onclose = function () {
     console.log('WebSocket ws_conn closed');
-    ws_conn = new WebSocket(ws_uri, ['arduino']); // reconnect
-    console.log('WebSocket reconnected')
+    ws_fallback.start(); // fallback to http GET method
+    ws_reconnect.start();
+    //ws_conn = new WebSocket(ws_uri, ['arduino']); // reconnect
+    //console.log('WebSocket reconnected')
 };
 ws_conn.onmessage = function (e) {
     msg = e.data;
@@ -80,7 +123,7 @@ function parseSensorData(s) {
 function getSensorData() // request sensor data by AJAX
 {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onload = function () {
         if (this.status == 200 && this.responseText.length > 0) {
             parseSensorData(this.responseText);
         }

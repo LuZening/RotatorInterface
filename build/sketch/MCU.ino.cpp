@@ -1,6 +1,9 @@
 #line 1 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 #line 1 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#define ESP8266
 #define __595
+
+//#define __DEBUG_
 // TIMER FREQUENCY = CPU FREQ / 16
 #define CYC_PER_US 5
 #include <Arduino.h>
@@ -11,7 +14,9 @@
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 #include <FS.h>
-
+#ifdef __DEBUG_
+#include <GDBStub.h>
+#endif
 
 #include "AT24C.h"
 #include "Config.h"
@@ -21,6 +26,7 @@
 #include "Lib595.h"
 #include "motor.h"
 
+
 #define SGN(X) (((X) < 0) ? (-1) : (((X) == 0) ? (0) : (1)))
 #define ABS(X) (((X) >= 0) ? ((X)) : (-(X)))
 #define TURN_OFF_LED(p) (SET_PIN(p, HIGH))
@@ -28,7 +34,12 @@
 
 // pin number of 485 Read/write switch
 #define PIN_485RW 5
-#define BAUD_RATE 4800
+
+#ifdef __DEBUG_
+#define BAUD_RATE 115200
+#else
+#define BAUD_RATE 9600
+#endif
 
 // Limit Switch Input
 #define PIN_LIMIT 16
@@ -74,7 +85,13 @@
 IPAddress AP_IP(192, 168, 4, 1);
 IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
-
+#ifdef __DEBUG_
+#define LOG_DEBUG(fmt, ...) Serial.printf_P(PSTR(fmt), ## __VA_ARGS__)
+#elif __WEB_DEBUG_
+#define LOG_DEBUG(fmt, ...) do {webSocket.textAll(PSTR(fmt))} while(0)
+#else
+#define LOG_DEBUG(...) do { (void)0; } while (0)
+#endif
 // global variables
 byte stat_LED_stat = 0; // 0: OFF, 255: ON, 1-254 BLINKS PER SEC
 bool level_led_stat = HIGH;
@@ -118,57 +135,55 @@ AsyncWebSocket webSocket("/ws");
 /********************************************
  *         handle  EEPROM                   *
 */
-#line 119 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 136 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_active_params(union ActiveWriteBlock *p);
-#line 126 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 143 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_config(union ConfigWriteBlock *p);
-#line 147 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 164 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 String getContentType(String filename);
-#line 175 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 192 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 bool handleFileRead(AsyncWebServerRequest *r, String path);
-#line 201 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 218 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onSetConfig(AsyncWebServerRequest *r);
-#line 326 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 343 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetConfig(AsyncWebServerRequest *r);
-#line 355 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 375 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 char * sensorData();
-#line 367 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 387 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetWiFiStatus(AsyncWebServerRequest *r);
-#line 383 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 403 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetSensor(AsyncWebServerRequest *r);
-#line 389 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 409 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onTask(AsyncWebServerRequest *r);
-#line 475 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 495 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onHomepage(AsyncWebServerRequest *r);
-#line 487 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 507 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onDebug485(AsyncWebServerRequest *r);
-#line 493 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 513 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onStatus(AsyncWebServerRequest *r);
-#line 501 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 521 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onNotFound(AsyncWebServerRequest *r);
-#line 522 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 542 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onReset(AsyncWebServerRequest *r);
-#line 535 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 555 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onCalibrateGap(void);
-#line 551 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 571 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onCalibrate(AsyncWebServerRequest *r);
-#line 629 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 649 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void begin_auto_calibrate();
-#line 641 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 661 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void auto_calibration_turn_around();
-#line 666 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
-void log_debug(const char *s);
-#line 676 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 689 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onTimer();
-#line 932 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 939 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void init_OTA();
-#line 980 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 987 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
-#line 1013 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1021 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void setup();
-#line 1182 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1193 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void loop();
-#line 119 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 136 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_active_params(union ActiveWriteBlock *p)
 {
     p->body.ADC_reading = prot_sensor->ADC_reading;
@@ -380,34 +395,37 @@ void onGetConfig(AsyncWebServerRequest *r)
 {
     if (!is_config)
     {
-        r->send(300, "text/plain", "");
-        return;
+        sprintf_P(s_httpbuffer, PSTR("is_calib=%d\n\n"), (int)is_calibrating);
     }
-    sprintf_P(s_httpbuffer, PSTR("name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n"),
-            p_cfg->body.s_name,
-            p_cfg->body.s_ssid,
-            s_ip.c_str(),
-            WiFi.RSSI(),
-            (int)prot_sensor->pot_type,
-            (int)prot_sensor->allow_multi_rounds,
-            p_cfg->body.break_engage_defer,
-            prot_sensor->R_0,
-            prot_sensor->R_c,
-            prot_sensor->R_max,
-            prot_sensor->R_min,
-            prot_sensor->ADC_min,
-            prot_sensor->ADC_max,
-            prot_sensor->ADC_zero,
-            (int)prot_sensor->inverse_ADC,
-            (int)(prot_sensor->degree),
-            prot_sensor->deg_limit_F,
-            prot_sensor->deg_limit_B,
-            (int)is_calibrating);
+    else
+    {
+        sprintf_P(s_httpbuffer, PSTR("name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n\n"),
+                p_cfg->body.s_name,
+                p_cfg->body.s_ssid,
+                s_ip.c_str(),
+                WiFi.RSSI(),
+                (int)prot_sensor->pot_type,
+                (int)prot_sensor->allow_multi_rounds,
+                p_cfg->body.break_engage_defer,
+                prot_sensor->R_0,
+                prot_sensor->R_c,
+                prot_sensor->R_max,
+                prot_sensor->R_min,
+                prot_sensor->ADC_min,
+                prot_sensor->ADC_max,
+                prot_sensor->ADC_zero,
+                (int)prot_sensor->inverse_ADC,
+                (int)(prot_sensor->degree),
+                prot_sensor->deg_limit_F,
+                prot_sensor->deg_limit_B,
+                (int)is_calibrating);
+    }
     r->send(200, "text/plain", s_httpbuffer);
+    
 }
 char *sensorData()
 {
-    sprintf_P(s_httpbuffer, PSTR("azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n"),
+    sprintf_P(s_httpbuffer, PSTR("azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n\n"),
             prot_sensor->get_degree(),
             prot_sensor->get_ADC(),
             ((pmotor->status == MOT_IDLE) ? (0) : (1)),
@@ -463,7 +481,7 @@ void onTask(AsyncWebServerRequest *r)
                 task_slot.n_to = to;
                 task_slot.n_speed = speed;
                 task_slot.is_executed = false;
-                log_debug("Manual task recieved\n");
+                LOG_DEBUG("Manual task recieved to %d\n", to);
             }
             else if (type == TARGET && to >= 0 && to <= 360) // Task Type 2: To a target
             {
@@ -507,7 +525,7 @@ void onTask(AsyncWebServerRequest *r)
                 }
                 task_slot.n_to = ((ABS(to_2 - deg) < ABS(to - deg)) ? (to_2) : (to));
                 task_slot.is_executed = false;
-                log_debug("Target task recieved\n");
+                LOG_DEBUG("Target task recieved to %d\n", task_slot.n_to);
             }
             else if (type == NULL_TASK)
             {
@@ -716,13 +734,6 @@ void auto_calibration_turn_around()
     }
 }
 
-void log_debug(const char *s)
-{
-#ifdef __DEBUG_
-    Serial.print(s);
-#endif
-}
-
 /*********************************************
  *          Main Scheduler                   *
  * ******************************************/
@@ -782,6 +793,7 @@ void onTimer() // 50ms
         return;
 
     // TASK: Autosave EEPROM
+    /*
     time_unsaved_ms += SCHED_INTERVAL / 1000;
     if (time_unsaved_ms >= AUTOSAVE_INTERVAL_MS)
     {
@@ -793,9 +805,10 @@ void onTimer() // 50ms
             save_active_params(p_actprm);
         }
     }
-
+    */
+   
     // TASK: send web data 3 / sec
-    if (webSocket.count() > 0 && tick % (TIMER_PER_SEC / 3) == 1)
+    if (tick % (TIMER_PER_SEC / 3) == 1 && webSocket.count() > 0 && webSocket.availableForWriteAll())
     {
         webSocket.textAll(sensorData());
     }
@@ -810,19 +823,20 @@ void onTimer() // 50ms
         else if (n < prot_sensor->ADC_min)
             prot_sensor->ADC_min = n;
     }
+    int deg_now = prot_sensor->get_degree();
     // TASK: toggle limit protection
-    if ((!is_calibrating) && (pmotor->status == prot_sensor->is_limit()) && (prot_sensor->is_limit() != 0))
+    if ((!is_calibrating) && (pmotor->status == prot_sensor->is_limit() != 0) && (prot_sensor->is_limit() != 0))
     {
         // stop the task
-        log_debug("LOG: Limit triggered, attempt to stop\n");
+        LOG_DEBUG("LOG: Limit triggered, attempt to stop\n");
         if (stop_motor(pmotor))
         {
-            task_slot.type = NULL_TASK;
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
+            task_slot.type = NULL_TASK;
         }
     }
-    // TASK: timeout limit protection each 1 sec
-    if ((tick % TIMER_PER_SEC == 3) &&
+    // TASK: timeout limit protection each 3 sec
+    if ((tick % TIMER_PER_SEC == 2) &&
         (pmotor->status != MOT_IDLE) &&
         task_slot.type != NULL_TASK &&
         (is_calibrating == is_auto_calibrating)) // time limit tiggers either not calibrating or auto calibrating
@@ -831,12 +845,11 @@ void onTimer() // 50ms
         {
 
             // timeout limit protection triggered
-            if (++(prot_sensor->stat_limit_T) >= 3)
+            if (++(prot_sensor->stat_limit_T) >= 4)
             {
                 prot_sensor->stat_limit_T = 0;
-                log_debug("LOG: Time limit triggered, attempt to stop\n");
-                while (!stop_motor(pmotor))
-                    ;
+                LOG_DEBUG("LOG: Time limit triggered, attempt to stop\n");
+                while (!stop_motor(pmotor));
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = NULL_TASK;
                 if (is_calibrating && is_auto_calibrating)
@@ -851,7 +864,6 @@ void onTimer() // 50ms
         }
     }
     // TASK: judge if the task is completed
-    int deg_now = prot_sensor->degree;
     if (task_slot.type == MANUAL)
     {
         if (task_slot.n_to > 0) // time decay of manual tasks
@@ -867,10 +879,9 @@ void onTimer() // 50ms
         else // when the life time of the manual task runs out, kill the task
         {
             task_slot.type = NULL_TASK;
-            log_debug("Task completed\n");
-            while (!stop_motor(pmotor))
-                ;
+            while (!stop_motor(pmotor));
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer; // set break engage timeout flag
+            LOG_DEBUG("Task completed\n");
             return;
         }
     }
@@ -882,7 +893,7 @@ void onTimer() // 50ms
             {
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = NULL_TASK;
-                log_debug("Task completed\n");
+                LOG_DEBUG("Task completed\n");
                 return;
             }
         }
@@ -920,14 +931,14 @@ void onTimer() // 50ms
                         run_CCW(pmotor);
                     }
                     task_slot.is_executed = true;
-                    log_debug("Manual task started\n");
+                    LOG_DEBUG("Manual task started\n");
                 }
                 else // kill the task if limit switches are toggled
                 {
                     if (stop_motor(pmotor))
                     {
                         pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
-                        log_debug("Task killed for limits\n");
+                        LOG_DEBUG("Task killed for limits\n");
                         task_slot.type = NULL_TASK;
                     }
                 }
@@ -935,23 +946,17 @@ void onTimer() // 50ms
             case TARGET:
                 if (prot_sensor->is_ADC_calibrated)
                 {
-                    // CCW
-                    if (task_slot.n_to < deg_now - MOT_DEADZONE)
-                    {
-                        run_CCW(pmotor);
-                        log_debug("Target task created\n");
-                    }
-                    // CW
-                    else if (task_slot.n_to > deg_now + MOT_DEADZONE)
+                    // CW CCW
+                    if (task_slot.n_to > deg_now + MOT_DEADZONE || task_slot.n_to < deg_now - MOT_DEADZONE)
                     {
                         run_CW(pmotor);
-                        log_debug("Target task created\n");
+                        LOG_DEBUG("Target task created\n");
                     }
                     // DEADZONE
                     else
                     {
                         task_slot.type = NULL_TASK;
-                        log_debug("Task killed for deadzone\n");
+                        LOG_DEBUG("Task killed for deadzone\n");
                     }
                     task_slot.is_executed = true;
                 }
@@ -975,7 +980,7 @@ void onTimer() // 50ms
                     ; // force stopping
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = NULL_TASK;
-                log_debug("LOG: task cancelled\n");
+                LOG_DEBUG("LOG: task cancelled\n");
             }
         }
     }
@@ -1035,7 +1040,7 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
     if (type == WS_EVT_CONNECT)
     {
         // os_printf("WS connected %d\n", server->count());
-        client->ping();
+        client->keepAlivePeriod(90);
     }
     else if (type == WS_EVT_DISCONNECT)
     {
@@ -1062,6 +1067,7 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
         }
     }
 }
+
 
 void setup()
 {
@@ -1093,6 +1099,9 @@ void setup()
     SPIFFS.begin();
     // 485
     begin_serial485(p485, &Serial, BAUD_RATE, PIN_485RW, SCHED_INTERVAL / 1000);
+    #ifdef __DEBUG_
+    gdbstub_init();
+    #endif
     //595
     begin_595(p595, PIN_SCLK, PIN_RCLK, PIN_OE, PIN_DATA);
     // EEPROM
@@ -1158,8 +1167,8 @@ void setup()
             if (WiFi.status() == WL_CONNECTED)
             {
                 s_ip = WiFi.localIP().toString();
-                log_debug("WiFi connected  ");
-                log_debug(s_ip.c_str());
+                LOG_DEBUG("WiFi connected  ");
+                LOG_DEBUG("IP=%s\n", s_ip.c_str());
                 is_config = true;
                 is_wifi_conn = true;
                 // Turn on the LED
@@ -1176,7 +1185,7 @@ void setup()
     }
     else // not correctly configured. Initialize an Acess Point for configuration
     {
-        log_debug("check sign mismatch");
+        LOG_DEBUG("check sign mismatch");
         is_config = false;
         prot_sensor->is_ADC_calibrated = false;
         // empty the uninitialized strings
@@ -1198,7 +1207,7 @@ void setup()
             delay(100);
             WiFi.setOutputPower(20.5); // WiFi set to max TX power
             WiFi.softAPConfig(AP_IP, gateway, subnet);
-            log_debug("AP started");
+            LOG_DEBUG("AP started");
             s_ip = WiFi.softAPIP().toString();
             stat_LED_stat = 4;
             delay(2000);
@@ -1230,7 +1239,7 @@ void setup()
     }
     // Serial.print(s_ip);
 }
-#define ADC_SMOOTHING_PERIOD 16
+#define ADC_SMOOTHING_PERIOD 32
 #define ADC_SMOOTHING_CONST (2.0 / (ADC_SMOOTHING_PERIOD + 1))
 void loop()
 {
@@ -1255,3 +1264,4 @@ void loop()
     ArduinoOTA.handle();
 }
 // TODO: 485
+

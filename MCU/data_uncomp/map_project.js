@@ -38,10 +38,16 @@ img_cymap.onload = function() // draw the picture on the canvas
     ctx_cymap.drawImage(img_cymap,0,0,this.width,this.height);
     img_azu.width = X_SIZE;
     img_azu.height = Y_SIZE;
+    // get image data binary
+    var ab_img_data = ctx_cymap.getImageData(0,0, this.width, this.height).data;
     var i = 0;
-    for (y=Math.floor(-Y_SIZE/2);y<Math.floor(Y_SIZE/2);++y)
+    var y_start =Math.floor(-Y_SIZE/2);
+    var y_end =Math.floor(Y_SIZE/2); 
+    var x_start =Math.floor(-X_SIZE/2);
+    var x_end =  Math.floor(X_SIZE/2);
+    for (y=y_start;y<y_end;++y)
     {
-        for(x=Math.floor(-X_SIZE/2);x<Math.floor(X_SIZE/2);++x)
+        for(x=x_start;x<x_end;++x)
         {
             // back trace to the cylindrical map
             var x_u = x / X_SIZE * Math.PI * 2;
@@ -67,19 +73,20 @@ img_cymap.onload = function() // draw the picture on the canvas
             x_0 = Math.round((long_1_rad / (2*Math.PI)+0.5) * img_cymap.width);
             y_0 = Math.round((lat_1_rad / Math.PI + 0.5) * img_cymap.height);
             //y_0 = Math.round(Math.tan(lat_1_rad) + img_cymap.height/2 );
-            try {
-                pix_data = ctx_cymap.getImageData(x_0,y_0,1,1).data;
+            if(x_0 < img_cymap.width && y_0 < img_cymap.height && x_0 >=0 && y_0 >= 0)
+            {
+                // pix_data = ctx_cymap.getImageData(x_0,y_0,1,1).data;
                 // copy data
+                var idx_pix = (x_0 + y_0 * this.width) * 4;
                 if(c<Math.PI)
                 {
-                    data_azu.data[i*4] = pix_data[0];
-                    data_azu.data[i*4+1] = pix_data[1];
-                    data_azu.data[i*4+2] = pix_data[2];
-                    data_azu.data[i*4+3] = pix_data[3];
+                    data_azu.data[i*4] = ab_img_data[idx_pix];
+                    data_azu.data[i*4+1] = ab_img_data[idx_pix+1];
+                    data_azu.data[i*4+2] = ab_img_data[idx_pix+2];
+                    data_azu.data[i*4+3] = ab_img_data[idx_pix+3];
                 }
-            } catch (error) {
-                
             }
+                
             i=i+1;
         }
     }

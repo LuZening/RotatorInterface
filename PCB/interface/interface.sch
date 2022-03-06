@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:interface-cache
-EELAYER 28 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -992,7 +992,7 @@ F 3 "~" H 3900 7600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MySchLib:6N137 U20
+L interface-rescue:6N137-MySchLib U20
 U 1 1 5C109423
 P 3550 7300
 F 0 "U20" H 3550 7767 50  0000 C CNN
@@ -1003,7 +1003,7 @@ F 3 "http://www.onsemi.com/pub/Collateral/HCPL2731-D.pdf" H 3840 7000 50  0001 C
 	1    0    0    -1  
 $EndComp
 $Comp
-L MySchLib:6N137 U18
+L interface-rescue:6N137-MySchLib U18
 U 1 1 5C11021E
 P 3600 6450
 F 0 "U18" H 3600 5975 50  0000 C CNN
