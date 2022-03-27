@@ -10,7 +10,7 @@
 #define COMM_BUFFER_SIZE 64
 #define N_PARAM_MAX 8
 #define PARAM_LEN_MAX 5
-#define TIMEOUT_RX 1000
+#define TIMEOUT_RX 5000
 #define DELIM_485 "\r\n"
 #define DELIM_COMM_485 " \r\n\t"
 
@@ -48,10 +48,11 @@ extern struct Serial485 *p485;
 uint CRC16(char *s, int len); // chr_termin excluded
 void begin_serial485(struct Serial485 *p485, HardwareSerial *pSerial, uint baud, int pin_RW, int timer_ms);
 void send_serial485(struct Serial485 *p485, const char *buffer_send);
+void send_binary_serial485(struct Serial485* p485, const uint8_t* buffer_send, size_t len);
 void handle_serial485(struct Serial485 *p485);
 void parse_command(struct Serial485 *p485);
 bool execute_command(int argc, char **argv);
-
+uint8_t hexchr2num(char c);
 
 
 #endif

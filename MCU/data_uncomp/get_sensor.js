@@ -7,7 +7,7 @@ var ws_reconnect = {
     intervalObj: null,
     retry_count: 0,
     reconnect: function (){
-        if(this.retry_count > 5)
+        if(this.retry_count > 10)
         {
             console.log('WS reconnect all atempts failed.')
             this.stop();
@@ -18,13 +18,18 @@ var ws_reconnect = {
             ws_conn.close();
         }
         this.retry_count ++;
-        ws_conn.open();
+        // make a new ws 
+        ws_conn_recon = new WebSocket(ws_conn.url);
+        ws_conn_recon.onopen = ws_conn.onopen;
+        ws_conn_recon.onerror = ws_conn.onerror;
+        ws_conn_recon.onmessage = ws_conn.onmessage;
+        ws_conn = ws_conn_recon;
     },
     start: function (){
         this.retry_count = 0;
         this.intervalObj = setInterval(this.reconnect(), this.reconnect_interval);
     },
-    stop: function (){clearInterval(this.intervalObj)}
+    stop: function (){clearInterval(this.intervalObj); this.retry_count = 0;}
 }
 
 var ws_heartCheck = {
@@ -61,10 +66,12 @@ ws_conn.onopen = function () {
 
 ws_conn.onerror = function (error) {
     console.log('WebSocket Error ', error);
+    ws_heartCheck.stop();
+    ws_reconnect.start();
 };
-ws_conn.onclose = function () {
-    console.log('WebSocket ws_conn closed');
-    ws_fallback.start(); // fallback to http GET method
+ws_conn.onclose = function (e) {
+    console.log('WebSocket ws_conn closed' + e.code + ' ' + e.reason + ' ' + e.wasClean);
+    //ws_fallback.start(); // fallback to http GET method
     ws_reconnect.start();
     //ws_conn = new WebSocket(ws_uri, ['arduino']); // reconnect
     //console.log('WebSocket reconnected')
@@ -75,6 +82,10 @@ ws_conn.onmessage = function (e) {
     if (msg.includes("azu")) // Sensor Data
     {
         parseSensorData(msg);
+    }
+    else if(msg.includes("RS485"))
+    {
+        parseRS485Data(msg);
     }
 };
 
@@ -130,4 +141,10 @@ function getSensorData() // request sensor data by AJAX
     }
     xhttp.open("GET", "getSensor", true);
     xhttp.send();
+}
+
+// RS485=data
+function parseRS485Data(msg)
+{
+    console.log(msg);
 }

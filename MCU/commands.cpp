@@ -12,7 +12,7 @@ extern bool is_calibrating;
 extern void begin_auto_calibrate();
 // YAESU GS232 compatible commands
 // callback functions of each command
-const char *commands[N_COMM] = {
+const  char *commands[N_COMM] = {
     "R", // Clockwise
     "L", // Counter Clockwise
     "A", // Stop azimuthal rotation
@@ -59,7 +59,7 @@ bool read_direction_command(int argc, char **argv)
     delay(10);
     while(degree < 0)
         degree += 360;
-    sprintf(p485->tx_buffer, "%03d\r\n", degree); 
+    sprintf(p485->tx_buffer, "%03d", degree); 
     send_serial485(p485, p485->tx_buffer);
     return true;
 }

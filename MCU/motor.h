@@ -3,9 +3,9 @@
 
 #include <Arduino.h>
 
-#define PIN_BREAK 0
-#define PIN_MOTOR_P 1
-#define PIN_MOTOR_N 2
+// #define PIN_BREAK 0
+// #define PIN_MOTOR_P 1
+// #define PIN_MOTOR_N 2
 #define MOTOR_ON LOW
 #define MOTOR_OFF HIGH
 #define MOT_CCW -1

@@ -9,7 +9,9 @@
         "type_traits": "cpp",
         "xhash": "cpp",
         "xutility": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "*.tcc": "cpp",
+        "new": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }
