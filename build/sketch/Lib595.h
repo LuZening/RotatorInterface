@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\Lib595.h"
 #ifndef __LIB_595_H_
 #define __LIB_595_H_
 

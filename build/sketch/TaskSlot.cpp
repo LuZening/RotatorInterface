@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\TaskSlot.cpp"
 #include "TaskSlot.h"
 void init_task(Task* p)
 {

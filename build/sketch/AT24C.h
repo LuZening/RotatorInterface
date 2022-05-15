@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\AT24C.h"
 #ifndef __AT24C_H_
 #define __AT24C_H_
 
@@ -7,6 +8,10 @@
 #define AT24C_HOLDTIME 6
 #define PAGE2ADDR(pEEPROM, p) ( (p) * page_sizes[(pEEPROM)->capacity] )
 
+
+
+extern const int page_sizes[];
+extern const int n_pages[];
 
 enum AT24C_cap
 {
@@ -18,9 +23,6 @@ enum AT24C_cap
     AT24C32,
     AT24C64
 };
-
-extern const int page_sizes[];
-extern const int n_pages[];
 
 struct EEPROM_AT24C
 {
@@ -47,5 +49,6 @@ void write_AT24C(struct EEPROM_AT24C *pEEPROM, uint16_t addr, byte data);
 byte read_AT24C(struct EEPROM_AT24C *pEEPROM, uint16_t addr);
 void read_array_AT24C(struct EEPROM_AT24C *pEEPROM, uint16_t addr, unsigned char* data, int n);
 void write_array_AT24C(struct EEPROM_AT24C *pEEPROM, int page, unsigned char* data, int n);
+
 
 #endif

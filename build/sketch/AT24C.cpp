@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\AT24C.cpp"
 #include "AT24C.h"
 const int page_sizes[] = {8, 8, 16, 16, 16, 32, 32};
 const int n_pages[] = {16, 32, 32, 64, 128, 128, 256};

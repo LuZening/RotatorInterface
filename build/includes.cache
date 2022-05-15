@@ -1,287 +1,297 @@
 [
   {
-    "Sourcefile": "",
+    "Sourcefile": null,
     "Include": "",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\cores\\esp8266"
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\cores\\esp8266"
   },
   {
-    "Sourcefile": "",
+    "Sourcefile": null,
     "Include": "",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\variants\\generic"
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\variants\\generic"
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "ESP8266WiFi.h",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src"
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src"
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "ESPAsyncWebServer.h",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src"
+    "Includepath": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src"
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "ESPAsyncTCP.h",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncTCP\\src"
+    "Includepath": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncTCP-master\\src"
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "Hash.h",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\Hash\\src"
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\Hash\\src"
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "ArduinoOTA.h",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ArduinoOTA"
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA"
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Include": "LittleFS.h",
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src"
+  },
+  {
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\AT24C.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\AT24C.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\Config.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\Config.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\Lib485.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\Lib485.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\Lib595.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\Lib595.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\LoopBuffer.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\LoopBuffer.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\RotSensor.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\RotSensor.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\TaskSlot.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\TaskSlot.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\commands.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\commands.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\motor.cpp",
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\motor.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\BearSSLHelpers.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\BearSSLHelpers.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\CertStoreBearSSL.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\CertStoreBearSSL.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFi.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFi.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiAP.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiAP.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiGeneric.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiGeneric.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiMulti.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiGratuitous.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiSTA-WPS.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiMulti.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiSTA.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiSTA-WPS.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiScan.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiSTA.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiClient.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\ESP8266WiFiScan.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiClientSecureAxTLS.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiClient.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiClientSecureBearSSL.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiClientSecureBearSSL.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiServer.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiServer.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiServerSecureAxTLS.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiServerSecureBearSSL.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiServerSecureBearSSL.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\WiFiUdp.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266WiFi\\src\\WiFiUdp.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266WiFi\\src\\enable_wifi_at_boot_time.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\AsyncEventSource.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\AsyncEventSource.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\AsyncWebSocket.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\AsyncWebSocket.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\SPIFFSEditor.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\SPIFFSEditor.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\WebAuthentication.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\WebAuthentication.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\WebHandlers.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\WebHandlers.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\WebRequest.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\WebRequest.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\WebResponses.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\WebResponses.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncWebServer\\src\\WebServer.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncWebServer-master\\src\\WebServer.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncTCP\\src\\AsyncPrinter.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncTCP-master\\src\\AsyncPrinter.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncTCP\\src\\ESPAsyncTCP.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncTCP-master\\src\\ESPAsyncTCP.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncTCP\\src\\ESPAsyncTCPbuffer.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncTCP-master\\src\\ESPAsyncTCPbuffer.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncTCP\\src\\SyncClient.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncTCP-master\\src\\SyncClient.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESPAsyncTCP\\src\\tcp_axtls.c",
+    "Sourcefile": "C:\\Users\\cpholzn\\Documents\\Arduino\\libraries\\ESPAsyncTCP-master\\src\\tcp_axtls.c",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\Hash\\src\\Hash.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\Hash\\src\\Hash.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\Hash\\src\\sha1\\sha1.c",
-    "Include": "",
-    "Includepath": ""
-  },
-  {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
     "Include": "ESP8266mDNS.h",
-    "Includepath": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src"
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src"
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\ESP8266mDNS.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\LittleFS.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\ESP8266mDNS_Legacy.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\lfs.c",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\lfs_util.c",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Control.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\ESP8266mDNS.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Helpers.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Structs.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Control.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\Zening\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Transfer.cpp",
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Helpers.cpp",
     "Include": "",
-    "Includepath": ""
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Structs.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Transfer.cpp",
+    "Include": "",
+    "Includepath": null
   }
 ]

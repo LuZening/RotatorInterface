@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\RotSensor.h"
 #ifndef __ROTARY_SENSOR_
 #define __ROTARY_SENSOR_
 

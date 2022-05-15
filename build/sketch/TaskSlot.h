@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\TaskSlot.h"
 #ifndef __TASK_SLOT_
 #define __TASK_SLOT_
 #include <Arduino.h>

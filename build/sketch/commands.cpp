@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\commands.cpp"
 #include "commands.h"
 #include "TaskSlot.h"
 #include "Lib485.h"
@@ -12,7 +13,7 @@ extern bool is_calibrating;
 extern void begin_auto_calibrate();
 // YAESU GS232 compatible commands
 // callback functions of each command
-const char *commands[N_COMM] = {
+const  char *commands[N_COMM] = {
     "R", // Clockwise
     "L", // Counter Clockwise
     "A", // Stop azimuthal rotation

@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\LoopBuffer.h"
 #ifndef __LOOP_BUFFER_
 #define __LOOP_BUFFER_
 class LoopBuffer

@@ -1,12 +1,13 @@
-#line 1 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
-#line 1 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#include <Arduino.h>
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+
 #define ESP8266
 #define __595
 
 //#define __DEBUG_
 // TIMER FREQUENCY = CPU FREQ / 16
 #define CYC_PER_US 5
-#include <Arduino.h>
+#include "my_types.h"
 #include <pgmspace.h>
 #include <string.h>
 #include <ESP8266WiFi.h>
@@ -26,6 +27,13 @@
 #include "Lib595.h"
 #include "motor.h"
 
+// SPIFFS is deprecated, move to LittleFS since ESP8266 Arduino 3.0.2
+#define USE_LittleFS
+#ifdef USE_LittleFS
+#include <FS.h>
+#include <LittleFS.h>
+#define SPIFFS LittleFS
+#endif
 
 #define SGN(X) (((X) < 0) ? (-1) : (((X) == 0) ? (0) : (1)))
 #define ABS(X) (((X) >= 0) ? ((X)) : (-(X)))
@@ -86,11 +94,19 @@ IPAddress AP_IP(192, 168, 4, 1);
 IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
 #ifdef __DEBUG_
-#define LOG_DEBUG(fmt, ...) Serial.printf_P(PSTR(fmt), ## __VA_ARGS__)
+#define LOG_DEBUG(fmt, ...) Serial.printf_P(PSTR(fmt), ##__VA_ARGS__)
 #elif __WEB_DEBUG_
-#define LOG_DEBUG(fmt, ...) do {webSocket.textAll(PSTR(fmt))} while(0)
+#define LOG_DEBUG(fmt, ...)          \
+    do                               \
+    {                                \
+        webSocket.textAll(PSTR(fmt)) \
+    } while (0)
 #else
-#define LOG_DEBUG(...) do { (void)0; } while (0)
+#define LOG_DEBUG(...) \
+    do                 \
+    {                  \
+        (void)0;       \
+    } while (0)
 #endif
 // global variables
 byte stat_LED_stat = 0; // 0: OFF, 255: ON, 1-254 BLINKS PER SEC
@@ -135,55 +151,61 @@ AsyncWebSocket webSocket("/ws");
 /********************************************
  *         handle  EEPROM                   *
 */
-#line 136 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 152 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_active_params(union ActiveWriteBlock *p);
-#line 143 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 159 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_config(union ConfigWriteBlock *p);
-#line 164 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 180 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 String getContentType(String filename);
-#line 192 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 209 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 bool handleFileRead(AsyncWebServerRequest *r, String path);
-#line 218 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 235 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onSetConfig(AsyncWebServerRequest *r);
-#line 343 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 360 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetConfig(AsyncWebServerRequest *r);
-#line 375 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 391 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 char * sensorData();
-#line 387 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 403 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetWiFiStatus(AsyncWebServerRequest *r);
-#line 403 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 421 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetSensor(AsyncWebServerRequest *r);
-#line 409 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 427 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onTask(AsyncWebServerRequest *r);
-#line 495 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 513 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onHomepage(AsyncWebServerRequest *r);
-#line 507 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 525 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onDebug485(AsyncWebServerRequest *r);
-#line 513 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 530 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+void onWebConfig(AsyncWebServerRequest *r);
+#line 535 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onStatus(AsyncWebServerRequest *r);
-#line 521 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 544 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+void onWebGetRS485(AsyncWebServerRequest *r);
+#line 559 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+void onWebPostRS485(AsyncWebServerRequest *r);
+#line 628 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onNotFound(AsyncWebServerRequest *r);
-#line 542 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 658 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onReset(AsyncWebServerRequest *r);
-#line 555 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 671 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onCalibrateGap(void);
-#line 571 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 687 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onCalibrate(AsyncWebServerRequest *r);
-#line 649 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 765 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void begin_auto_calibrate();
-#line 661 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 777 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void auto_calibration_turn_around();
-#line 689 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 805 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onTimer();
-#line 939 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1060 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void init_OTA();
-#line 987 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1108 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
-#line 1021 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1141 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void setup();
-#line 1193 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1319 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void loop();
-#line 136 "c:\\Users\\Zening\\OneDrive\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 152 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_active_params(union ActiveWriteBlock *p)
 {
     p->body.ADC_reading = prot_sensor->ADC_reading;
@@ -240,20 +262,21 @@ String getContentType(String filename)
         return "application/x-gzip";
     return "text/plain";
 }
+
 bool handleFileRead(AsyncWebServerRequest *r, String path)
 {
-    if (path.endsWith("/"))
+    if (path.endsWith(F("/")))
     {
-        path += "index.html";
+        path += F("index.html");
     }
 
     String contentType = getContentType(path);
     String path_gz(path);
-    path_gz += ".gz";
+    path_gz += (".gz");
     if (SPIFFS.exists(path_gz))
     {
         AsyncWebServerResponse *response = r->beginResponse(SPIFFS, path_gz, contentType);
-        response->addHeader(F("Content-Encoding"), F("gzip"));
+        response->addHeader(("Content-Encoding"), ("gzip"));
         r->send(response);
         return true;
     }
@@ -395,11 +418,11 @@ void onGetConfig(AsyncWebServerRequest *r)
 {
     if (!is_config)
     {
-        sprintf_P(s_httpbuffer, PSTR("is_calib=%d\n\n"), (int)is_calibrating);
+        sprintf(s_httpbuffer, PSTR("is_calib=%d\n\n"), (int)is_calibrating);
     }
     else
     {
-        sprintf_P(s_httpbuffer, PSTR("name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n\n"),
+        sprintf(s_httpbuffer, PSTR("name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n\n"),
                 p_cfg->body.s_name,
                 p_cfg->body.s_ssid,
                 s_ip.c_str(),
@@ -421,11 +444,10 @@ void onGetConfig(AsyncWebServerRequest *r)
                 (int)is_calibrating);
     }
     r->send(200, "text/plain", s_httpbuffer);
-    
 }
 char *sensorData()
 {
-    sprintf_P(s_httpbuffer, PSTR("azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n\n"),
+    sprintf(s_httpbuffer, PSTR("azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n\n"),
             prot_sensor->get_degree(),
             prot_sensor->get_ADC(),
             ((pmotor->status == MOT_IDLE) ? (0) : (1)),
@@ -442,6 +464,8 @@ void onGetWiFiStatus(AsyncWebServerRequest *r)
     message += WiFi.getMode();
     message += "\nSSID=";
     message += WiFi.SSID();
+    message += "\nPassword=";
+    message += p_cfg->body.s_password;
     message += "\nIP=";
     message += s_ip;
     message += "\nRSSI=";
@@ -540,59 +564,157 @@ void onTask(AsyncWebServerRequest *r)
             r->send(400, "text/plain", F("invalid parameters\n"));
         }
     }
-    r->send(400, "text/plain", F("Bad request\n"));
+    r->send(400, "text/plain", ("Bad request\n"));
 }
 
 void onHomepage(AsyncWebServerRequest *r)
 {
     if (is_config)
     {
-        handleFileRead(r, F("/index.html"));
+        handleFileRead(r, ("/index.html"));
     }
     else
     {
-        handleFileRead(r, F("/config.html"));
+        handleFileRead(r, ("/config.html"));
     }
 }
 
 void onDebug485(AsyncWebServerRequest *r)
 {
-    p485->command[p485->idx_command] = 0;
-    r->send(200, "text/plain", p485->command);
+    handleFileRead(r, "/index.html");
+}
+
+void onWebConfig(AsyncWebServerRequest *r)
+{
+    handleFileRead(r, "/config.html");
 }
 
 void onStatus(AsyncWebServerRequest *r)
 {
-    sprintf_P(s_httpbuffer,
+    sprintf(s_httpbuffer,
             PSTR("Free Memory=%d\nWiFi mode=%d\nRSSI=%d\n\n"),
             ESP.getFreeHeap(), WiFi.getMode(), WiFi.RSSI());
     r->send(200, "text/plain", s_httpbuffer);
+}
+
+// get content in RS485 recv buffer
+void onWebGetRS485(AsyncWebServerRequest *r)
+{
+    char s[COMM_BUFFER_SIZE + 1];
+    if (p485->idx_command > 0)
+    {
+        size_t lenRead = (p485->idx_command < COMM_BUFFER_SIZE) ? p485->idx_command : COMM_BUFFER_SIZE;
+        strncpy(s, p485->command, lenRead);
+        s[lenRead + 1] = 0; // trailing 0
+        r->send(200, "text/plain", s);
+    }
+}
+
+// post data to 485 tx
+// POST
+// args: data=bytestring, type="text" or "hex", newline=(true|false)
+void onWebPostRS485(AsyncWebServerRequest *r)
+{
+    char s[COMM_BUFFER_SIZE + 1];
+    if (r->method() == HTTP_POST && r->hasArg(F("data")))
+    {
+        const String& sdata = r->arg(F("data"));
+        uint16_t lenDataTake = (sdata.length() < COMM_BUFFER_SIZE)? sdata.length() : COMM_BUFFER_SIZE;
+        uint16_t lenDataSend = 0;
+        if(lenDataTake > 0)
+        {
+            // hex mode, data is a string of hex-format chars e.g. aa bb cc dd ee a0
+            if (r->hasArg(F("hex")) && r->arg(F("hex")).equals("on"))
+            {
+                uint16_t i, j;
+                j = 0;
+                // remove white spaces
+                for(i=0; i<lenDataTake; ++i)
+                {
+                    if((sdata[i] >= '0' && sdata[i] <= '9') || (sdata[i] >= 'a' && sdata[i] <= 'z') || (sdata[i] >= 'A' && sdata[i] <= 'Z')) 
+                        s[j++] = sdata[i];
+                }
+                // conver hex chars to uint8 two by two
+                for(i=0; i<lenDataTake; i+=2)
+                {
+                    uint8_t v  = hexchr2num(s[i]);
+                    if(i+1 < lenDataTake)
+                        v = (v << 4) | hexchr2num(s[i+1]);
+                    // replace hex chars by uint8_t value
+                    s[i / 2] = v;
+                }
+                // trailing 0
+                lenDataSend = i / 2;
+                s[lenDataSend] = 0;
+                // write binary data directly
+                p485->pSerial->write(s, lenDataSend);
+            }
+            else // text mode
+            {
+                strncpy(s, sdata.c_str(), lenDataTake);
+                if(r->hasArg(F("newline")) && r->arg(F("newline")).equals("on"))
+                {
+                    if(s[lenDataTake-1] == 0)
+                    {
+                        s[lenDataTake-1] = '\r';
+                        s[lenDataTake] = 0;
+                        lenDataSend = lenDataTake;
+                    }
+                    else
+                    {
+                        s[lenDataTake] = '\r';
+                        s[lenDataTake+1] = 0;
+                        lenDataSend = lenDataTake + 1;
+                    }
+                }
+                else
+                {
+                    s[lenDataTake] = 0;
+                    lenDataSend = lenDataTake;
+
+                }
+                send_serial485(p485, s);
+            }
+        }
+        r->send(200, "text/plain", String(lenDataSend));
+    }
+    else // nothing to send
+        r->send(300, "text/plain", "0");
 }
 
 void onNotFound(AsyncWebServerRequest *r)
 {
     if (!handleFileRead(r, r->url())) // if no file matches the request, return with ERROR 404
     {
-        String message(F("AsyncServer: File Not Found\n\n"));
-        message += "URI: ";
-        message += r->url();
-        message += "\nMethod: ";
-        message += (r->method() == HTTP_GET) ? "GET" : "POST";
-        message += "\nArguments: ";
+        String message;
+        message.reserve(512);
+        message += (F("AsyncServer: File Not Found\n\n"));
+
+        message += F("URI: ");
+        if (r->url().length() < 128)
+            message += r->url();
+        else
+            message += F("TOO LONG");
+        message += F("\nMethod: ");
+        message += (r->method() == HTTP_GET) ? F("GET") : F("POST");
+        message += F("\nArguments: ");
         message += r->args();
-        message += "\n";
-        for (uint8_t i = 0; i < r->args(); i++)
+        message += F("\n");
+        for (uint8_t i = 0; (i < r->args()) && (i < 8); i++)
         {
-            message += " " + r->argName(i) + ": " + r->arg(i) + "\n";
+            if (r->argName(i).length() <= 16 && r->arg(i).length() <= 16)
+                message += " " + r->argName(i) + ": " + r->arg(i) + "\n";
+            else
+                message += F("ARGUMENT TOO LONG");
         }
-        r->send(404, "text/plain", message);
+        r->send(404, ("text/plain"), message);
     }
 }
 
 // Save config and reset
 void onReset(AsyncWebServerRequest *r)
 {
-    r->send(200, "text/plain", F("Restarting...\n"));
+    r->send(200, F("text/plain"), F("Restarting...\n"));
     // Serial.println("Reset...");
     sync_config(p_cfg);
     sync_active_params(p_actprm);
@@ -793,7 +915,6 @@ void onTimer() // 50ms
         return;
 
     // TASK: Autosave EEPROM
-    /*
     time_unsaved_ms += SCHED_INTERVAL / 1000;
     if (time_unsaved_ms >= AUTOSAVE_INTERVAL_MS)
     {
@@ -805,12 +926,14 @@ void onTimer() // 50ms
             save_active_params(p_actprm);
         }
     }
-    */
-   
-    // TASK: send web data 3 / sec
-    if (tick % (TIMER_PER_SEC / 3) == 1 && webSocket.count() > 0 && webSocket.availableForWriteAll())
+
+    // TASK: send web data 10 / sec
+    if (tick % (TIMER_PER_SEC / 5) == 1 && webSocket.count() > 0 )
     {
-        webSocket.textAll(sensorData());
+        if(webSocket.availableForWriteAll())
+            webSocket.textAll(sensorData());
+        else
+            webSocket.closeAll();
     }
     // TASK: update ADC
     prot_sensor->append_ADC_reading(ADC_smoothed);
@@ -829,6 +952,7 @@ void onTimer() // 50ms
     {
         // stop the task
         LOG_DEBUG("LOG: Limit triggered, attempt to stop\n");
+        webSocket.textAll("LOG: Limit triggered.");
         if (stop_motor(pmotor))
         {
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
@@ -849,7 +973,9 @@ void onTimer() // 50ms
             {
                 prot_sensor->stat_limit_T = 0;
                 LOG_DEBUG("LOG: Time limit triggered, attempt to stop\n");
-                while (!stop_motor(pmotor));
+                webSocket.textAll("LOG: Time limit triggered.");
+                while (!stop_motor(pmotor))
+                    ;
                 pmotor->break_engage_defer = p_cfg->body.break_engage_defer;
                 task_slot.type = NULL_TASK;
                 if (is_calibrating && is_auto_calibrating)
@@ -879,7 +1005,8 @@ void onTimer() // 50ms
         else // when the life time of the manual task runs out, kill the task
         {
             task_slot.type = NULL_TASK;
-            while (!stop_motor(pmotor));
+            while (!stop_motor(pmotor))
+                ;
             pmotor->break_engage_defer = p_cfg->body.break_engage_defer; // set break engage timeout flag
             LOG_DEBUG("Task completed\n");
             return;
@@ -989,49 +1116,49 @@ void onTimer() // 50ms
 // OTA init
 void init_OTA()
 {
-    ArduinoOTA.onStart([]() {
-        String type;
-        if (ArduinoOTA.getCommand() == U_FLASH)
-        {
-            type = "sketch";
-        }
-        else
-        { // U_SPIFFS
-            type = "filesystem";
-        }
+    ArduinoOTA.onStart([]()
+                       {
+                           String type;
+                           if (ArduinoOTA.getCommand() == U_FLASH)
+                           {
+                               type = "sketch";
+                           }
+                           else
+                           { // U_SPIFFS
+                               type = "filesystem";
+                           }
 
-        // NOTE: if updating SPIFFS this would be the place to unmount SPIFFS using SPIFFS.end()
-        Serial.println("Start updating " + type);
-    });
-    ArduinoOTA.onEnd([]() {
-        Serial.println("\nEnd");
-    });
-    ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
-        Serial.printf_P(PSTR("Progress: %u%%\r"), (progress / (total / 100)));
-    });
-    ArduinoOTA.onError([](ota_error_t error) {
-        Serial.printf("Error[%u]: ", error);
-        if (error == OTA_AUTH_ERROR)
-        {
-            Serial.println("Auth Failed");
-        }
-        else if (error == OTA_BEGIN_ERROR)
-        {
-            Serial.println("Begin Failed");
-        }
-        else if (error == OTA_CONNECT_ERROR)
-        {
-            Serial.println("Connect Failed");
-        }
-        else if (error == OTA_RECEIVE_ERROR)
-        {
-            Serial.println("Receive Failed");
-        }
-        else if (error == OTA_END_ERROR)
-        {
-            Serial.println("End Failed");
-        }
-    });
+                           // NOTE: if updating SPIFFS this would be the place to unmount SPIFFS using SPIFFS.end()
+                           Serial.println("Start updating " + type);
+                       });
+    ArduinoOTA.onEnd([]()
+                     { Serial.println("\nEnd"); });
+    ArduinoOTA.onProgress([](unsigned int progress, unsigned int total)
+                          { Serial.printf_P(PSTR("Progress: %u%%\r"), (progress / (total / 100))); });
+    ArduinoOTA.onError([](ota_error_t error)
+                       {
+                           Serial.printf("Error[%u]: ", error);
+                           if (error == OTA_AUTH_ERROR)
+                           {
+                               Serial.println("Auth Failed");
+                           }
+                           else if (error == OTA_BEGIN_ERROR)
+                           {
+                               Serial.println("Begin Failed");
+                           }
+                           else if (error == OTA_CONNECT_ERROR)
+                           {
+                               Serial.println("Connect Failed");
+                           }
+                           else if (error == OTA_RECEIVE_ERROR)
+                           {
+                               Serial.println("Receive Failed");
+                           }
+                           else if (error == OTA_END_ERROR)
+                           {
+                               Serial.println("End Failed");
+                           }
+                       });
     ArduinoOTA.begin();
 }
 
@@ -1068,7 +1195,6 @@ void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
     }
 }
 
-
 void setup()
 {
     //************* setting Pins         ****************//
@@ -1099,9 +1225,9 @@ void setup()
     SPIFFS.begin();
     // 485
     begin_serial485(p485, &Serial, BAUD_RATE, PIN_485RW, SCHED_INTERVAL / 1000);
-    #ifdef __DEBUG_
+#ifdef __DEBUG_
     gdbstub_init();
-    #endif
+#endif
     //595
     begin_595(p595, PIN_SCLK, PIN_RCLK, PIN_OE, PIN_DATA);
     // EEPROM
@@ -1196,13 +1322,14 @@ void setup()
         p_cfg->body.is_ADC_calibrated = false;
         p_cfg->body.break_engage_defer = 1000; // by default 1000ms
     }
+
     ESP.wdtEnable(2000);
     // if falied to connect WiFi as STA, initiate an AP hotspot
     if (!WiFi.isConnected())
     {
         is_config = false;
         WiFi.mode(WIFI_AP);
-        if (WiFi.softAP("VORTEX1"))
+        if (WiFi.softAP(("VORTEX1")))
         {
             delay(100);
             WiFi.setOutputPower(20.5); // WiFi set to max TX power
@@ -1213,17 +1340,22 @@ void setup()
             delay(2000);
         }
     }
+
     // initialize HTTP service
     server.on("/", HTTP_GET, onHomepage);
     server.on("/calibrate", onCalibrate);
     server.on("/setconfig", onSetConfig);
     server.on("/getconfig", onGetConfig);
+    server.on("/config", onWebConfig);
     server.on("/reset", onReset);
     server.on("/getSensor", onGetSensor);
     server.on("/wifiStatus", onGetWiFiStatus);
     server.on("/task", HTTP_POST, onTask);
-    server.on("/debug485", onDebug485);
-    server.on("/status", onStatus);
+    server.on("/rs485", onDebug485);
+    server.on(("/status"), onStatus);
+    // RS485 test pages
+    server.on("/getRS485", HTTP_GET, onWebGetRS485);    // get RS485 recieve buffer
+    server.on("/postRS485", HTTP_POST, onWebPostRS485); // post data to RS485
     server.onNotFound(onNotFound);
     //server.serveStatic("/", SPIFFS, "/");
     server.begin();
@@ -1239,7 +1371,7 @@ void setup()
     }
     // Serial.print(s_ip);
 }
-#define ADC_SMOOTHING_PERIOD 32
+#define ADC_SMOOTHING_PERIOD 16
 #define ADC_SMOOTHING_CONST (2.0 / (ADC_SMOOTHING_PERIOD + 1))
 void loop()
 {
@@ -1261,6 +1393,7 @@ void loop()
         handle_serial485(p485);
         onTimer();
     }
+    // handle OTA
     ArduinoOTA.handle();
 }
 // TODO: 485

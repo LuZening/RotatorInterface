@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\motor.cpp"
 #include "motor.h"
 void init_motor(struct Motor* pmotor, int pin_break, int pin_motor_N, int pin_motor_P)
 {

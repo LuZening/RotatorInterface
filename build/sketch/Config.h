@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\Config.h"
 #ifndef __CONFIG_H_
 #define __CONFIG_H_
 

@@ -1,6 +1,6 @@
-
 #define ESP8266
 #define __595
+
 
 //#define __DEBUG_
 // TIMER FREQUENCY = CPU FREQ / 16
@@ -10,6 +10,7 @@
 #include <string.h>
 #include <ESP8266WiFi.h>
 #include <ESPAsyncWebServer.h>
+#include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 #include <FS.h>
@@ -1236,8 +1237,11 @@ void setup()
             if (WiFi.status() == WL_CONNECTED)
             {
                 s_ip = WiFi.localIP().toString();
+                const char* smDNSHostName = p_cfg->body.s_name;
+                MDNS.begin(smDNSHostName);
                 LOG_DEBUG("WiFi connected  ");
                 LOG_DEBUG("IP=%s\n", s_ip.c_str());
+                LOG_DEBUG("mDNS=%s.local\n", smDNSHostName);
                 is_config = true;
                 is_wifi_conn = true;
                 // Turn on the LED

@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\LoopBuffer.cpp"
 #include "LoopBuffer.h"
 #include "Arduino.h"
 LoopBuffer::LoopBuffer(int n)

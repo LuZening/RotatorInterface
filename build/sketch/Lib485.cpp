@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\Lib485.cpp"
 #include "Lib485.h"
 #include "stdlib.h"
 #include "commands.h"
@@ -55,7 +56,7 @@ void send_serial485(struct Serial485 *p485, const char *str)
 
     digitalWrite(p485->pin_RW, DE);
     p485->pSerial->write(str);
-    delay(20);
+    // delay(20);
     // the routine will not clear the RW/DE register
     // cleaning will be done by repeaded timer routine
     p485->timeout_tx += (len_content + ((len_content > 20) ? (20) : (len_content))) * 10 * 1000 / p485->baud + 1;
@@ -100,6 +101,7 @@ void handle_serial485(struct Serial485 *p485)
                     // execute command if a command has been parsed
                     if (p485->is_command_ready)
                     {
+                        // delay(1);
                         if (execute_command(p485->argc, (char **)(p485->argv)))
                         {
                             send_serial485(p485, "\r"); // succeeded
@@ -117,7 +119,11 @@ void handle_serial485(struct Serial485 *p485)
             }
             else
             {
-                p485->command[(p485->idx_command)++] = c;
+                // avoid command buffer overflow
+                if (p485->idx_command < COMM_BUFFER_SIZE)
+                    p485->command[(p485->idx_command)++] = c;
+                else // wrapback if overflow
+                    p485->idx_command = 0;
             }
         }
         // countdown rx clear timer
@@ -184,4 +190,22 @@ bool execute_command(int argc, char **argv)
         }
     }
     return false;
+}
+
+uint8_t hexchr2num(char c)
+{
+    uint8_t n = 0;
+    if(c >= '0' && c <= '9')
+    {
+        n = c - '0';
+    }
+    else if(c >= 'A' && c <= 'Z')
+    {
+        n = c - 'A' + 10;
+    }
+    else if(c >= 'a' && c<= 'z')
+    {
+        n = c - 'a' + 10;
+    }
+    return n;
 }

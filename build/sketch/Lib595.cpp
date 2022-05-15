@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\Lib595.cpp"
 #include "Lib595.h"
 
 struct IO595 _io595;

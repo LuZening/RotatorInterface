@@ -1,11 +1,12 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\motor.h"
 #ifndef __MOTOR_H_
 #define __MOTOR_H_
 
 #include <Arduino.h>
 
-#define PIN_BREAK 0
-#define PIN_MOTOR_P 1
-#define PIN_MOTOR_N 2
+// #define PIN_BREAK 0
+// #define PIN_MOTOR_P 1
+// #define PIN_MOTOR_N 2
 #define MOTOR_ON LOW
 #define MOTOR_OFF HIGH
 #define MOT_CCW -1

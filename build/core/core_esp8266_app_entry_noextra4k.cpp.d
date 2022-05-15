@@ -1,11 +1,22 @@
-c:\Users\Zening\OneDrive\RADIO\Projects\RotatorInterface\build\core\core_esp8266_app_entry_noextra4k.cpp.o: \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2\cores\esp8266\core_esp8266_app_entry_noextra4k.cpp \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2/tools/sdk/include/c_types.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2/tools/sdk/libc/xtensa-lx106-elf/include/stdint.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2/tools/sdk/libc/xtensa-lx106-elf/include/machine/_default_types.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2/tools/sdk/libc/xtensa-lx106-elf/include/sys/features.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2/tools/sdk/libc/xtensa-lx106-elf/include/sys/_intsup.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2/tools/sdk/libc/xtensa-lx106-elf/include/sys/cdefs.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2\cores\esp8266\cont.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2\cores\esp8266\coredecls.h \
- C:\Users\Zening\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.2\cores\esp8266/cont.h
+e:\Projects\RADIO\Projects\RotatorInterface\build\core\core_esp8266_app_entry_noextra4k.cpp.o: \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\core_esp8266_app_entry_noextra4k.cpp \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/c_types.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\cont.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\coredecls.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/cont.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/umm_malloc/umm_malloc.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/umm_malloc/umm_malloc_cfg.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/pgmspace.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/ets_sys.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/c_types.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/eagle_soc.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/osapi.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/user_config.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/mmu_iram.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/esp8266_undocumented.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/eagle_soc.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/spi_flash.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/include/spi_flash_geometry.h \
+ c:\users\cpholzn\appdata\local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\debug.h \
+ c:\users\cpholzn\appdata\local\arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266\esp8266_undocumented.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/core_esp8266_features.h

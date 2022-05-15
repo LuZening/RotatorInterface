@@ -1,3 +1,4 @@
+#line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\commands.h"
 #ifndef __COMMANDS_H_
 #define __COMMANDS_H_
 
