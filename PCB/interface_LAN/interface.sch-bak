@@ -2503,8 +2503,6 @@ Text Label 2850 9300 0    50   ~ 0
 LMTX1
 Text Label 2850 9400 0    50   ~ 0
 LMTX2
-Wire Wire Line
-	3050 7700 2850 7700
 Text Label 3350 7200 0    50   ~ 0
 CPU_TXD0
 Text Label 3350 7400 0    50   ~ 0
@@ -3983,6 +3981,32 @@ F 3 "" H 9600 6150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	9600 6200 9700 6200
+$Comp
+L Device:C_Small C23
+U 1 1 64E32A86
+P 3950 7800
+AR Path="/64E32A86" Ref="C23"  Part="1" 
+AR Path="/626CC43F/64E32A86" Ref="C?"  Part="1" 
+F 0 "C23" H 4000 8000 50  0000 L CNN
+F 1 "104" H 4000 7950 50  0000 L CNN
+F 2 "lc_lib:0805_C" H 3950 7800 50  0001 C CNN
+F 3 "~" H 3950 7800 50  0001 C CNN
+	1    3950 7800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 7700 3950 7700
 Text Label 3050 7700 0    50   ~ 0
 ISense1
+$Comp
+L power:GNDS #PWR?
+U 1 1 64F6B310
+P 3950 7900
+F 0 "#PWR?" H 3950 7650 50  0001 C CNN
+F 1 "GNDS" H 4150 7850 50  0000 C CNN
+F 2 "" H 3950 7900 50  0001 C CNN
+F 3 "" H 3950 7900 50  0001 C CNN
+	1    3950 7900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

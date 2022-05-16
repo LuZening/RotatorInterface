@@ -3169,7 +3169,7 @@ F 3 "" H 6700 10400 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text Notes 6650 9550 0    50   ~ 0
-0: CCW\n1/2: CW\n2/3: None
+0: SET\n1/2: CCW\n2/3: CW
 Wire Wire Line
 	6100 10100 6100 9400
 Text Label 3050 8000 0    50   ~ 0
