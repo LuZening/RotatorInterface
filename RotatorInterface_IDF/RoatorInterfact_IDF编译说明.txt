@@ -1,0 +1,5 @@
+依赖的components需要添加到main component的CMakeLists.txt的Require项中
+在include一些外设的头文件时（如uart,i2c等），需要从driver/xxx.h里包含，如：
+include "driver/i2c"
+libesphttpd组件依赖老版本的NETIF API，需要在menuconfig中激活ESP-NETIF backward compatible layer
+ESP32的FreeRTOS中，taskENTER_CRITICAL(&mux)和taskEXIT_CRITICAL(&mux)的接口与通用FreeRTOS接口不同，需要传入一个spinlock.

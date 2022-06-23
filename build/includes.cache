@@ -31,6 +31,11 @@
   },
   {
     "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
+    "Include": "ESP8266mDNS.h",
+    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src"
+  },
+  {
+    "Sourcefile": "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\build\\sketch\\MCU.ino.cpp",
     "Include": "ArduinoOTA.h",
     "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA"
   },
@@ -240,31 +245,6 @@
     "Includepath": null
   },
   {
-    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
-    "Include": "ESP8266mDNS.h",
-    "Includepath": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src"
-  },
-  {
-    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\LittleFS.cpp",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\lfs.c",
-    "Include": "",
-    "Includepath": null
-  },
-  {
-    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\lfs_util.c",
-    "Include": "",
-    "Includepath": null
-  },
-  {
     "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\ESP8266mDNS.cpp",
     "Include": "",
     "Includepath": null
@@ -291,6 +271,26 @@
   },
   {
     "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ESP8266mDNS\\src\\LEAmDNS_Transfer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\ArduinoOTA\\ArduinoOTA.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\LittleFS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\lfs.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\cpholzn\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.0.2\\libraries\\LittleFS\\src\\lfs_util.c",
     "Include": "",
     "Includepath": null
   }

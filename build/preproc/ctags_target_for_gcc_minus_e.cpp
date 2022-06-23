@@ -14,26 +14,27 @@
 # 14 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 15 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 16 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 17 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 
 
 
 
-# 21 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 22 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 23 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 24 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 25 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 26 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 27 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 28 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 
 // SPIFFS is deprecated, move to LittleFS since ESP8266 Arduino 3.0.2
 
 
-# 32 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
 # 33 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
-# 41 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 34 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 2
+# 42 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 // pin number of 485 Read/write switch
-# 50 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 51 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 // Limit Switch Input
 
 
@@ -78,7 +79,7 @@
 IPAddress AP_IP(192, 168, 4, 1);
 IPAddress gateway(192, 168, 4, 1);
 IPAddress subnet(255, 255, 255, 0);
-# 109 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 110 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 // global variables
 byte stat_LED_stat = 0; // 0: OFF, 255: ON, 1-254 BLINKS PER SEC
 bool level_led_stat = 0x1;
@@ -182,23 +183,23 @@ String getContentType(String filename)
 bool handleFileRead(AsyncWebServerRequest *r, String path)
 {
     if (path.endsWith(((reinterpret_cast<const __FlashStringHelper *>(
-# 211 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "211" "." "9" "\", \"aSM\", @progbits, 1 #"))) = (
-# 211 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 212 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "212" "." "15" "\", \"aSM\", @progbits, 1 #"))) = (
+# 212 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "/"
-# 211 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 212 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 211 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 212 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
     {
         path += ((reinterpret_cast<const __FlashStringHelper *>(
-# 213 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "213" "." "10" "\", \"aSM\", @progbits, 1 #"))) = (
-# 213 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 214 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "214" "." "16" "\", \"aSM\", @progbits, 1 #"))) = (
+# 214 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                "index.html"
-# 213 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 214 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                ); &__pstr__[0];}))
-# 213 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 214 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                )));
     }
 
@@ -227,68 +228,68 @@ void onSetConfig(AsyncWebServerRequest *r)
     if (r->method() == HTTP_POST)
     {
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 240 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "240" "." "11" "\", \"aSM\", @progbits, 1 #"))) = (
-# 240 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 241 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "241" "." "17" "\", \"aSM\", @progbits, 1 #"))) = (
+# 241 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "name"
-# 240 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 241 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 240 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 241 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             strcpy(p_cfg->body.s_name, r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 242 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "242" "." "12" "\", \"aSM\", @progbits, 1 #"))) = (
-# 242 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 243 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "243" "." "18" "\", \"aSM\", @progbits, 1 #"))) = (
+# 243 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              "name"
-# 242 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 243 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                              ); &__pstr__[0];}))
-# 242 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 243 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              )))).c_str());
             ++n_params;
             is_config = true;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 246 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "246" "." "13" "\", \"aSM\", @progbits, 1 #"))) = (
-# 246 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 247 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "247" "." "19" "\", \"aSM\", @progbits, 1 #"))) = (
+# 247 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "ssid"
-# 246 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 247 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 246 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 247 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             strcpy(p_cfg->body.s_ssid, r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 248 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "248" "." "14" "\", \"aSM\", @progbits, 1 #"))) = (
-# 248 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 249 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "249" "." "20" "\", \"aSM\", @progbits, 1 #"))) = (
+# 249 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              "ssid"
-# 248 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 249 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                              ); &__pstr__[0];}))
-# 248 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 249 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              )))).c_str());
             // Serial.printf("ssid=%s\r\n", p_cfg->body.s_ssid);
             ++n_params;
             is_config = true;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 253 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "253" "." "15" "\", \"aSM\", @progbits, 1 #"))) = (
-# 253 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 254 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "254" "." "21" "\", \"aSM\", @progbits, 1 #"))) = (
+# 254 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "passwd"
-# 253 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 254 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 253 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 254 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             strcpy(p_cfg->body.s_password, r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 255 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "255" "." "16" "\", \"aSM\", @progbits, 1 #"))) = (
-# 255 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 256 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "256" "." "22" "\", \"aSM\", @progbits, 1 #"))) = (
+# 256 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                  "passwd"
-# 255 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 256 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                  ); &__pstr__[0];}))
-# 255 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 256 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                  )))).c_str());
             ++n_params;
             strcpy(p_cfg->body.s_id, "VORTEX2");
@@ -296,228 +297,228 @@ void onSetConfig(AsyncWebServerRequest *r)
             is_config = true;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 261 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "261" "." "17" "\", \"aSM\", @progbits, 1 #"))) = (
-# 261 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 262 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "262" "." "23" "\", \"aSM\", @progbits, 1 #"))) = (
+# 262 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "pot_type"
-# 261 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 262 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 261 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 262 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             p_cfg->body.pot_type = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 263 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "263" "." "18" "\", \"aSM\", @progbits, 1 #"))) = (
-# 263 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 264 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "264" "." "24" "\", \"aSM\", @progbits, 1 #"))) = (
+# 264 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                          "pot_type"
-# 263 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 264 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                          ); &__pstr__[0];}))
-# 263 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 264 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                          )))).toInt();
             prot_sensor->pot_type = (PotType)p_cfg->body.pot_type;
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 267 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "267" "." "19" "\", \"aSM\", @progbits, 1 #"))) = (
-# 267 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 268 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "268" "." "25" "\", \"aSM\", @progbits, 1 #"))) = (
+# 268 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "multi_rounds"
-# 267 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 268 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 267 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 268 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             p_cfg->body.allow_multi_rounds = (r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 269 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "269" "." "20" "\", \"aSM\", @progbits, 1 #"))) = (
-# 269 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 270 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "270" "." "26" "\", \"aSM\", @progbits, 1 #"))) = (
+# 270 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     "multi_rounds"
-# 269 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 270 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                     ); &__pstr__[0];}))
-# 269 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 270 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     )))).toInt() > 0);
             prot_sensor->allow_multi_rounds = p_cfg->body.allow_multi_rounds;
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 273 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "273" "." "21" "\", \"aSM\", @progbits, 1 #"))) = (
-# 273 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 274 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "274" "." "27" "\", \"aSM\", @progbits, 1 #"))) = (
+# 274 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "break_delay"
-# 273 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 274 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 273 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 274 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             p_cfg->body.break_engage_defer = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 275 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                   (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "275" "." "22" "\", \"aSM\", @progbits, 1 #"))) = (
-# 275 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 276 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                   (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "276" "." "28" "\", \"aSM\", @progbits, 1 #"))) = (
+# 276 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                    "break_delay"
-# 275 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 276 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                    ); &__pstr__[0];}))
-# 275 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 276 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                    )))).toInt();
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 278 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "278" "." "23" "\", \"aSM\", @progbits, 1 #"))) = (
-# 278 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 279 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "279" "." "29" "\", \"aSM\", @progbits, 1 #"))) = (
+# 279 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "R_0"
-# 278 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 279 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 278 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 279 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             prot_sensor->R_0 = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 280 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "280" "." "24" "\", \"aSM\", @progbits, 1 #"))) = (
-# 280 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 281 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "281" "." "30" "\", \"aSM\", @progbits, 1 #"))) = (
+# 281 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                      "R_0"
-# 280 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 281 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                      ); &__pstr__[0];}))
-# 280 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 281 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                      )))).toInt();
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 283 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "283" "." "25" "\", \"aSM\", @progbits, 1 #"))) = (
-# 283 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 284 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "284" "." "31" "\", \"aSM\", @progbits, 1 #"))) = (
+# 284 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "R_c"
-# 283 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 284 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 283 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 284 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             prot_sensor->R_c = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 285 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "285" "." "26" "\", \"aSM\", @progbits, 1 #"))) = (
-# 285 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 286 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "286" "." "32" "\", \"aSM\", @progbits, 1 #"))) = (
+# 286 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                      "R_c"
-# 285 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 286 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                      ); &__pstr__[0];}))
-# 285 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 286 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                      )))).toInt();
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 288 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "288" "." "27" "\", \"aSM\", @progbits, 1 #"))) = (
-# 288 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 289 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "289" "." "33" "\", \"aSM\", @progbits, 1 #"))) = (
+# 289 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "R_max"
-# 288 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 289 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 288 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 289 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             prot_sensor->R_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 290 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                       (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "290" "." "28" "\", \"aSM\", @progbits, 1 #"))) = (
-# 290 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 291 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                       (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "291" "." "34" "\", \"aSM\", @progbits, 1 #"))) = (
+# 291 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                        "R_max"
-# 290 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 291 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                        ); &__pstr__[0];}))
-# 290 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 291 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                        )))).toInt();
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 293 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "293" "." "29" "\", \"aSM\", @progbits, 1 #"))) = (
-# 293 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 294 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "294" "." "35" "\", \"aSM\", @progbits, 1 #"))) = (
+# 294 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "R_min"
-# 293 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 294 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 293 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 294 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             prot_sensor->R_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 295 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                       (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "295" "." "30" "\", \"aSM\", @progbits, 1 #"))) = (
-# 295 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 296 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                       (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "296" "." "36" "\", \"aSM\", @progbits, 1 #"))) = (
+# 296 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                        "R_min"
-# 295 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 296 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                        ); &__pstr__[0];}))
-# 295 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 296 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                        )))).toInt();
             ++n_params;
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 298 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "298" "." "31" "\", \"aSM\", @progbits, 1 #"))) = (
-# 298 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 299 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "299" "." "37" "\", \"aSM\", @progbits, 1 #"))) = (
+# 299 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "inverse_ADC"
-# 298 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 299 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 298 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 299 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))))
         {
             prot_sensor->inverse_ADC = (bool)(r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 300 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "300" "." "32" "\", \"aSM\", @progbits, 1 #"))) = (
-# 300 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 301 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "301" "." "38" "\", \"aSM\", @progbits, 1 #"))) = (
+# 301 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     "inverse_ADC"
-# 300 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 301 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                     ); &__pstr__[0];}))
-# 300 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 301 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     )))).toInt());
             ++n_params;
         }
         // Calibration Step I
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "304" "." "33" "\", \"aSM\", @progbits, 1 #"))) = (
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "305" "." "39" "\", \"aSM\", @progbits, 1 #"))) = (
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "ADC_max"
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "304" "." "34" "\", \"aSM\", @progbits, 1 #"))) = (
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "305" "." "40" "\", \"aSM\", @progbits, 1 #"))) = (
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                 "ADC_min"
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                 ); &__pstr__[0];}))
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                 )))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                                           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "304" "." "35" "\", \"aSM\", @progbits, 1 #"))) = (
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                                           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "305" "." "41" "\", \"aSM\", @progbits, 1 #"))) = (
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                            "ADC_zero"
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                                            ); &__pstr__[0];}))
-# 304 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 305 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                            ))))) // Step I
         {
             int ADC_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 306 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "306" "." "36" "\", \"aSM\", @progbits, 1 #"))) = (
-# 306 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "307" "." "42" "\", \"aSM\", @progbits, 1 #"))) = (
+# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 "ADC_max"
-# 306 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                 ); &__pstr__[0];}))
-# 306 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 )))).toInt();
             int ADC_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "307" "." "37" "\", \"aSM\", @progbits, 1 #"))) = (
-# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "308" "." "43" "\", \"aSM\", @progbits, 1 #"))) = (
+# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 "ADC_min"
-# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                 ); &__pstr__[0];}))
-# 307 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 )))).toInt();
             int ADC_zero = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "308" "." "38" "\", \"aSM\", @progbits, 1 #"))) = (
-# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 309 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "309" "." "44" "\", \"aSM\", @progbits, 1 #"))) = (
+# 309 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                  "ADC_zero"
-# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 309 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                  ); &__pstr__[0];}))
-# 308 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 309 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                  )))).toInt();
             p_cfg->body.ADC_min = ADC_min;
             p_cfg->body.ADC_max = ADC_max;
@@ -526,40 +527,40 @@ void onSetConfig(AsyncWebServerRequest *r)
         }
         // Calibration Step 2
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "315" "." "39" "\", \"aSM\", @progbits, 1 #"))) = (
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "316" "." "45" "\", \"aSM\", @progbits, 1 #"))) = (
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "CW_lim"
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "315" "." "40" "\", \"aSM\", @progbits, 1 #"))) = (
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "316" "." "46" "\", \"aSM\", @progbits, 1 #"))) = (
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                "CCW_lim"
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                ); &__pstr__[0];}))
-# 315 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 316 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                ))))) // Step 2
         {
             int CW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 317 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "317" "." "41" "\", \"aSM\", @progbits, 1 #"))) = (
-# 317 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "318" "." "47" "\", \"aSM\", @progbits, 1 #"))) = (
+# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                "CW_lim"
-# 317 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                ); &__pstr__[0];}))
-# 317 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                )))).toInt();
             int CCW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "318" "." "42" "\", \"aSM\", @progbits, 1 #"))) = (
-# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 319 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "319" "." "48" "\", \"aSM\", @progbits, 1 #"))) = (
+# 319 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 "CCW_lim"
-# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 319 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                 ); &__pstr__[0];}))
-# 318 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 319 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 )))).toInt();
             p_cfg->body.deg_limit_CW = CW_lim;
             p_cfg->body.deg_limit_CCW = CCW_lim;
@@ -571,25 +572,25 @@ void onSetConfig(AsyncWebServerRequest *r)
     {
         /* code */
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 328 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "328" "." "43" "\", \"aSM\", @progbits, 1 #"))) = (
-# 328 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 329 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "329" "." "49" "\", \"aSM\", @progbits, 1 #"))) = (
+# 329 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "manual"
-# 328 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 329 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 328 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 329 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      ))))) // manual calibration
         {
             is_calibrating = true;
         }
         else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 332 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "332" "." "44" "\", \"aSM\", @progbits, 1 #"))) = (
-# 332 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 333 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "333" "." "50" "\", \"aSM\", @progbits, 1 #"))) = (
+# 333 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           "auto"
-# 332 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 333 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                           ); &__pstr__[0];}))
-# 332 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 333 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           )))))
         {
             if ((!is_calibrating) && pmotor->status == 0)
@@ -599,25 +600,25 @@ void onSetConfig(AsyncWebServerRequest *r)
             else
             {
                 r->send(300, ((reinterpret_cast<const __FlashStringHelper *>(
-# 340 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                            (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "340" "." "45" "\", \"aSM\", @progbits, 1 #"))) = (
-# 340 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 341 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                            (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "341" "." "51" "\", \"aSM\", @progbits, 1 #"))) = (
+# 341 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                             "system is busy"
-# 340 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 341 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                             ); &__pstr__[0];}))
-# 340 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 341 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                             ))));
                 return;
             }
         }
         else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 344 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "344" "." "46" "\", \"aSM\", @progbits, 1 #"))) = (
-# 344 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 345 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "345" "." "52" "\", \"aSM\", @progbits, 1 #"))) = (
+# 345 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           "stop"
-# 344 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 345 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                           ); &__pstr__[0];}))
-# 344 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 345 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           )))))
         {
             is_calibrating = false;
@@ -626,13 +627,13 @@ void onSetConfig(AsyncWebServerRequest *r)
             task_slot.type = 0;
         }
         else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 351 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "351" "." "47" "\", \"aSM\", @progbits, 1 #"))) = (
-# 351 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 352 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "352" "." "53" "\", \"aSM\", @progbits, 1 #"))) = (
+# 352 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           "CLR_rounds"
-# 351 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 352 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                           ); &__pstr__[0];}))
-# 351 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 352 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           ))))) // clear n_rounds = 0
         {
             prot_sensor->n_rounds = 0;
@@ -647,25 +648,25 @@ void onGetConfig(AsyncWebServerRequest *r)
     if (!is_config)
     {
         sprintf(s_httpbuffer, 
-# 364 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "364" "." "48" "\", \"aSM\", @progbits, 1 #"))) = (
-# 364 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 365 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "365" "." "54" "\", \"aSM\", @progbits, 1 #"))) = (
+# 365 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                              "is_calib=%d\n\n"
-# 364 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 365 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                              ); &__pstr__[0];}))
-# 364 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 365 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     , (int)is_calibrating);
     }
     else
     {
         sprintf(s_httpbuffer, 
-# 368 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "368" "." "49" "\", \"aSM\", @progbits, 1 #"))) = (
-# 368 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 369 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "369" "." "55" "\", \"aSM\", @progbits, 1 #"))) = (
+# 369 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                              "name=%s&ssid=%s&ip=%s&rssi=%d&pot_type=%d&multi_rounds=%d&break_delay=%d&R_0=%d&R_c=%d&R_max=%d&R_min=%d&ADC_min=%d&ADC_max=%d&ADC_zero=%d&inverse_ADC=%d&degree=%d&CW_lim=%d&CCW_lim=%d&is_calib=%d\n\n"
-# 368 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 369 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                              ); &__pstr__[0];}))
-# 368 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 369 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                                                                                                                                                                                              ,
                 p_cfg->body.s_name,
                 p_cfg->body.s_ssid,
@@ -692,13 +693,13 @@ void onGetConfig(AsyncWebServerRequest *r)
 char *sensorData()
 {
     sprintf(s_httpbuffer, 
-# 393 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "393" "." "50" "\", \"aSM\", @progbits, 1 #"))) = (
-# 393 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 394 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "394" "." "56" "\", \"aSM\", @progbits, 1 #"))) = (
+# 394 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                          "azu=%d&ADC=%d&busy=%d&lmt=%d&spd=%d\n\n"
-# 393 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 394 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                          ); &__pstr__[0];}))
-# 393 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 394 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                         ,
             prot_sensor->get_degree(),
             prot_sensor->get_ADC(),
@@ -739,43 +740,43 @@ void onTask(AsyncWebServerRequest *r)
     // to: CW(+sec) CCW(-sec) OR degree (0-360)
     // speed: (0-255)
     if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "432" "." "51" "\", \"aSM\", @progbits, 1 #"))) = (
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "433" "." "57" "\", \"aSM\", @progbits, 1 #"))) = (
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                  "type"
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                  ); &__pstr__[0];}))
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                  )))) && r->hasArg("to") && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                            (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "432" "." "52" "\", \"aSM\", @progbits, 1 #"))) = (
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                            (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "433" "." "58" "\", \"aSM\", @progbits, 1 #"))) = (
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                             "speed"
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                             ); &__pstr__[0];}))
-# 432 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 433 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                             )))))
     {
         float deg = prot_sensor->degree;
         int type = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 435 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "435" "." "53" "\", \"aSM\", @progbits, 1 #"))) = (
-# 435 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 436 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "436" "." "59" "\", \"aSM\", @progbits, 1 #"))) = (
+# 436 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                          "type"
-# 435 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 436 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                          ); &__pstr__[0];}))
-# 435 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 436 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                          )))).toInt();
         int to = r->arg("to").toInt();
         int to_2, to_3;
         int speed = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 438 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "438" "." "54" "\", \"aSM\", @progbits, 1 #"))) = (
-# 438 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 439 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "439" "." "60" "\", \"aSM\", @progbits, 1 #"))) = (
+# 439 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           "speed"
-# 438 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 439 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                           ); &__pstr__[0];}))
-# 438 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 439 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           )))).toInt();
         // create a task object
         if ((speed >= 0 && speed <= 255) && (type == 1 || type == 2 || type == 0))
@@ -842,25 +843,25 @@ void onTask(AsyncWebServerRequest *r)
                 task_slot.n_to = 0;
             }
             r->send(200, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>(
-# 503 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "503" "." "55" "\", \"aSM\", @progbits, 1 #"))) = (
-# 503 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 504 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "504" "." "61" "\", \"aSM\", @progbits, 1 #"))) = (
+# 504 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                       "task created\n"
-# 503 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 504 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                       ); &__pstr__[0];}))
-# 503 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 504 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                       ))));
         }
         else
         {
             r->send(400, "text/plain", ((reinterpret_cast<const __FlashStringHelper *>(
-# 507 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "507" "." "56" "\", \"aSM\", @progbits, 1 #"))) = (
-# 507 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 508 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "508" "." "62" "\", \"aSM\", @progbits, 1 #"))) = (
+# 508 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                       "invalid parameters\n"
-# 507 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 508 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                       ); &__pstr__[0];}))
-# 507 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 508 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                       ))));
         }
     }
@@ -893,13 +894,13 @@ void onStatus(AsyncWebServerRequest *r)
 {
     sprintf(s_httpbuffer,
             
-# 538 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "538" "." "57" "\", \"aSM\", @progbits, 1 #"))) = (
-# 538 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 539 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "539" "." "63" "\", \"aSM\", @progbits, 1 #"))) = (
+# 539 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
            "Free Memory=%d\nWiFi mode=%d\nRSSI=%d\n\n"
-# 538 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 539 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
            ); &__pstr__[0];}))
-# 538 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 539 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                             ,
             ESP.getFreeHeap(), WiFi.getMode(), WiFi.RSSI());
     r->send(200, "text/plain", s_httpbuffer);
@@ -925,23 +926,23 @@ void onWebPostRS485(AsyncWebServerRequest *r)
 {
     char s[64 + 1];
     if (r->method() == HTTP_POST && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 562 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "562" "." "58" "\", \"aSM\", @progbits, 1 #"))) = (
-# 562 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 563 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "563" "." "64" "\", \"aSM\", @progbits, 1 #"))) = (
+# 563 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              "data"
-# 562 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 563 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                              ); &__pstr__[0];}))
-# 562 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 563 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              )))))
     {
         const String& sdata = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 564 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "564" "." "59" "\", \"aSM\", @progbits, 1 #"))) = (
-# 564 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 565 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "565" "." "65" "\", \"aSM\", @progbits, 1 #"))) = (
+# 565 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                     "data"
-# 564 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 565 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                     ); &__pstr__[0];}))
-# 564 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 565 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                     ))));
         uint16_t lenDataTake = (sdata.length() < 64)? sdata.length() : 64;
         uint16_t lenDataSend = 0;
@@ -949,21 +950,21 @@ void onWebPostRS485(AsyncWebServerRequest *r)
         {
             // hex mode, data is a string of hex-format chars e.g. aa bb cc dd ee a0
             if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "570" "." "60" "\", \"aSM\", @progbits, 1 #"))) = (
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "571" "." "66" "\", \"aSM\", @progbits, 1 #"))) = (
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                          "hex"
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                          ); &__pstr__[0];}))
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                          )))) && r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "570" "." "61" "\", \"aSM\", @progbits, 1 #"))) = (
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                             (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "571" "." "67" "\", \"aSM\", @progbits, 1 #"))) = (
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              "hex"
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                              ); &__pstr__[0];}))
-# 570 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 571 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                              )))).equals("on"))
             {
                 uint16_t i, j;
@@ -993,21 +994,21 @@ void onWebPostRS485(AsyncWebServerRequest *r)
             {
                 strncpy(s, sdata.c_str(), lenDataTake);
                 if(r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                            (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "598" "." "62" "\", \"aSM\", @progbits, 1 #"))) = (
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                            (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "599" "." "68" "\", \"aSM\", @progbits, 1 #"))) = (
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                             "newline"
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                             ); &__pstr__[0];}))
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                             )))) && r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "598" "." "63" "\", \"aSM\", @progbits, 1 #"))) = (
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                    (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "599" "." "69" "\", \"aSM\", @progbits, 1 #"))) = (
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     "newline"
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                     ); &__pstr__[0];}))
-# 598 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 599 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                     )))).equals("on"))
                 {
                     if(s[lenDataTake-1] == 0)
@@ -1045,80 +1046,80 @@ void onNotFound(AsyncWebServerRequest *r)
         String message;
         message.reserve(512);
         message += (((reinterpret_cast<const __FlashStringHelper *>(
-# 634 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                   (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "634" "." "64" "\", \"aSM\", @progbits, 1 #"))) = (
-# 634 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 635 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                   (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "635" "." "70" "\", \"aSM\", @progbits, 1 #"))) = (
+# 635 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                    "AsyncServer: File Not Found\n\n"
-# 634 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 635 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                    ); &__pstr__[0];}))
-# 634 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 635 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                    ))));
 
         message += ((reinterpret_cast<const __FlashStringHelper *>(
-# 636 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "636" "." "65" "\", \"aSM\", @progbits, 1 #"))) = (
-# 636 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 637 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "637" "." "71" "\", \"aSM\", @progbits, 1 #"))) = (
+# 637 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   "URI: "
-# 636 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 637 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                   ); &__pstr__[0];}))
-# 636 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 637 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   )));
         if (r->url().length() < 128)
             message += r->url();
         else
             message += ((reinterpret_cast<const __FlashStringHelper *>(
-# 640 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "640" "." "66" "\", \"aSM\", @progbits, 1 #"))) = (
-# 640 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "641" "." "72" "\", \"aSM\", @progbits, 1 #"))) = (
+# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       "TOO LONG"
-# 640 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                       ); &__pstr__[0];}))
-# 640 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       )));
         message += ((reinterpret_cast<const __FlashStringHelper *>(
-# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "641" "." "67" "\", \"aSM\", @progbits, 1 #"))) = (
-# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "642" "." "73" "\", \"aSM\", @progbits, 1 #"))) = (
+# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   "\nMethod: "
-# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                   ); &__pstr__[0];}))
-# 641 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   )));
         message += (r->method() == HTTP_GET) ? ((reinterpret_cast<const __FlashStringHelper *>(
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                              (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "642" "." "68" "\", \"aSM\", @progbits, 1 #"))) = (
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                              (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "643" "." "74" "\", \"aSM\", @progbits, 1 #"))) = (
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                               "GET"
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                               ); &__pstr__[0];}))
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                               ))) : ((reinterpret_cast<const __FlashStringHelper *>(
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "642" "." "69" "\", \"aSM\", @progbits, 1 #"))) = (
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                         (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "643" "." "75" "\", \"aSM\", @progbits, 1 #"))) = (
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                          "POST"
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                          ); &__pstr__[0];}))
-# 642 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                          )));
         message += ((reinterpret_cast<const __FlashStringHelper *>(
-# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "643" "." "70" "\", \"aSM\", @progbits, 1 #"))) = (
-# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 644 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "644" "." "76" "\", \"aSM\", @progbits, 1 #"))) = (
+# 644 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   "\nArguments: "
-# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 644 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                   ); &__pstr__[0];}))
-# 643 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 644 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   )));
         message += r->args();
         message += ((reinterpret_cast<const __FlashStringHelper *>(
-# 645 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "645" "." "71" "\", \"aSM\", @progbits, 1 #"))) = (
-# 645 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 646 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                  (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "646" "." "77" "\", \"aSM\", @progbits, 1 #"))) = (
+# 646 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   "\n"
-# 645 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 646 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                   ); &__pstr__[0];}))
-# 645 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 646 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                   )));
         for (uint8_t i = 0; (i < r->args()) && (i < 8); i++)
         {
@@ -1126,13 +1127,13 @@ void onNotFound(AsyncWebServerRequest *r)
                 message += " " + r->argName(i) + ": " + r->arg(i) + "\n";
             else
                 message += ((reinterpret_cast<const __FlashStringHelper *>(
-# 651 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "651" "." "72" "\", \"aSM\", @progbits, 1 #"))) = (
-# 651 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 652 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                          (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "652" "." "78" "\", \"aSM\", @progbits, 1 #"))) = (
+# 652 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           "ARGUMENT TOO LONG"
-# 651 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 652 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                           ); &__pstr__[0];}))
-# 651 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 652 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                           )));
         }
         r->send(404, ("text/plain"), message);
@@ -1143,21 +1144,21 @@ void onNotFound(AsyncWebServerRequest *r)
 void onReset(AsyncWebServerRequest *r)
 {
     r->send(200, ((reinterpret_cast<const __FlashStringHelper *>(
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "660" "." "73" "\", \"aSM\", @progbits, 1 #"))) = (
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "661" "." "79" "\", \"aSM\", @progbits, 1 #"))) = (
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                 "text/plain"
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                 ); &__pstr__[0];}))
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                 ))), ((reinterpret_cast<const __FlashStringHelper *>(
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "660" "." "74" "\", \"aSM\", @progbits, 1 #"))) = (
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "661" "." "80" "\", \"aSM\", @progbits, 1 #"))) = (
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                  "Restarting...\n"
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                  ); &__pstr__[0];}))
-# 660 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 661 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                  ))));
     // Serial.println("Reset...");
     sync_config(p_cfg);
@@ -1182,9 +1183,9 @@ void onCalibrateGap(void) // the callback function when a gap has been detected
         cal_edge_count = 0;
         task_slot.type = 0; // stop the motor
         prot_sensor->on_edge = 
-# 683 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3 4
+# 684 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3 4
                               __null
-# 683 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 684 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                   ;
     }
 }
@@ -1194,66 +1195,66 @@ void onCalibrate(AsyncWebServerRequest *r)
     if (r->method() == HTTP_POST)
     {
         String message(((reinterpret_cast<const __FlashStringHelper *>(
-# 691 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "691" "." "75" "\", \"aSM\", @progbits, 1 #"))) = (
-# 691 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "692" "." "81" "\", \"aSM\", @progbits, 1 #"))) = (
+# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       "ADC calibrate:"
-# 691 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                       ); &__pstr__[0];}))
-# 691 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       ))));
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "692" "." "76" "\", \"aSM\", @progbits, 1 #"))) = (
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "693" "." "82" "\", \"aSM\", @progbits, 1 #"))) = (
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "ADC_max"
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "692" "." "77" "\", \"aSM\", @progbits, 1 #"))) = (
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "693" "." "83" "\", \"aSM\", @progbits, 1 #"))) = (
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                 "ADC_min"
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                 ); &__pstr__[0];}))
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                 )))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                                                           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "692" "." "78" "\", \"aSM\", @progbits, 1 #"))) = (
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                                                           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "693" "." "84" "\", \"aSM\", @progbits, 1 #"))) = (
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                            "ADC_zero"
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                                            ); &__pstr__[0];}))
-# 692 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 693 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                            ))))) // Step I
         {
             int ADC_max = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 694 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "694" "." "79" "\", \"aSM\", @progbits, 1 #"))) = (
-# 694 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "695" "." "85" "\", \"aSM\", @progbits, 1 #"))) = (
+# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 "ADC_max"
-# 694 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                 ); &__pstr__[0];}))
-# 694 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 )))).toInt();
             int ADC_min = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "695" "." "80" "\", \"aSM\", @progbits, 1 #"))) = (
-# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "696" "." "86" "\", \"aSM\", @progbits, 1 #"))) = (
+# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 "ADC_min"
-# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                 ); &__pstr__[0];}))
-# 695 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 )))).toInt();
             int ADC_zero = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "696" "." "81" "\", \"aSM\", @progbits, 1 #"))) = (
-# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 697 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                 (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "697" "." "87" "\", \"aSM\", @progbits, 1 #"))) = (
+# 697 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                  "ADC_zero"
-# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 697 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                  ); &__pstr__[0];}))
-# 696 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 697 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                  )))).toInt();
             message += "\nADC_max: ";
             message += ADC_max;
@@ -1275,40 +1276,40 @@ void onCalibrate(AsyncWebServerRequest *r)
             r->send(200, message);
         }
         if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "716" "." "82" "\", \"aSM\", @progbits, 1 #"))) = (
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                     (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "717" "." "88" "\", \"aSM\", @progbits, 1 #"))) = (
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      "CW_lim"
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                      ); &__pstr__[0];}))
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                      )))) && r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "716" "." "83" "\", \"aSM\", @progbits, 1 #"))) = (
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "717" "." "89" "\", \"aSM\", @progbits, 1 #"))) = (
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                "CCW_lim"
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                                ); &__pstr__[0];}))
-# 716 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 717 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                ))))) // Step 2
         {
             int CW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 718 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "718" "." "84" "\", \"aSM\", @progbits, 1 #"))) = (
-# 718 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                               (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "719" "." "90" "\", \"aSM\", @progbits, 1 #"))) = (
+# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                "CW_lim"
-# 718 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                ); &__pstr__[0];}))
-# 718 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                )))).toInt();
             int CCW_lim = r->arg(((reinterpret_cast<const __FlashStringHelper *>(
-# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "719" "." "85" "\", \"aSM\", @progbits, 1 #"))) = (
-# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 720 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "720" "." "91" "\", \"aSM\", @progbits, 1 #"))) = (
+# 720 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 "CCW_lim"
-# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 720 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                 ); &__pstr__[0];}))
-# 719 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 720 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                 )))).toInt();
             message += "\nCW_lim: ";
             message += CW_lim;
@@ -1323,39 +1324,39 @@ void onCalibrate(AsyncWebServerRequest *r)
         }
     }
     else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 732 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "732" "." "86" "\", \"aSM\", @progbits, 1 #"))) = (
-# 732 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 733 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "733" "." "92" "\", \"aSM\", @progbits, 1 #"))) = (
+# 733 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       "manual"
-# 732 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 733 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                       ); &__pstr__[0];}))
-# 732 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 733 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       ))))) // manual calibration mode
     {
         is_calibrating = true;
         r->redirect("/calibrate");
     }
     else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 737 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "737" "." "87" "\", \"aSM\", @progbits, 1 #"))) = (
-# 737 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 738 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "738" "." "93" "\", \"aSM\", @progbits, 1 #"))) = (
+# 738 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       "auto"
-# 737 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 738 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                       ); &__pstr__[0];}))
-# 737 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 738 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       ))))) // GET request to initialize calibration
     {
         if ((!is_calibrating) && pmotor->status == 0)
         {
             begin_auto_calibrate();
             r->send(200, ((reinterpret_cast<const __FlashStringHelper *>(
-# 742 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                        (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "742" "." "88" "\", \"aSM\", @progbits, 1 #"))) = (
-# 742 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 743 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                        (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "743" "." "94" "\", \"aSM\", @progbits, 1 #"))) = (
+# 743 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                         "Auto calibration started\n"
-# 742 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 743 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                         ); &__pstr__[0];}))
-# 742 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 743 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                         ))));
         }
         else
@@ -1364,13 +1365,13 @@ void onCalibrate(AsyncWebServerRequest *r)
         }
     }
     else if (r->hasArg(((reinterpret_cast<const __FlashStringHelper *>(
-# 749 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "749" "." "89" "\", \"aSM\", @progbits, 1 #"))) = (
-# 749 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 750 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                      (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "750" "." "95" "\", \"aSM\", @progbits, 1 #"))) = (
+# 750 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       "stop"
-# 749 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 750 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                       ); &__pstr__[0];}))
-# 749 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 750 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                       )))))
     {
         is_calibrating = false;
@@ -1703,13 +1704,13 @@ void init_OTA()
                      { Serial.println("\nEnd"); });
     ArduinoOTA.onProgress([](unsigned int progress, unsigned int total)
                           { Serial.printf_P(
-# 1080 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
-                                           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "1080" "." "90" "\", \"aSM\", @progbits, 1 #"))) = (
-# 1080 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 1081 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+                                           (__extension__({static const char __pstr__[] __attribute__((__aligned__(4))) __attribute__((section( "\".irom0.pstr." "MCU.ino" "." "1081" "." "96" "\", \"aSM\", @progbits, 1 #"))) = (
+# 1081 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                            "Progress: %u%%\r"
-# 1080 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
+# 1081 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino" 3
                                            ); &__pstr__[0];}))
-# 1080 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+# 1081 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
                                                                    , (progress / (total / 100))); });
     ArduinoOTA.onError([](ota_error_t error)
                        {
@@ -1869,6 +1870,9 @@ void setup()
             if (WiFi.status() == WL_CONNECTED)
             {
                 s_ip = WiFi.localIP().toString();
+                const char* smDNSHostName = p_cfg->body.s_name;
+                MDNS.begin(smDNSHostName);
+                do { (void)0; } while (0);
                 do { (void)0; } while (0);
                 do { (void)0; } while (0);
                 is_config = true;

@@ -1,0 +1,65 @@
+
+<!DOCTYPE HTML>
+
+<head>
+    <meta charset="US-ASCII">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>RS485</title>
+    <script src="button.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>RS485 Debugging Pannel</h1>
+    </div>
+    <hr>
+    <div>
+        <h2>RX Buffer</h2>
+        <textarea name="RS485_RX" id="taRS485_RX" cols="64" rows="20" readonly="readonly"></textarea>
+        <script>
+
+        </script>
+    </div>
+    <div>
+        <h2>TX</h2>
+        <form action="postRS485" method="POST" enctype="application/x-www-form-urlencoded" id="frmRS485TX">
+            <input type="text" name="data" id="inRS485_TX" pattern=".+">
+            hex<input type="checkbox" name="hex" id="hex" onchange="onChangeHexMode();">
+            newline<input type="checkbox" name="newline" id="newline" checked>
+            <input type="submit" form="frmRS485TX" value="Send">
+        </form>
+        <script>
+            var isInputHex = false;
+            function onChangeHexMode()
+            {
+                var e = document.getElementById("hex");
+                var inbox = document.getElementById("inRS485_TX");
+                if(e.checked)
+                {
+                    inbox.pattern = "[0-9a-fA-F ]+";
+                    isInputHex = true;
+                }
+                else
+                {
+                    inbox.pattern = ".+";
+                    isInputHex = false;
+                }
+            }
+            function getRXBuffer()
+            {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onload = function () {
+                    if(xhttp.status == 200)
+                    {
+                        console.log("RS485 recved")
+                        recv = xhttp.responseText; 
+                        var eTA = document.getElementById("taRS485_RX")
+                        eTA.innerHTML = recv;
+                    }
+                };
+                xhttp.open("GET", "getRS485", true); // GET Async
+                xhttp.send();
+            }
+        </script>
+    </div>
+</body>

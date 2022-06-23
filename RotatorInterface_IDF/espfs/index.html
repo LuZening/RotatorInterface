@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="get_sensor.js"></script>
+    <script src="send_task.js"></script>
+    <script src="button.js"></script>
+    <script src="point.js"></script>
+    <script>
+        window.onload = (function() // load config
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function ()
+            {
+                s_recv = this.responseText;
+                if(s_recv.length > 0)
+                {
+                    if (s_recv.length <= 1) {
+                        alert("No configurations avaliable. Make a new one.");
+                        return;
+                    }
+                    s_name = s_recv.match(/name=(.*?)[&\n]/)[1];
+                    document.getElementById("name").innerText = s_name;
+                }
+            }
+            xhttp.open("GET", "getconfig", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
+        });
+    </script>
+    <title>Rotator</title>
+</head>
+<body>
+    <div id="header">
+		<h1 id="title">VORTEX Antenna Rotator<h1>
+	</div>
+    <div id="name">
+        Loading
+    </div>
+    <nav>
+        <span id="selected"><a href="index">Dashboard</a></span>
+        <span><a href="config">Config</a></span>
+    </nav>
+    <div id="map">
+       <span id="map_loading">Loading the azumithal map...</span>
+       <canvas id="azu_map" onmouseout="azu_onmouseleave(this)" onmousemove="azu_onmousemove(this)" onmouseup="azu_onmouseup()">
+       </canvas>
+    </div>
+    <div  id="display" style="float:left;">
+        <div class="box">
+            <h2><span id="deg">-</span>&deg;</h2>
+            <span id="speed">-</span>s/round<br>
+            <span id="limit"></span><br>
+            Status: <div style="float:right;width:20px;height:20px;border-radius:50%;background-color: aquamarine;" id="bulb"></div>
+        </div>
+        <div class="box">
+            <button class="large_narrow" id="btn_CCW_lock">&#x1f510;&lt;&lt;</button>
+            <button class="large" id="btn_CCW">&#8634;(CCW)</button>
+            <button class="large" id="btn_CW">(CW)&#8635;</button>
+            <button class="large_narrow" id="btn_CW_lock">&gt;&gt;&#x1f510;</button>
+            <script>
+                b = document.getElementById("btn_CCW");
+                b.addEventListener(buttonPressEvent, e => { on_mousedown_CCW(); });
+                b.addEventListener(buttonReleaseEvent, e => { on_mouseup_manual(); });
+                b = document.getElementById("btn_CW");
+                b.addEventListener(buttonPressEvent, e => { on_mousedown_CW(); });
+                b.addEventListener(buttonReleaseEvent, e => { on_mouseup_manual(); });
+                var lock_btn_lisener_gen = (
+                    function (bt, dir){
+                        var pressed = false;
+                        return () => {
+                            pressed = !pressed; 
+                            console.log(bt.id, pressed);
+                            if(pressed)
+                            { 
+                                bt.style.borderStyle="inset";
+                                send_task_manual(dir * 20);                                        
+                            }
+                            else
+                            {
+                                bt.style.borderStyle="outset";
+                                send_task_stop();                                        
+                            }
+                        };
+                    });
+                b = document.getElementById("btn_CCW_lock");
+                b.onclick = (e => {return lock_btn_lisener_gen(e, -1)})(b) ;
+                b = document.getElementById("btn_CW_lock");
+                b.onclick = (e => {return lock_btn_lisener_gen(e, 1)})(b) ;
+            </script>
+        </div>
+        <div class="box">
+            <button id="stop" onclick="send_task_stop();">STOP!</button>
+        </div>
+    </div>
+    <button id="btn_test" onclick="test_onclick(2);">TEST</button>
+    <script src="map_project.js"></script>
+    <script src="coverage_fan.js"></script>
+</body>

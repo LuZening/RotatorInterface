@@ -135,9 +135,20 @@ e:\Projects\RADIO\Projects\RotatorInterface\build\sketch\MCU.ino.cpp.o: \
  C:\Users\cpholzn\Documents\Arduino\libraries\ESPAsyncWebServer-master\src/AsyncWebSynchronization.h \
  C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\Hash\src/Hash.h \
  C:\Users\cpholzn\Documents\Arduino\libraries\ESPAsyncWebServer-master\src/AsyncEventSource.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266mDNS\src/ESP8266mDNS.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266mDNS\src/LEAmDNS.h \
  C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WiFi\src/WiFiUdp.h \
  C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/Udp.h \
  C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WiFi\src/include/slist.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/udp.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/ip.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/ip4.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/prot/ip4.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/ip6.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/prot/ip.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2/tools/sdk/lwip2/include/lwip/prot/udp.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ESP8266WiFi\src/include/UdpContext.h \
+ C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\cores\esp8266/AddrList.h \
  C:\Users\cpholzn\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.2\libraries\ArduinoOTA/ArduinoOTA.h \
  e:\Projects\RADIO\Projects\RotatorInterface\build\sketch\AT24C.h \
  e:\Projects\RADIO\Projects\RotatorInterface\build\sketch\Lib595.h \

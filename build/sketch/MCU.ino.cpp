@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #line 1 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
-
 #define ESP8266
 #define __595
+
 
 //#define __DEBUG_
 // TIMER FREQUENCY = CPU FREQ / 16
@@ -12,6 +12,7 @@
 #include <string.h>
 #include <ESP8266WiFi.h>
 #include <ESPAsyncWebServer.h>
+#include <ESP8266mDNS.h>
 #include <WiFiUdp.h>
 #include <ArduinoOTA.h>
 #include <FS.h>
@@ -151,61 +152,61 @@ AsyncWebSocket webSocket("/ws");
 /********************************************
  *         handle  EEPROM                   *
 */
-#line 152 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 153 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_active_params(union ActiveWriteBlock *p);
-#line 159 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 160 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_config(union ConfigWriteBlock *p);
-#line 180 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 181 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 String getContentType(String filename);
-#line 209 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 210 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 bool handleFileRead(AsyncWebServerRequest *r, String path);
-#line 235 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 236 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onSetConfig(AsyncWebServerRequest *r);
-#line 360 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 361 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetConfig(AsyncWebServerRequest *r);
-#line 391 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 392 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 char * sensorData();
-#line 403 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 404 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetWiFiStatus(AsyncWebServerRequest *r);
-#line 421 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 422 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onGetSensor(AsyncWebServerRequest *r);
-#line 427 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 428 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onTask(AsyncWebServerRequest *r);
-#line 513 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 514 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onHomepage(AsyncWebServerRequest *r);
-#line 525 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 526 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onDebug485(AsyncWebServerRequest *r);
-#line 530 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 531 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onWebConfig(AsyncWebServerRequest *r);
-#line 535 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 536 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onStatus(AsyncWebServerRequest *r);
-#line 544 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 545 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onWebGetRS485(AsyncWebServerRequest *r);
-#line 559 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 560 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onWebPostRS485(AsyncWebServerRequest *r);
-#line 628 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 629 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onNotFound(AsyncWebServerRequest *r);
-#line 658 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 659 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onReset(AsyncWebServerRequest *r);
-#line 671 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 672 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onCalibrateGap(void);
-#line 687 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 688 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onCalibrate(AsyncWebServerRequest *r);
-#line 765 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 766 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void begin_auto_calibrate();
-#line 777 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 778 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void auto_calibration_turn_around();
-#line 805 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 806 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onTimer();
-#line 1060 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1061 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void init_OTA();
-#line 1108 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1109 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void onWebsocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len);
-#line 1141 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1142 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void setup();
-#line 1319 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 1323 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void loop();
-#line 152 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
+#line 153 "e:\\Projects\\RADIO\\Projects\\RotatorInterface\\MCU\\MCU.ino"
 void sync_active_params(union ActiveWriteBlock *p)
 {
     p->body.ADC_reading = prot_sensor->ADC_reading;
@@ -1293,8 +1294,11 @@ void setup()
             if (WiFi.status() == WL_CONNECTED)
             {
                 s_ip = WiFi.localIP().toString();
+                const char* smDNSHostName = p_cfg->body.s_name;
+                MDNS.begin(smDNSHostName);
                 LOG_DEBUG("WiFi connected  ");
                 LOG_DEBUG("IP=%s\n", s_ip.c_str());
+                LOG_DEBUG("mDNS=%s.local\n", smDNSHostName);
                 is_config = true;
                 is_wifi_conn = true;
                 // Turn on the LED
