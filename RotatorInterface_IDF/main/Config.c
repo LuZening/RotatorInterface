@@ -5,14 +5,23 @@
 #include <string.h>
 #include "main.h"
 #include "string.h"
-#include "AT24C.h"
+// #include "AT24C.h"
+#include "nvs_flash.h"
+#include "esp_vfs.h"
+#include "esp_vfs_fat.h"
+
+#define tag "config"
 
 Config cfg;
 ActiveParams actprm;
 
 byte page_active;
 
+#ifdef USE_MUTEX_ON_CFG
+SemaphoreHandle_t mtxConfig = NULL;
+#endif
 
+bool isModified = false;
 // use '.' to indicate the positon in an array
 // for '.' is well supported in HTML URL encoding
 // either '()' or '[]' will be converted in HTML URL
@@ -35,6 +44,7 @@ const config_var_map_t configNameMapper[] = {
     {"deg_limit_CW.1", &(cfg.deg_limit_CW[0]), CONFIG_VAR_I32},
     {"deg_limit_CCW.1", &(cfg.deg_limit_CCW[0]), CONFIG_VAR_I32},
     {"brake_engage_defer.1", &(cfg.brake_engage_defer[0]), CONFIG_VAR_I32},
+    {"soft_start_duration.1", &(cfg.soft_start_duration[0]), CONFIG_VAR_I32},
     {"is_ADC_calibrated.1", &(cfg.is_ADC_calibrated[0]), CONFIG_VAR_U8},
     {"pot_type.2", &(cfg.pot_type[1]), CONFIG_VAR_U8},
     {"allow_multi_rounds.2", &(cfg.allow_multi_rounds[1]), CONFIG_VAR_U8},
@@ -52,20 +62,29 @@ const config_var_map_t configNameMapper[] = {
     {"deg_limit_CW.2", &(cfg.deg_limit_CW[1]), CONFIG_VAR_I32},
     {"deg_limit_CCW.2", &(cfg.deg_limit_CCW[1]), CONFIG_VAR_I32},
     {"brake_engage_defer.2", &(cfg.brake_engage_defer[1]), CONFIG_VAR_I32},
+    {"soft_start_duration.2", &(cfg.soft_start_duration[1]), CONFIG_VAR_I32},
     {"is_ADC_calibrated.2", &(cfg.is_ADC_calibrated[1]), CONFIG_VAR_U8},
     /* Motor config array */
     {"N_MOTs", &(cfg.N_MOTs), CONFIG_VAR_U8},
     {"motDriveModes.1", &(cfg.motDriveModes[0]), CONFIG_VAR_U8},
     {"motDriveModes.2", &(cfg.motDriveModes[1]), CONFIG_VAR_U8},
+    {"motSpeeds.1", &(cfg.motSpeeds[0]), CONFIG_VAR_U8},
+    {"motSpeeds.2", &(cfg.motSpeeds[1]), CONFIG_VAR_U8},
     /* Others */
     {"use_WiFi", &(cfg.use_WiFi), CONFIG_VAR_U8},
     {"s_name", (cfg.s_name), CONFIG_VAR_BYTESTRING},
+    {"use_Ethernet", &(cfg.use_Ethernet), CONFIG_VAR_U8},
+    {"use_RS485", &(cfg.use_RS485), CONFIG_VAR_U8},
 };
 
 
 void init_config(struct Config *p)
 {
     int i;
+    #ifdef USE_MUTEX_ON_CFG
+    if(mtxConfig == NULL) mtxConfig = xSemaphoreCreateMutex();
+    xSemaphoreTake(mtxConfig, portMAX_DELAY);
+    #endif
     // set valid string
     strncpy(p->sValid, VORTEX_VALID_STRING, 8);
     // set POT settings
@@ -74,6 +93,7 @@ void init_config(struct Config *p)
     for(i = 0; i < p->N_MOTs; ++i)
     {
         p->motDriveModes[i] = MOT_PWM_RELAYS;
+        p->motSpeeds[i] = 100;
     }
     for(i = 0; i < p->N_POTs; ++i)
     {
@@ -92,27 +112,39 @@ void init_config(struct Config *p)
         p->inverse_ADC[i] = false;
         p->deg_limit_CCW[i] = 0;
         p->deg_limit_CW[i] = 359;
-        p->brake_engage_defer[i] = 1000000; // us
+        p->brake_engage_defer[i] = 1000; // ms
+        p->soft_start_duration[i] = 1000; // ms
         p->is_ADC_calibrated[i] = false;
     }
     // set network settings
     p->use_WiFi = true;
     strncpy(p->s_name, VORTEX_VALID_STRING, sizeof(p->s_name)-1);
+    isModified = true;
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreGive(mtxConfig);
+    #endif
 }
 
 
 void push_config_to_volatile_variables(struct Config* p)
 {
     int i;
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreTake(mtxConfig, portMAX_DELAY);
+    #endif
     for(i = 0; i < p->N_MOTs; ++i)
     {
-        arrMotors[i].mode_drive = p->motDriveModes[i];
+        Motor* pMot = &(arrMotors[i]);
+        pMot->mode_drive = p->motDriveModes[i];
+        pMot->brake_engage_defer = p->brake_engage_defer;
+        pMot->soft_start_duration_ms = p->soft_start_duration;
     }
     for(i = 0; i < p->N_POTs; ++i)
     {
         RotSensor* pRot = &(arrRotSensors[i]);
         pRot->pot_type = p->pot_type[i];
-        RotSensor_init(pRot, p->pot_type[i], p->allow_multi_rounds[i], p->brake_engage_defer[i]);
+        pRot->allow_multi_rounds = p->allow_multi_rounds[i];
+        pRot->brake_engage_defer_us = p->brake_engage_defer[i] * 1000;
         // pRot->R_0 = p->R_0[i];
         // pRot->R_c =p->R_c[i];
         // pRot->R_max = p->R_max[i];
@@ -130,11 +162,50 @@ void push_config_to_volatile_variables(struct Config* p)
         pRot->deg_limit_B = p->deg_limit_CCW[i];
         pRot->is_ADC_calibrated = p->is_ADC_calibrated[i];
     }
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreGive(mtxConfig);
+    #endif
 }
 
+// flash wear levelling handle
+static wl_handle_t wlHandle = WL_INVALID_HANDLE;
 void load_config(union ConfigWriteBlock* p_cfg)
 {
+    #ifdef USE_MUTEX_ON_CFG
+    if(mtxConfig == NULL) mtxConfig = xSemaphoreCreateMutex();
+    #endif
+    #ifdef USE_EEPROM
     EEPROM_ReadRange(&eeprom, ADDR_CONFIG_BEGIN, p_cfg->bytes, sizeof(Config));
+    #else
+    // Use FatFS by default
+    esp_vfs_fat_mount_config_t mount_config = {
+        .max_files = 4,
+        .format_if_mount_failed = true,
+        .allocation_unit_size = CONFIG_WL_SECTOR_SIZE
+    };
+    esp_err_t err = esp_vfs_fat_spiflash_mount(FS_BASE_PATH_CONFIG, "storage", &mount_config, &wlHandle);
+    if (err != ESP_OK) {
+        ESP_LOGE(tag, "Failed to mount FATFS (%s)", esp_err_to_name(err));
+        return;
+    }
+    ESP_LOGD(tag, "Opening file");
+    FILE *f = fopen(FS_PATH_CONFIG_FILE, "rb");
+    if (f == NULL) {
+        ESP_LOGE(tag, "Failed to open file %s for reading", FS_PATH_CONFIG_FILE);
+    }
+    else
+    {
+        // load file content to config variable
+        ESP_LOGD(tag, "Read from file %s", FS_PATH_CONFIG_FILE);
+        size_t n = fread(p_cfg->bytes, sizeof(Config), 1, f);
+        fclose(f);
+        ESP_LOGD(tag, "Read from file %s succeeded, %d bytes", FS_PATH_CONFIG_FILE, n);
+        ESP_LOGD(tag, "cfg.validstring = %s", p_cfg->body.sValid);
+    }
+    esp_vfs_fat_spiflash_unmount(FS_BASE_PATH_CONFIG, wlHandle);    
+    ESP_LOGD(tag, "FS unmounted");
+    #endif
+
     // read_array_AT24C(pEEPROM, PAGE2ADDR(pEEPROM, PAGE_CONFIG), p_cfg->bytes, sizeof(ConfigWriteBlock));
     // ESP_LOGD("CONFIG", "ssid=%s, passwd=%s", p_cfg->body.s_ssid, p_cfg->body.s_password);
 }
@@ -162,11 +233,54 @@ void load_active_params(union ActiveWriteBlock* p_actprm)
 
 void save_config(union ConfigWriteBlock* p_cfg)
 {
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreTake(mtxConfig, portMAX_DELAY);
+    #endif
+
+    #ifdef USE_EEPROM
     EEPROM_release_WP(&eeprom);
     // ACK_polling_AT24C(pEEPROM);
     // write_array_AT24C(pEEPROM, 1, p_cfg->bytes, sizeof(ConfigWriteBlock));
+    
     EEPROM_WriteRange(&eeprom, ADDR_CONFIG_BEGIN, sizeof(Config), p_cfg->bytes);
     EEPROM_WP(&eeprom);
+    #else
+    // Use FatFS by default
+    esp_vfs_fat_mount_config_t mount_config = {
+        .max_files = 4,
+        .format_if_mount_failed = true,
+        .allocation_unit_size = CONFIG_WL_SECTOR_SIZE,
+    };
+    esp_err_t err = esp_vfs_fat_spiflash_mount(FS_BASE_PATH_CONFIG, "storage", &mount_config, &wlHandle);
+    if (err != ESP_OK) {
+        ESP_LOGE(tag, "Failed to mount FATFS (%s)", esp_err_to_name(err));
+        goto SAVE_CONFIG_FAILED;
+    }
+    ESP_LOGD(tag, "Opening file");
+    FILE *f = fopen(FS_PATH_CONFIG_FILE, "wb");
+    if (f == NULL) {
+        ESP_LOGE(tag, "Failed to open file %s for writing", FS_PATH_CONFIG_FILE);
+    }
+    else
+    {
+        // load file content to config variable
+        ESP_LOGD(tag, "Dump to file %s", FS_PATH_CONFIG_FILE);
+        ESP_LOGD(tag, "cfg.validstring = %s", p_cfg->body.sValid);
+        size_t n = fwrite(p_cfg->bytes, sizeof(Config), 1, f);
+        fclose(f);
+        ESP_LOGD(tag, "Dump to file %s succeeded, %d bytes", FS_PATH_CONFIG_FILE, n);
+    }
+    esp_vfs_fat_spiflash_unmount(FS_BASE_PATH_CONFIG, wlHandle);    
+    ESP_LOGD(tag, "FS unmounted");
+    #endif
+
+
+    isModified=false;
+SAVE_CONFIG_FAILED:
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreGive(mtxConfig);
+    #endif
+    return;
 }
 
 void save_active_params(union ActiveWriteBlock* p_actprm)
@@ -217,23 +331,46 @@ bool set_config_variable_by_name(const char* name, const void* pV)
     if(found)
     {
         const config_var_map_t* pMap = &(configNameMapper[i]);
+        #ifdef USE_MUTEX_ON_CFG
+        xSemaphoreTake(mtxConfig, portMAX_DELAY);
+        #endif
         switch (pMap->typ)
         {
         case CONFIG_VAR_U8:
             *(uint8_t*)(pMap->pV) = *(uint8_t*)pV;
+            ESP_LOGD(tag, "set %s = %d", name, *(uint8_t*)pV);
             break;
         case CONFIG_VAR_I32:
             memcpy(pMap->pV, pV, sizeof(int));
+            ESP_LOGD(tag, "set %s = %d", name, *(int32_t*)pV);
             break;
         case CONFIG_VAR_BYTESTRING:
             strncpy((char*)(pMap->pV), (char*)pV, 31);
+            ESP_LOGD(tag, "set %s = %s", name, (char*)pV);
+            break;
+        default:
             break;
         }
+        isModified = true;
+        #ifdef USE_MUTEX_ON_CFG
+        xSemaphoreGive(mtxConfig);
+        #endif
     }
     return found;
 }
 
 
+bool get_if_config_modified()
+{
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreTake(mtxConfig, portMAX_DELAY);
+    #endif
+    bool r = isModified;
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreGive(mtxConfig);
+    #endif
+    return r;
+}
 
 
 config_var_map_t* get_config_variable_mapper_item_by_name(const char* name)
@@ -272,6 +409,9 @@ bool get_config_variable_by_name(const char* name, void* buf)
     if(found)
     {
         const config_var_map_t* pMap = &(configNameMapper[i]);
+        #ifdef USE_MUTEX_ON_CFG
+        xSemaphoreTake(mtxConfig, portMAX_DELAY);
+        #endif
         switch (pMap->typ)
         {
         case CONFIG_VAR_U8:
@@ -284,6 +424,9 @@ bool get_config_variable_by_name(const char* name, void* buf)
             strncpy((char*)buf, (char*)(pMap->pV), 31);
             break;
         }
+        #ifdef USE_MUTEX_ON_CFG
+        xSemaphoreGive(mtxConfig);
+        #endif
     }
     return found;
 }
@@ -297,6 +440,9 @@ int get_config_string(char* buf, int lenbuf)
     int nW = 0;
     if (lenbuf <= 1)
         return 0;
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreTake(mtxConfig, portMAX_DELAY);
+    #endif
     for(i = 0; i < N; ++i)
     {
         config_var_map_t *pMap = &(configNameMapper[i]);
@@ -334,5 +480,8 @@ int get_config_string(char* buf, int lenbuf)
         }
     }
     buf[nWritten] = 0; // terminate the string
+    #ifdef USE_MUTEX_ON_CFG
+    xSemaphoreGive(mtxConfig);
+    #endif
     return nWritten;
 }

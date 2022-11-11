@@ -31,17 +31,31 @@ var sTemplateConfig =`
                         <input type="radio" name="allow_multi_rounds.${motno}" value=1>Enable<br></td>
                 </tr>
                 <tr>
-                    <td>Antenna load (break engagement delay):</td>
+                    <td>Antenna load (brake engagement delay):</td>
                     <td><input type="range" id="brake_engage_defer.${motno}" name="brake_engage_defer.${motno}" min=500 max=3000 step=100>
                         <span id="brake_engage_defer_display.${motno}"></span>ms</td>
-                    <script>
-                        e_break_delay_display = document.getElementById("brake_engage_defer_display.${motno}");
-                        e_break_delay = document.getElementById("brake_engage_defer.${motno}");
-                        e_break_delay.addEventListener("input", e => {
-                            e_break_delay_display.innerText = e_break_delay.value;
-                        });
-                    </script>
                 </tr>
+                <tr>
+                    <td>Antenna load (soft start duration):</td>
+                    <td><input type="range" id="soft_start_duration.${motno}" name="soft_start_duration.${motno}" min=0 max=3000 step=100>
+                        <span id="soft_start_duration_display.${motno}"></span>ms</td>
+                </tr>
+                <script>
+                    document.getElementById("soft_start_duration.${motno}").addEventListener("input", (()=>{
+                            var e = document.getElementById("soft_start_duration.${motno}");
+                            var eDisplay = document.getElementById("soft_start_duration_display.${motno}");
+                            return () => {
+                                eDisplay.innerText = e.value;
+                            };
+                    })());
+                    document.getElementById("brake_engage_defer.${motno}").addEventListener("input", (()=>{
+                            var e = document.getElementById("brake_engage_defer.${motno}");
+                            var eDisplay = document.getElementById("brake_engage_defer_display.${motno}");
+                            return () => {
+                                eDisplay.innerText = e.value;
+                            };
+                    })());
+                </script>
                 <tr>
                     <td>Pre-dividing resistor:</td>
                     <td><input type="number" id="R_0.${motno}" name="R_0.${motno}"></td>
@@ -220,14 +234,19 @@ function get_config() {
                         }
                         else if(Elements[0].type == "radio")
                         {
-                            chosen = parseInt(sValue);
+                            chosen = parseInt(sValue); // response value starts from 1, while the radio index starts from 0
                             if(chosen < Elements.length && chosen >= 0)
                                 Elements[chosen].checked = true;
                         }
-                        else(Elements[0].type == "text")
+                        else if(Elements[0].type == "text")
                         {
                             Elements[0].value = sValue;
                         }
+                        else
+                        {
+                            Elements[0].value = parseInt(sValue);
+                        }
+                        Elements[0].dispatchEvent(new Event("input"));
                     }
                 }
             }
@@ -239,3 +258,42 @@ function get_config() {
     xhttp.send();
 }
 
+
+function set_ADC_min(motnum)
+{
+    var i = motnum - 1;
+    e = document.getElementById(`ADC_min.${motnum}`);
+    e.value =DegreesADC[i];
+}
+
+
+function set_ADC_max(motnum)
+{
+    var i = motnum - 1;
+    e = document.getElementById(`ADC_max.${motnum}`);
+    e.value =DegreesADC[i];
+}
+
+function set_ADC_zero(motnum)
+{
+    var i = motnum - 1;
+    e = document.getElementById(`ADC_zero.${motnum}`);
+    e.value =DegreesADC[i];
+}
+
+function set_CCW_lim(motnum)
+{
+    var i = motnum - 1;
+    var deg_orig = DegreesOrig[i];
+    e = document.getElementById(`deg_limit_CCW.${motnum}`);
+    e.value = deg_orig;
+}
+
+
+function set_CW_lim(motnum)
+{
+    var i = motnum - 1;
+    var deg_orig = DegreesOrig[i];
+    e = document.getElementById(`deg_limit_CW.${motnum}`);
+    e.value = deg_orig;
+}

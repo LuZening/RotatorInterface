@@ -9,7 +9,6 @@
 #define SET_PIN(p, v) ((IS_PIN595(p))?(write_595(p595, (p) - PIN_595_BEGIN, v)):(gpio_set_level((p), (v))))
 #define TO_595_PIN_NUMBER(n) ((n) | PIN_595_BEGIN)
 
-
 typedef struct
 {
     int pin_SCLK;

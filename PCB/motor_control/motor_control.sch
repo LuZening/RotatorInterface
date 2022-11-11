@@ -682,8 +682,6 @@ Connection ~ 7100 2200
 Wire Wire Line
 	7100 2200 7100 1100
 Wire Wire Line
-	9750 1450 9750 1500
-Wire Wire Line
 	9750 1500 9550 1500
 $Comp
 L power:GNDS #PWR0110
@@ -962,17 +960,6 @@ Wire Wire Line
 	1500 3500 1500 3400
 Wire Wire Line
 	1500 3400 1600 3400
-$Comp
-L power:+5V #PWR0119
-U 1 1 6287EE6F
-P 2250 4000
-F 0 "#PWR0119" H 2250 3850 50  0001 C CNN
-F 1 "+5V" H 2265 4173 50  0000 C CNN
-F 2 "" H 2250 4000 50  0001 C CNN
-F 3 "" H 2250 4000 50  0001 C CNN
-	1    2250 4000
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2250 4000 2250 4100
 Wire Wire Line
@@ -1048,17 +1035,6 @@ F 3 "https://www.st.com/resource/en/datasheet/bta16.pdf" H 7100 2650 50  0001 L 
 	1    7100 2650
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+3.3V #PWR0120
-U 1 1 6293CBEF
-P 2250 2850
-F 0 "#PWR0120" H 2250 2700 50  0001 C CNN
-F 1 "+3.3V" H 2265 3023 50  0000 C CNN
-F 2 "" H 2250 2850 50  0001 C CNN
-F 3 "" H 2250 2850 50  0001 C CNN
-	1    2250 2850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2250 2850 2250 3000
 Wire Wire Line
@@ -1112,17 +1088,6 @@ F 2 "MyPCBLib:M3_Screwhole" H 1700 6400 50  0001 C CNN
 F 3 "~" H 1700 6400 50  0001 C CNN
 	1    1700 6400
 	-1   0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR0123
-U 1 1 629DF8B2
-P 9750 1450
-F 0 "#PWR0123" H 9750 1300 50  0001 C CNN
-F 1 "+5V" H 9765 1623 50  0000 C CNN
-F 2 "" H 9750 1450 50  0001 C CNN
-F 3 "" H 9750 1450 50  0001 C CNN
-	1    9750 1450
-	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5600 1850 6550 1850
@@ -1230,7 +1195,7 @@ Wire Wire Line
 Wire Wire Line
 	7650 4750 7650 4700
 Wire Wire Line
-	7400 800  7400 2350
+	7400 800  7400 950 
 Wire Wire Line
 	7650 3900 7400 3900
 Connection ~ 7400 3900
@@ -1249,21 +1214,21 @@ Wire Wire Line
 Wire Wire Line
 	6550 1850 6550 1750
 Wire Wire Line
-	6550 1750 7650 1750
+	6550 1750 6750 1750
 Wire Wire Line
 	6400 1950 6400 2400
 Wire Wire Line
-	6400 2400 7250 2400
+	6400 2400 6500 2400
 Wire Wire Line
 	7250 2400 7250 2500
 Wire Wire Line
 	7250 2500 7650 2500
 Wire Wire Line
-	7650 3300 6300 3300
+	7650 3300 6500 3300
 Wire Wire Line
 	6300 3300 6300 2050
 Wire Wire Line
-	7650 4100 6250 4100
+	7650 4100 6500 4100
 Wire Wire Line
 	6250 4100 6250 2150
 $Comp
@@ -1366,4 +1331,102 @@ Wire Notes Line
 	6350 5500 4850 5500
 Text Notes 4900 5600 0    50   ~ 0
 Snubber
+$Comp
+L MySchLib:D D4
+U 1 1 633913EC
+P 6750 1600
+F 0 "D4" V 6704 1679 50  0000 L CNN
+F 1 "1N4148" V 6795 1679 50  0000 L CNN
+F 2 "MyPCBLib:SOD-123" H 6750 1600 50  0001 C CNN
+F 3 "~" H 6750 1600 50  0001 C CNN
+	1    6750 1600
+	0    1    1    0   
+$EndComp
+Connection ~ 6750 1750
+Wire Wire Line
+	6750 1750 7650 1750
+$Comp
+L MySchLib:D D1
+U 1 1 63393CDE
+P 6500 2050
+F 0 "D1" V 6454 2129 50  0000 L CNN
+F 1 "1N4148" V 6545 2129 50  0000 L CNN
+F 2 "MyPCBLib:SOD-123" H 6500 2050 50  0001 C CNN
+F 3 "~" H 6500 2050 50  0001 C CNN
+	1    6500 2050
+	0    1    1    0   
+$EndComp
+$Comp
+L MySchLib:D D2
+U 1 1 63394587
+P 6500 2750
+F 0 "D2" V 6454 2829 50  0000 L CNN
+F 1 "1N4148" V 6545 2829 50  0000 L CNN
+F 2 "MyPCBLib:SOD-123" H 6500 2750 50  0001 C CNN
+F 3 "~" H 6500 2750 50  0001 C CNN
+	1    6500 2750
+	0    1    1    0   
+$EndComp
+$Comp
+L MySchLib:D D3
+U 1 1 633964D9
+P 6500 3850
+F 0 "D3" V 6454 3929 50  0000 L CNN
+F 1 "1N4148" V 6545 3929 50  0000 L CNN
+F 2 "MyPCBLib:SOD-123" H 6500 3850 50  0001 C CNN
+F 3 "~" H 6500 3850 50  0001 C CNN
+	1    6500 3850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6500 4000 6500 4100
+Connection ~ 6500 4100
+Wire Wire Line
+	6500 4100 6250 4100
+Wire Wire Line
+	6500 2900 6500 3300
+Connection ~ 6500 3300
+Wire Wire Line
+	6500 3300 6300 3300
+Wire Wire Line
+	6500 2200 6500 2400
+Connection ~ 6500 2400
+Wire Wire Line
+	6500 2400 7250 2400
+Wire Wire Line
+	6500 1900 6500 1450
+Wire Wire Line
+	6500 1450 6750 1450
+Wire Wire Line
+	6500 2600 6500 2500
+Wire Wire Line
+	6500 2500 6600 2500
+Wire Wire Line
+	6600 2500 6600 1900
+Wire Wire Line
+	6600 1900 6500 1900
+Connection ~ 6500 1900
+Wire Wire Line
+	6500 3700 6600 3700
+Wire Wire Line
+	6600 3700 6600 2500
+Connection ~ 6600 2500
+Wire Wire Line
+	6750 1450 6750 950 
+Wire Wire Line
+	6750 950  7400 950 
+Connection ~ 6750 1450
+Connection ~ 7400 950 
+Wire Wire Line
+	7400 950  7400 2350
+Text GLabel 2250 2850 1    50   Input ~ 0
++3.3VISO
+Text GLabel 2250 4000 1    50   Input ~ 0
++5VISO
+Text GLabel 9950 1400 2    50   Input ~ 0
++5VISO
+Wire Wire Line
+	9950 1400 9750 1400
+Wire Wire Line
+	9750 1400 9750 1500
 $EndSCHEMATC

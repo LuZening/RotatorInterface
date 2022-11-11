@@ -7,8 +7,8 @@
 #include "esp_log.h"
 #include "Config.h"
 #include "esp_wifi.h"
-#include "tcpip_adapter.h"
-#define TAG "webserver"
+// #include "tcpip_adapter.h"
+#define tag "webserver"
 
 // static const char *espfs_image_bin = WEBSERVER_FS_ADDR_BEGIN;
 static char connectionMemory[sizeof(RtosConnType) * MAX_CONNECTIONS];
@@ -27,13 +27,31 @@ static CgiStatus ICACHE_FLASH_ATTR onReset(HttpdConnData *connData)
         return HTTPD_CGI_DONE;
     }
     /* Response BEGIN */
+    write_to_EEPROM_async();
     httpdStartResponse(connData, 200);
     httpdHeader(connData, "Content-Type", "text/plain");
     httpdEndHeaders(connData);
     httpdSend(connData, "reset", -1);
     /* Response END */
     // TODO: send reset semaphore
-    xQueueSend(qMailboxReset, 1, 0);
+    reset_async();
+    return HTTPD_CGI_DONE;
+}
+
+/* Webserver URL hander: /save  */
+static CgiStatus ICACHE_FLASH_ATTR onSave(HttpdConnData *connData)
+{
+    if (connData->isConnectionClosed) {
+        return HTTPD_CGI_DONE;
+    }
+    /* Response BEGIN */
+    httpdStartResponse(connData, 200);
+    httpdHeader(connData, "Content-Type", "text/plain");
+    httpdEndHeaders(connData);
+    httpdSend(connData, "saving", -1);
+    /* Response END */
+    // TODO: send reset semaphore
+    write_to_EEPROM_async();
     return HTTPD_CGI_DONE;
 }
 
@@ -56,6 +74,7 @@ static CgiStatus ICACHE_FLASH_ATTR onGetSensor(HttpdConnData *connData)
         return HTTPD_CGI_DONE;
     }
     // TODO: 
+    ESP_LOGD(tag, "onGetSensor");
     char buf[128 * N_POT_INPUTS];
     get_sensor_data_string(buf, sizeof(buf));
     /* Response BEGIN */
@@ -81,7 +100,7 @@ static CgiStatus ICACHE_FLASH_ATTR onGetNetStatus(HttpdConnData *connData)
 }
 
 
-/* Webserver URL hander: /onTask  */
+/* Webserver URL hander: /task  */
 // Args: 
 // mot: 1, 2
 // type: (M)anual or (T)arget
@@ -98,6 +117,7 @@ static CgiStatus ICACHE_FLASH_ATTR onTask(HttpdConnData *connData)
     int speed100 = 0;
     RotTask_t task;
     bool isValid = true;
+    ESP_LOGD(tag, "onTask");
     // TODO:
     if (connData->isConnectionClosed) {
         return HTTPD_CGI_DONE;
@@ -122,11 +142,11 @@ static CgiStatus ICACHE_FLASH_ATTR onTask(HttpdConnData *connData)
         lenArg = httpdFindArg(connData->post.buff, "type", buf, sizeof(buf));
         if(lenArg != 0 )
         {
-            if(*buf == 'M')
+            if(*buf == '1')
                 taskType = ROT_TASK_MANUAL;
-            else if(*buf == 'T')
+            else if(*buf == '2')
                 taskType = ROT_TASK_TARGET;
-            else if(*buf == 'N')
+            else if(*buf == '0')
                 taskType = ROT_TASK_NULL;
             else
             {
@@ -187,9 +207,9 @@ static CgiStatus ICACHE_FLASH_ATTR onGetConfig(HttpdConnData *connData)
         return HTTPD_CGI_DONE;
     }
     // avoid multiple write of buf1, to save memory
-    xSemaphoreTake(mtxWebBuf1, 0);
-    generate_config_string(buf1, sizeof(buf1));
-    httpdStartResponse(connData, 400);
+    xSemaphoreTake(mtxWebBuf1, portMAX_DELAY);
+    get_config_string(buf1, sizeof(buf1));
+    httpdStartResponse(connData, 200);
     httpdHeader(connData, "Content-Type", "text/plain");
     httpdEndHeaders(connData);
     httpdSend(connData, buf1, -1);
@@ -204,18 +224,24 @@ static CgiStatus ICACHE_FLASH_ATTR onSetConfig(HttpdConnData *connData)
     }
     if(connData->requestType == HTTPD_METHOD_POST)
     {
+        const int lenbuf = 256;
+        char bufR[lenbuf];
+        int nParsed = 0;
         char* pData = connData->post.buff;
         int nBytes = connData->post.buffLen;
+        if(nBytes >= lenbuf) nBytes = lenbuf - 1;
+        strncpy(bufR, pData, nBytes);
+        bufR[lenbuf] = 0;
         int i = 0, j = 0, k = 0; // i : start of arg name, j : position of =, k : position of &
         while(i <= nBytes)
         {
             // pick up an arg
             while(k <= nBytes)
             {
-                if(pData[k] != '&' && pData[k] != '\n' && pData[k] != '\r')
+                if(bufR[k] != '&' && bufR[k] != '\n' && bufR[k] != '\r')
                 {
                     k++;
-                    if(pData[k] == '=') j = k;
+                    if(bufR[k] == '=') j = k;
                 }
                 else
                     break;
@@ -225,9 +251,9 @@ static CgiStatus ICACHE_FLASH_ATTR onSetConfig(HttpdConnData *connData)
             if(j > i && k >= j)
             {
                 // tokenize the argname and arg value
-                pData[j] = 0; pData[k] = 0;
-                const char* argname = &(pData[i]);
-                const char* argv = &(pData[j+1]);
+                bufR[j] = 0; bufR[k] = 0;
+                const char* argname = &(bufR[i]);
+                const char* argv = &(bufR[j+1]);
                 // parse
                 int val;
                 bool isArgValueParsed = false;
@@ -241,11 +267,13 @@ static CgiStatus ICACHE_FLASH_ATTR onSetConfig(HttpdConnData *connData)
                             val = atoi(argv);
                             isArgValueParsed = true;
                             *(uint8_t*)(pCfgItem->pV) = val;
+                            ESP_LOGD(tag, "Set config U8 %s = %d", argname, val);
                             break;
                         case CONFIG_VAR_I32:
                             val = atoi(argv);
                             isArgValueParsed = true;
-                            *(int*)(pCfgItem->pV) = val;
+                            *(int32_t*)(pCfgItem->pV) = val;
+                            ESP_LOGD(tag, "Set config I32 %s = %d", argname, val);
                             break;
                         case CONFIG_VAR_BYTESTRING:
                             val = 0;
@@ -265,7 +293,12 @@ static CgiStatus ICACHE_FLASH_ATTR onSetConfig(HttpdConnData *connData)
                                 ((uint8_t*)(pCfgItem->pV))[val] = 0;
                                 isArgValueParsed = false;
                             }
+                            ESP_LOGD(tag, "Set config STR %s = %s", argname, argv);
                             break;
+                    }
+                    if(isArgValueParsed) 
+                    {
+                        ++nParsed;
                     }
                 }
                 // done parsing one argument, move to the next
@@ -275,6 +308,17 @@ static CgiStatus ICACHE_FLASH_ATTR onSetConfig(HttpdConnData *connData)
             else
                 break;
         }
+        // sync values in config object with rotsensor object
+        if(nParsed > 0)
+        {
+            push_config_to_volatile_variables(&cfg);
+        }
+        httpdStartResponse(connData, 200);
+        httpdHeader(connData, "Content-Type", "text/plain");
+        httpdEndHeaders(connData);
+        sprintf(bufR, "%d", nParsed);
+        httpdSend(connData, bufR, -1);
+        ESP_LOGD(tag, "Set %d config items", nParsed);
     }
     return HTTPD_CGI_DONE;
 }
@@ -388,8 +432,8 @@ ON_WS_RECV_EXIT:
     lenArg = strlen(msg);
     if(lenArg > 0)
     {
-        xSemaphoreTake(mtxWSSending, 0);
-        cgiWebsocketSend(&httpdFreertosInstance, ws, msg, lenArg, WEBSOCK_FLAG_NONE);
+        xSemaphoreTake(mtxWSSending, portMAX_DELAY);
+        cgiWebsocketSend(&httpdFreertosInstance.httpdInstance, ws, msg, lenArg, WEBSOCK_FLAG_NONE);
         xSemaphoreGive(mtxWSSending);
     }
 }
@@ -397,9 +441,16 @@ ON_WS_RECV_EXIT:
 
 
 // Callback function when websocket closes
+static uint16_t nWSConns = 0;
 static void cbWebsocketClose(Websock *ws)
 {
 
+    xSemaphoreTake(mtxWSSending, portMAX_DELAY);
+    if(nWSConns > 0)
+        nWSConns--;
+    else
+        ESP_LOGE(tag, "Websocket connection number encontered invalid value = %d", nWSConns - 1);
+    xSemaphoreGive(mtxWSSending);
 }
 
 // URL: /ws
@@ -408,13 +459,17 @@ static void onWebsocketConnect(Websock *ws)
     // register callback function when received msg
     ws->recvCb = cbWebsocketRecv;
     ws->closeCb = cbWebsocketClose;
+    xSemaphoreTake(mtxWSSending, portMAX_DELAY);
+    nWSConns++;
+    xSemaphoreGive(mtxWSSending);
 }
 
 int websocket_broadcast(const char* wsURL, const char* data, int len)
 {
     int n = 0;
-    xSemaphoreTake(mtxWSSending, 0);
-    n = cgiWebsockBroadcast(&httpdFreertosInstance,  wsURL, data, len, WEBSOCK_FLAG_NONE);
+    xSemaphoreTake(mtxWSSending, portMAX_DELAY);
+    if(nWSConns > 0)
+        n = cgiWebsockBroadcast(&httpdFreertosInstance.httpdInstance,  wsURL, data, len, WEBSOCK_FLAG_NONE);
     xSemaphoreGive(mtxWSSending);
     return n;
 }
@@ -431,6 +486,18 @@ handled top-down, so make sure to put more specific rules above the more
 general ones. Authorization things (like authBasic) act as a 'barrier' and
 should be placed above the URLs they protect.
 */
+#define OTA_FLASH_SIZE_K 1024
+#define OTA_TAGNAME "generic"
+
+CgiUploadFlashDef uploadParams={
+	.type=CGIFLASH_TYPE_FW,
+	.fw1Pos=0x1000,
+	.fw2Pos=((OTA_FLASH_SIZE_K*1024)/2)+0x1000,
+	.fwSize=((OTA_FLASH_SIZE_K*1024)/2)-0x1000,
+	.tagName=OTA_TAGNAME
+};
+
+
 const HttpdBuiltInUrl builtInUrls[] = {
     // ROUTE_CGI_ARG("*", cgiRedirectApClientToHostname, "esp8266.nonet"),
     //Routines to make the /wifi URL and everything beneath it work.
@@ -455,13 +522,33 @@ const HttpdBuiltInUrl builtInUrls[] = {
     /* homepage BEGIN */
     ROUTE_REDIRECT("/", "/index.html"),
     ROUTE_REDIRECT("/index", "/index.html"),
+    ROUTE_REDIRECT("/config", "/config.html"),
     /* homepage END */
+    /* Functions BEGIN */
     ROUTE_CGI("/reset", onReset),
+    ROUTE_CGI("/save", onSave),
     ROUTE_CGI("/getSensor", onGetSensor),
+    ROUTE_CGI("/getsensor", onGetSensor),
     ROUTE_CGI("/netstatus", onGetNetStatus),
     ROUTE_CGI("/task", onTask), // POST only
+    ROUTE_CGI("/getConfig", onGetConfig), 
+    ROUTE_CGI("/getconfig", onGetConfig), 
+    ROUTE_CGI("/setConfig", onSetConfig), // POST only 
+    ROUTE_CGI("/setconfig", onSetConfig), // POST only 
+    /* Functions END */
+
     /* websocket */
     ROUTE_WS("/ws", onWebsocketConnect),
+    /* OTA BEGIN */
+    ROUTE_REDIRECT("/flash", "/flash/index.html"),
+	ROUTE_REDIRECT("/flash/", "/flash/index.html"),
+	ROUTE_CGI("/flash/flashinfo.json", cgiGetFlashInfo),
+	ROUTE_CGI("/flash/setboot", cgiSetBoot),
+	ROUTE_CGI_ARG("/flash/upload", cgiUploadFirmware, &uploadParams),
+	ROUTE_CGI_ARG("/flash/erase", cgiEraseFlash, &uploadParams),
+	ROUTE_CGI("/flash/reboot", cgiRebootFirmware),
+    /* OTA END */
+
     ROUTE_FILESYSTEM(),
 
     ROUTE_END()
@@ -469,98 +556,6 @@ const HttpdBuiltInUrl builtInUrls[] = {
 
 
 
-const char my_hostname[16] = "vortex";
-static esp_err_t app_event_handler(void *ctx, system_event_t *event)
-{
-	switch(event->event_id) {
-	case SYSTEM_EVENT_ETH_START:
-		tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_ETH, my_hostname);
-		break;
-	case SYSTEM_EVENT_STA_START:
-		tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_STA, my_hostname);
-		// esp_wifi_connect(); /* Calling this unconditionally would interfere with the WiFi CGI. */
-		break;
-	case SYSTEM_EVENT_STA_GOT_IP:
-	{
-		tcpip_adapter_ip_info_t sta_ip_info;
-		wifi_config_t sta_conf;
-		printf("~~~~~STA~~~~~" "\n");
-		if (esp_wifi_get_config(TCPIP_ADAPTER_IF_STA, &sta_conf) == ESP_OK) {
-			printf("ssid: %s" "\n", sta_conf.sta.ssid);
-		}
-
-		if (tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &sta_ip_info) == ESP_OK) {
-			printf("IP:" IPSTR "\n", IP2STR(&sta_ip_info.ip));
-			printf("MASK:" IPSTR "\n", IP2STR(&sta_ip_info.netmask));
-			printf("GW:" IPSTR "\n", IP2STR(&sta_ip_info.gw));
-		}
-		printf("~~~~~~~~~~~~~" "\n");
-	}
-	break;
-	case SYSTEM_EVENT_STA_CONNECTED:
-		break;
-	case SYSTEM_EVENT_STA_DISCONNECTED:
-		/* This is a workaround as ESP32 WiFi libs don't currently
-           auto-reassociate. */
-		/* Skip reconnect if disconnect was deliberate or authentication      *\
-        \* failed.                                                            */
-		switch(event->event_info.disconnected.reason){
-		case WIFI_REASON_ASSOC_LEAVE:
-		case WIFI_REASON_AUTH_FAIL:
-			break;
-		default:
-			esp_wifi_connect();
-			break;
-		}
-		break;
-		case SYSTEM_EVENT_AP_START:
-		{
-			tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_AP, my_hostname);
-			tcpip_adapter_ip_info_t ap_ip_info;
-			wifi_config_t ap_conf;
-			printf("~~~~~AP~~~~~" "\n");
-			if (esp_wifi_get_config(TCPIP_ADAPTER_IF_AP, &ap_conf) == ESP_OK) {
-				printf("ssid: %s" "\n", ap_conf.ap.ssid);
-				if (ap_conf.ap.authmode != WIFI_AUTH_OPEN) printf("pass: %s" "\n", ap_conf.ap.password);
-			}
-
-			if (tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_AP, &ap_ip_info) == ESP_OK) {
-				printf("IP:" IPSTR "\n", IP2STR(&ap_ip_info.ip));
-				printf("MASK:" IPSTR "\n", IP2STR(&ap_ip_info.netmask));
-				printf("GW:" IPSTR "\n", IP2STR(&ap_ip_info.gw));
-			}
-			printf("~~~~~~~~~~~~" "\n");
-			// set_status_ind_wifi(WIFI_STATE_IDLE);
-		}
-		break;
-		case SYSTEM_EVENT_AP_STACONNECTED:
-			ESP_LOGI(TAG, "station:" MACSTR" join,AID=%d",
-					MAC2STR(event->event_info.sta_connected.mac),
-					event->event_info.sta_connected.aid);
-
-			break;
-		case SYSTEM_EVENT_AP_STADISCONNECTED:
-			ESP_LOGI(TAG, "station:" MACSTR"leave,AID=%d",
-					MAC2STR(event->event_info.sta_disconnected.mac),
-					event->event_info.sta_disconnected.aid);
-
-			break;
-		case SYSTEM_EVENT_SCAN_DONE:
-
-			break;
-		default:
-			break;
-	}
-#ifdef USE_ETHERNET
-	ethernet_handle_system_event(ctx, event);
-#endif
-
-	/* Forward event to to the WiFi CGI module */
-	// cgiWifiEventCb(event);
-	// update_status_ind_wifi();
-
-	return ESP_OK;
-}
 
 void init_webserver()
 {
@@ -577,7 +572,7 @@ void init_webserver()
     httpdRegisterEspfs(fs);
     /* init FileSystem END */
 
-    tcpip_adapter_init();
+    esp_netif_init();
 
     httpdFreertosInit(&httpdFreertosInstance,
                     builtInUrls,
@@ -586,7 +581,4 @@ void init_webserver()
                     MAX_CONNECTIONS,
                     HTTPD_FLAG_NONE);
     httpdFreertosStart(&httpdFreertosInstance);
-    /* event loop BEGIN */
-    ESP_ERROR_CHECK(esp_event_loop_init(app_event_handler, NULL));
-    /* enable event loop END*/
 }

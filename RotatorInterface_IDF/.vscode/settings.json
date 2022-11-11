@@ -5,7 +5,8 @@
     "idf.customExtraVars": "{\"OPENOCD_SCRIPTS\":\"d:\\\\.espressif\\\\tools\\\\openocd-esp32\\\\v0.11.0-esp32-20211220/openocd-esp32/share/openocd/scripts\",\"IDF_CCACHE_ENABLE\":\"1\"}",
     "idf.espIdfPathWin": "D:\\esp\\esp-idf",
     "idf.openOcdConfigs": [
-        "board/esp32-wrover-kit-3.3v.cfg"
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32.cfg"
     ],
     "idf.pythonBinPathWin": "d:\\.espressif\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "d:\\.espressif",
@@ -72,6 +73,34 @@
         "ratio": "c",
         "tuple": "c",
         "type_traits": "c",
-        "utility": "c"
-    }
+        "utility": "c",
+        "buttondebouncer.h": "c",
+        "stddef.h": "c",
+        "lvgl.h": "c",
+        "queue.h": "c",
+        "disp_driver.h": "c",
+        "esp_timer.h": "c",
+        "lvgl_helpers.h": "c",
+        "esp_adc_cal.h": "c",
+        "task_display.h": "c",
+        "esp_netif_ip_addr.h": "c",
+        "event_groups.h": "c",
+        "endian.h": "c",
+        "_endian.h": "c",
+        "cdefs.h": "c",
+        "_types.h": "c",
+        "_default_types.h": "c",
+        "stdint.h": "c",
+        "stdio.h": "c",
+        "multilang.h": "c",
+        "semphr.h": "c",
+        "wear_levelling.h": "c",
+        "ff.h": "c",
+        "esp_vfs.h": "c",
+        "cstdio": "c",
+        "random": "c"
+    },
+    "idf.portWin": "COM3",
+    "idf.flashType": "UART",
+    "cmake.configureOnOpen": false
 }

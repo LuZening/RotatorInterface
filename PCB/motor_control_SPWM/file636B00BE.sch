@@ -1,0 +1,435 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text HLabel 1900 1650 0    50   Input ~ 0
+H1SELL
+Text HLabel 1900 2250 0    50   Input ~ 0
+H1SELR
+Text HLabel 1900 2900 0    50   Input ~ 0
+H1SPWM
+$Comp
+L 74xx:74HC00 U15
+U 1 1 637DE8D6
+P 2850 1750
+F 0 "U15" H 2850 2075 50  0000 C CNN
+F 1 "74HC00" H 2850 1984 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 2850 1750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74hc00" H 2850 1750 50  0001 C CNN
+	1    2850 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC00 U15
+U 2 1 637E097C
+P 2850 2350
+F 0 "U15" H 2850 2675 50  0000 C CNN
+F 1 "74HC00" H 2850 2584 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 2850 2350 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74hc00" H 2850 2350 50  0001 C CNN
+	2    2850 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1900 1650 2550 1650
+Wire Wire Line
+	1900 2250 2550 2250
+Wire Wire Line
+	1900 2900 2200 2900
+Wire Wire Line
+	2200 2900 2200 2850
+Wire Wire Line
+	2200 1850 2550 1850
+Wire Wire Line
+	2200 2450 2550 2450
+Connection ~ 2200 2450
+Wire Wire Line
+	2200 2450 2200 1850
+$Comp
+L Device:R_Small R20
+U 1 1 637E42A8
+P 2200 2750
+F 0 "R20" H 2141 2704 50  0000 R CNN
+F 1 "22" H 2141 2795 50  0000 R CNN
+F 2 "lc_lib:0805_R" H 2200 2750 50  0001 C CNN
+F 3 "~" H 2200 2750 50  0001 C CNN
+	1    2200 2750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2200 2650 2200 2450
+Text HLabel 1900 4300 0    50   Input ~ 0
+H2SELL
+Text HLabel 1900 4900 0    50   Input ~ 0
+H2SELR
+Text HLabel 1900 5550 0    50   Input ~ 0
+H2SPWM
+$Comp
+L 74xx:74HC00 U15
+U 3 1 638043E3
+P 2850 4400
+F 0 "U15" H 2850 4725 50  0000 C CNN
+F 1 "74HC00" H 2850 4634 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 2850 4400 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74hc00" H 2850 4400 50  0001 C CNN
+	3    2850 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC00 U15
+U 4 1 638043E9
+P 2850 5000
+F 0 "U15" H 2850 5325 50  0000 C CNN
+F 1 "74HC00" H 2850 5234 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 2850 5000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74hc00" H 2850 5000 50  0001 C CNN
+	4    2850 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1900 4300 2550 4300
+Wire Wire Line
+	1900 4900 2550 4900
+Wire Wire Line
+	1900 5550 2200 5550
+Wire Wire Line
+	2200 5550 2200 5500
+Wire Wire Line
+	2200 4500 2550 4500
+Wire Wire Line
+	2200 5100 2550 5100
+Connection ~ 2200 5100
+Wire Wire Line
+	2200 5100 2200 4500
+$Comp
+L Device:R_Small R21
+U 1 1 638043F7
+P 2200 5400
+F 0 "R21" H 2141 5354 50  0000 R CNN
+F 1 "22" H 2141 5445 50  0000 R CNN
+F 2 "lc_lib:0805_R" H 2200 5400 50  0001 C CNN
+F 3 "~" H 2200 5400 50  0001 C CNN
+	1    2200 5400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2200 5300 2200 5100
+Text HLabel 2800 5750 0    50   Input ~ 0
+SD_INX
+$Comp
+L 74xx:74HC00 U15
+U 5 1 638164CE
+P 1250 6700
+F 0 "U15" H 950 6300 50  0000 L CNN
+F 1 "74HC00" H 850 6200 50  0000 L CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 1250 6700 50  0001 C CNN
+F 3 "http://www.ti.com/lit/gpn/sn74hc00" H 1250 6700 50  0001 C CNN
+	5    1250 6700
+	1    0    0    -1  
+$EndComp
+Text HLabel 4200 5750 2    50   Output ~ 0
+SDX_OUT
+$Comp
+L power:+5V #PWR052
+U 1 1 63828279
+P 1250 6100
+F 0 "#PWR052" H 1250 5950 50  0001 C CNN
+F 1 "+5V" H 1265 6273 50  0000 C CNN
+F 2 "" H 1250 6100 50  0001 C CNN
+F 3 "" H 1250 6100 50  0001 C CNN
+	1    1250 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 6100 1250 6150
+$Comp
+L power:GNDPWR #PWR053
+U 1 1 63829A35
+P 1250 7350
+F 0 "#PWR053" H 1250 7150 50  0001 C CNN
+F 1 "GNDPWR" H 1254 7196 50  0000 C CNN
+F 2 "" H 1250 7300 50  0001 C CNN
+F 3 "" H 1250 7300 50  0001 C CNN
+	1    1250 7350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 7350 1250 7300
+$Comp
+L Device:C_Small C16
+U 1 1 6382BA9A
+P 1600 6350
+F 0 "C16" H 1692 6396 50  0000 L CNN
+F 1 "104" H 1692 6305 50  0000 L CNN
+F 2 "lc_lib:0805_C" H 1600 6350 50  0001 C CNN
+F 3 "~" H 1600 6350 50  0001 C CNN
+	1    1600 6350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 6250 1600 6150
+Wire Wire Line
+	1600 6150 1250 6150
+Connection ~ 1250 6150
+Wire Wire Line
+	1250 6150 1250 6200
+$Comp
+L power:GNDPWR #PWR054
+U 1 1 6382E304
+P 1600 6550
+F 0 "#PWR054" H 1600 6350 50  0001 C CNN
+F 1 "GNDPWR" H 1604 6396 50  0000 C CNN
+F 2 "" H 1600 6500 50  0001 C CNN
+F 3 "" H 1600 6500 50  0001 C CNN
+	1    1600 6550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 6450 1600 6550
+Wire Wire Line
+	2800 5750 3000 5750
+Text HLabel 4250 4400 2    50   Output ~ 0
+H2INL
+Text HLabel 4200 5000 2    50   Output ~ 0
+H2INR
+$Comp
+L Device:R_Small R31
+U 1 1 6380443F
+P 4050 4400
+F 0 "R31" V 3854 4400 50  0000 C CNN
+F 1 "22" V 3945 4400 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 4050 4400 50  0001 C CNN
+F 3 "~" H 4050 4400 50  0001 C CNN
+	1    4050 4400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4150 4400 4250 4400
+$Comp
+L Device:R_Small R33
+U 1 1 63804447
+P 4050 5000
+F 0 "R33" V 3854 5000 50  0000 C CNN
+F 1 "22" V 3945 5000 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 4050 5000 50  0001 C CNN
+F 3 "~" H 4050 5000 50  0001 C CNN
+	1    4050 5000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4150 5000 4200 5000
+Wire Wire Line
+	4150 2350 4200 2350
+$Comp
+L Device:R_Small R32
+U 1 1 637F6CF6
+P 4050 2350
+F 0 "R32" V 3854 2350 50  0000 C CNN
+F 1 "22" V 3945 2350 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 4050 2350 50  0001 C CNN
+F 3 "~" H 4050 2350 50  0001 C CNN
+	1    4050 2350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4150 1750 4250 1750
+$Comp
+L Device:R_Small R30
+U 1 1 637F5A41
+P 4050 1750
+F 0 "R30" V 3854 1750 50  0000 C CNN
+F 1 "22" V 3945 1750 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 4050 1750 50  0001 C CNN
+F 3 "~" H 4050 1750 50  0001 C CNN
+	1    4050 1750
+	0    1    1    0   
+$EndComp
+Text HLabel 4200 2350 2    50   Output ~ 0
+H1INR
+Text HLabel 4250 1750 2    50   Output ~ 0
+H1INL
+$Comp
+L 74xx:74HC04 U17
+U 1 1 648B2620
+P 3650 1750
+F 0 "U17" H 3650 2067 50  0000 C CNN
+F 1 "74HC04" H 3650 1976 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 3650 1750 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 3650 1750 50  0001 C CNN
+	1    3650 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC04 U17
+U 2 1 648B54A8
+P 3650 2350
+F 0 "U17" H 3650 2667 50  0000 C CNN
+F 1 "74HC04" H 3650 2576 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 3650 2350 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 3650 2350 50  0001 C CNN
+	2    3650 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC04 U17
+U 3 1 648B86F9
+P 3650 4400
+F 0 "U17" H 3650 4717 50  0000 C CNN
+F 1 "74HC04" H 3650 4626 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 3650 4400 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 3650 4400 50  0001 C CNN
+	3    3650 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC04 U17
+U 4 1 648BB02A
+P 3650 5000
+F 0 "U17" H 3650 5317 50  0000 C CNN
+F 1 "74HC04" H 3650 5226 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 3650 5000 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 3650 5000 50  0001 C CNN
+	4    3650 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74HC04 U17
+U 5 1 648C0642
+P 3400 6250
+F 0 "U17" H 3400 6567 50  0000 C CNN
+F 1 "74HC04" H 3400 6476 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 3400 6250 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 3400 6250 50  0001 C CNN
+	5    3400 6250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 5750 3000 6250
+Wire Wire Line
+	3000 6250 3100 6250
+Connection ~ 3000 5750
+Wire Wire Line
+	3000 5750 3350 5750
+$Comp
+L Device:R_Small R26
+U 1 1 648C2CD5
+P 3450 5750
+F 0 "R26" V 3646 5750 50  0000 C CNN
+F 1 "100" V 3555 5750 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 3450 5750 50  0001 C CNN
+F 3 "~" H 3450 5750 50  0001 C CNN
+	1    3450 5750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 5750 4050 5750
+$Comp
+L Device:R_Small R27
+U 1 1 648C48DD
+P 3850 6250
+F 0 "R27" V 4046 6250 50  0000 C CNN
+F 1 "100" V 3955 6250 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 3850 6250 50  0001 C CNN
+F 3 "~" H 3850 6250 50  0001 C CNN
+	1    3850 6250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3750 6250 3700 6250
+Wire Wire Line
+	3950 6250 4050 6250
+Wire Wire Line
+	4050 6250 4050 5750
+Connection ~ 4050 5750
+Wire Wire Line
+	4050 5750 4200 5750
+$Comp
+L 74xx:74HC04 U17
+U 7 1 648C96D9
+P 2300 6750
+F 0 "U17" H 2530 6796 50  0000 L CNN
+F 1 "74HC04" H 2530 6705 50  0000 L CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 2300 6750 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 2300 6750 50  0001 C CNN
+	7    2300 6750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 6150 1950 6150
+Wire Wire Line
+	2300 6150 2300 6250
+Connection ~ 1600 6150
+Wire Wire Line
+	1250 7300 2300 7300
+Wire Wire Line
+	2300 7300 2300 7250
+Connection ~ 1250 7300
+Wire Wire Line
+	1250 7300 1250 7200
+$Comp
+L Device:C_Small C20
+U 1 1 648D4A52
+P 1950 6350
+F 0 "C20" H 2042 6396 50  0000 L CNN
+F 1 "104" H 2042 6305 50  0000 L CNN
+F 2 "lc_lib:0805_C" H 1950 6350 50  0001 C CNN
+F 3 "~" H 1950 6350 50  0001 C CNN
+	1    1950 6350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1950 6250 1950 6150
+Connection ~ 1950 6150
+Wire Wire Line
+	1950 6150 2300 6150
+Wire Wire Line
+	1600 6550 1950 6550
+Wire Wire Line
+	1950 6550 1950 6450
+Connection ~ 1600 6550
+$Comp
+L 74xx:74HC04 U17
+U 6 1 648EC033
+P 3400 6850
+F 0 "U17" H 3400 7167 50  0000 C CNN
+F 1 "74HC04" H 3400 7076 50  0000 C CNN
+F 2 "lc_lib:SOIC-14_150MIL" H 3400 6850 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf" H 3400 6850 50  0001 C CNN
+	6    3400 6850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0107
+U 1 1 648F1169
+P 3000 6800
+F 0 "#PWR0107" H 3000 6650 50  0001 C CNN
+F 1 "+5V" H 3015 6973 50  0000 C CNN
+F 2 "" H 3000 6800 50  0001 C CNN
+F 3 "" H 3000 6800 50  0001 C CNN
+	1    3000 6800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 6800 3000 6850
+Wire Wire Line
+	3000 6850 3100 6850
+Wire Wire Line
+	3150 1750 3350 1750
+Wire Wire Line
+	3150 2350 3350 2350
+Wire Wire Line
+	3150 5000 3350 5000
+Wire Wire Line
+	3350 4400 3150 4400
+$EndSCHEMATC

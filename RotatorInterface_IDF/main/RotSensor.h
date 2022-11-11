@@ -13,8 +13,8 @@
 #define LEN_RESULTS 20      // window size N*100ms
 #define EXT_RANGE 10         // extended range: 10DEG each side
 #define CLIPPER_DEADZONE 100 //DEADZONE SET to +- 100LSB
-#define EMA_ALPHA_1 4       // 1/4
-#define EMA_ALPHA_2 2       // 1/2
+#define EMA_ALPHA_1 8       // 1/4
+#define EMA_ALPHA_2 4       // 1/2
 #define DATA_OVERHEAD 2     // overhead data needed before generating stable output
 #define EDGE_AVG_RANGE 3     // the range of average edge detector
 #define EDGE_DATEBACK 20
@@ -130,6 +130,7 @@ typedef struct
     
 } RotSensor;
 
+
 /* init BEGIN */
 void RotSensor_init(RotSensor* p, PotType pot_type, bool allow_multi_rounds, int brake_engage_defer_us);
 void RotSensor_set_resistors(RotSensor* p, uint32_t R_max, uint32_t R_min, uint32_t R_0, uint32_t R_c);
@@ -160,3 +161,26 @@ int RotSensor_get_deg_now(RotSensor* p);
 //snprintf(buf, lenbuf-1, "num=%d&ADC=%d&busy=%d&limit=%d&speed=%d\n\n");
 // 1 <= num <= N_SENSORS
 extern int get_sensor_data_string(char* buf, int lenbuf);
+
+/**** util tools ****/
+inline int16_t regulate_degree(int16_t d, int16_t ref)
+{
+    while(d + 360 < ref) d += 360;
+    while(d - 360 > ref) d -= 360;
+    return d;
+}
+
+inline int16_t regulate_degree_to_shortest_path(int16_t d, int16_t ref, int16_t fullround)
+{
+    d = regulate_degree(d, ref);
+    int16_t r = d;
+    if(d - ref < -180)
+    {
+        r = d + fullround;
+    }
+    else if(d - ref > 180)
+    {
+        r = d-fullround;
+    }
+    return r;
+}

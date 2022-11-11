@@ -17,7 +17,7 @@ typedef enum
 } RotTaskType_t;
 typedef struct 
 {
-    int motnum;
+    int motnum; // starting from 1, 2, ...,
     RotTaskType_t type; // NULL OR Manual OR Target
     int n_to; // -ms~+ms OR -EXT~360+EXT
     int n_speed; // 0-255

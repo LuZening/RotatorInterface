@@ -4,6 +4,7 @@
     <link href="style.css" rel="stylesheet" type="text/css"/>
     <script src="get_sensor.js"></script>
     <script src="send_task.js"></script>
+    <script src="sound.js"></script>
     <script src="button.js"></script>
     <script src="point.js"></script>
     <script>
@@ -12,14 +13,14 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function ()
             {
-                s_recv = this.responseText;
+                var s_recv = this.responseText;
                 if(s_recv.length > 0)
                 {
                     if (s_recv.length <= 1) {
                         alert("No configurations avaliable. Make a new one.");
                         return;
                     }
-                    s_name = s_recv.match(/name=(.*?)[&\n]/)[1];
+                    var s_name = s_recv.match(/name=(.*?)[&\n]/)[1];
                     document.getElementById("name").innerText = s_name;
                 }
             }
@@ -38,8 +39,9 @@
         Loading
     </div>
     <nav>
-        <span id="selected"><a href="index">Dashboard</a></span>
-        <span><a href="config">Config</a></span>
+        <span id="selected"><a href="index.html">Dashboard</a></span>
+        <span><a href="config.html">Config</a></span>
+        <span><a href="flash/index.html">Firmware</a></span>
     </nav>
     <div id="map">
        <span id="map_loading">Loading the azumithal map...</span>
@@ -48,9 +50,9 @@
     </div>
     <div  id="display" style="float:left;">
         <div class="box">
-            <h2><span id="deg">-</span>&deg;</h2>
-            <span id="speed">-</span>s/round<br>
-            <span id="limit"></span><br>
+            <h2><span id="deg.1">-</span>&deg;</h2>
+            <span id="speed.1">-</span>s/round<br>
+            <span id="limit.1"></span><br>
             Status: <div style="float:right;width:20px;height:20px;border-radius:50%;background-color: aquamarine;" id="bulb"></div>
         </div>
         <div class="box">
@@ -58,13 +60,24 @@
             <button class="large" id="btn_CCW">&#8634;(CCW)</button>
             <button class="large" id="btn_CW">(CW)&#8635;</button>
             <button class="large_narrow" id="btn_CW_lock">&gt;&gt;&#x1f510;</button>
+            <br>
+            Speed: <input type="range" min=0 max=100 step=1 id="motSpeeds.1" name="motSpeeds.1">
+            <span id="motSpeedsDisplay.1"></span>
             <script>
-                b = document.getElementById("btn_CCW");
-                b.addEventListener(buttonPressEvent, e => { on_mousedown_CCW(); });
-                b.addEventListener(buttonReleaseEvent, e => { on_mouseup_manual(); });
-                b = document.getElementById("btn_CW");
-                b.addEventListener(buttonPressEvent, e => { on_mousedown_CW(); });
-                b.addEventListener(buttonReleaseEvent, e => { on_mouseup_manual(); });
+                var b = document.getElementById("btn_CCW");
+                b.addEventListener(buttonPressEvent, evt => { on_mousedown_CCW(1); });
+                b.addEventListener(buttonReleaseEvent, evt => { on_mouseup_manual(1); });
+                var b = document.getElementById("btn_CW");
+                b.addEventListener(buttonPressEvent, evt => { on_mousedown_CW(1); });
+                b.addEventListener(buttonReleaseEvent, evt => { on_mouseup_manual(1); });
+                // Motor speed settings range
+                var e = document.getElementById("motSpeeds.1")
+                e.addEventListener("input", evt => {
+                    var e = document.getElementById("motSpeeds.1");
+                    set_motor_speed(0, parseInt(e.value));
+                    var edis = document.getElementById('motSpeedsDisplay.1');
+                    edis.innerText = e.value;
+                    })
                 var lock_btn_lisener_gen = (
                     function (bt, dir){
                         var pressed = false;
@@ -74,12 +87,12 @@
                             if(pressed)
                             { 
                                 bt.style.borderStyle="inset";
-                                send_task_manual(dir * 20);                                        
+                                send_task_manual(1, dir * 20);                                        
                             }
                             else
                             {
                                 bt.style.borderStyle="outset";
-                                send_task_stop();                                        
+                                send_task_stop(1);                                        
                             }
                         };
                     });
@@ -93,7 +106,9 @@
             <button id="stop" onclick="send_task_stop();">STOP!</button>
         </div>
     </div>
-    <button id="btn_test" onclick="test_onclick(2);">TEST</button>
+    <!-- <button id="btn_test" onclick="test_onclick(2);">TEST</button> -->
     <script src="map_project.js"></script>
     <script src="coverage_fan.js"></script>
+    <script src="config.js"></script>
+    <script>get_config();</script>
 </body>

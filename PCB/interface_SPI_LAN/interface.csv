@@ -1,0 +1,58 @@
+Title,Universal Rotator Interface,,
+Revision,,,
+,,,
+Ref,Qty,Value,Footprint
+C1 C8 ,2,225,digikey-footprints:0805
+C2 C9 C11 ,3,100uF,Capacitors_THT:CP_Radial_D5.0mm_P2.50mm
+C3 C6 C7 C10 C13 C14 C15 C16 C17 C18 C19 C20 ,12,104,digikey-footprints:0805
+C4 ,1,2200uF 50V,Capacitors_THT:CP_Radial_D16.0mm_P7.50mm
+C5 ,1,10uF,Capacitors_THT:CP_Radial_D5.0mm_P2.50mm
+C12 ,1,100uF 50V,Capacitors_THT:CP_Radial_D8.0mm_P3.50mm
+D1 ,1,1N4007,Diodes_THT:D_DO-41_SOD81_P10.16mm_Horizontal
+D2 D8 D9 ,3,D_TVS,Diodes_SMD:D_SMB
+D3 D5 ,2,GRN,LEDs:LED_0805
+D4 D6 ,2,RED,LEDs:LED_0805
+D7 ,1,LED,LEDs:LED_0805
+F1 ,1,10A,MyPCBLib:Fuseholder5x20
+F2 F3 ,2,6.8V0.1A,digikey-footprints:0805
+J1 ,1,24VAC,MyPCBLib:508CON-2P
+J2 ,1,Brake,MyPCBLib:508CON-2P
+J3 ,1,Motor,MyPCBLib:508CON-2P
+J4 ,1,Limit,MyPCBLib:508CON-2P
+J5 ,1,LED_G,MyPCBLib:XH2.54-2
+J6 ,1,Ground,MyPCBLib:508CON-2P
+J7 ,1,LED_B,MyPCBLib:XH2.54-2
+J8 ,1,UART,MyPCBLib:XH2.54-4
+J9 ,1,POT,MyPCBLib:508CON-3P
+J10 ,1,RS485,MyPCBLib:508CON-3P
+JP1 JP2 JP3 ,3,Jumper-3pin,MyPCBLib:Jumper_3P
+K1 K2 K3 K4 ,4,G2R-1-E,MyPCBLib:OMRON G2R-1-E
+R1 R2 ,2,220,Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+R3 R33 R35 R39 R42 R46 ,6,4.7K,digikey-footprints:0805
+R4 R7 R9 R12 R15 R20 R21 R23 ,8,47K,digikey-footprints:0805
+R5 ,1,4K7,digikey-footprints:0805
+R6 R8 R10 R11 R17 R22 R32 R43 ,8,220,digikey-footprints:0805
+R13 R14 ,2,1K,digikey-footprints:0805
+R16 R24 R25 R26 R36 R44 R45 ,7,10K,digikey-footprints:0805
+R18 R19 R34 ,3,100,digikey-footprints:0805
+R27 ,1,510,digikey-footprints:0805
+R28 ,1,1K 1W,Resistors_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P5.08mm_Vertical
+R29 ,1,220K,digikey-footprints:0805
+R30 ,1,510 1/2W,Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+R31 ,1,51,digikey-footprints:0805
+R37 R38 ,2,8K6,digikey-footprints:0805
+R40 ,1,120,digikey-footprints:0805
+R41 ,1,470,digikey-footprints:0805
+SW1 ,1,SW_SPST,Buttons_Switches_THT:SW_PUSH_6mm
+U1 U3 ,2,DCDC-isolator,MyPCBLib:B0505-2W
+U2 ,1,L7812,TO_SOT_Packages_THT:TO-220-3_Vertical
+U4 ,1,ULN2003A,Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm
+U5 ,1,AMS1117-3.3,TO_SOT_Packages_SMD:SOT-223-3_TabPin2
+U6 U7 U8 U9 U10 U16 ,6,PC817,Housings_DIP:DIP-4_W7.62mm
+U11 ,1,74HCT595,Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm
+U12 ,1,ESP-07,MyPCBLib:ESP-07S
+U13 ,1,AT24C64,Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm
+U14 U17 ,2,LM358,Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm
+U15 ,1,HCNR201,Housings_DIP:DIP-8_W7.62mm
+U18 U20 ,2,6N137,Housings_DIP:DIP-8_W7.62mm
+U19 ,1,MAX485E,Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm

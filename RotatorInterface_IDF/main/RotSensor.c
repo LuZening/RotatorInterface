@@ -1,6 +1,7 @@
 #include "RotSensor.h"
 #include "Config.h"
 #include "motor.h"
+#include "esp_log.h"
 // TODO:
 // dADC / dt time-based limit switch
 // REVERSE
@@ -102,21 +103,38 @@ static float ADC2res_scale(RotSensor* p, int n)
         x = (r - p->R_min) / (p->R_max - p->R_min);
         break;
     case THREE_TERMINALS:
-        x = (float)(n - p->ADC_min) / p->ADC_max;
+        x = (float)(n - p->ADC_min) / (p->ADC_max - p->ADC_min);
     }
+    if(x < 0)
+    {
+        x = 0;
+    }
+    else if(x > 1)
+        x = 1;
+    
     if (p->inverse_ADC)
-        return 1. - x;
-    else
-        return x;
+        x = 1. - x;
+    return x;
 }
 
 
 static int ADC2deg(RotSensor* p, int n)
 {
+    
     float x = ADC2res_scale(p, n);
-    int d = (int)((x - p->X_zero) * (p->deg_range));
+    int d;
+    float x_over = x - p->X_zero;
+    if (x_over > 0)
+    {
+        d = (int)((x_over / (1. - p->X_zero)) * (p->deg_max));
+    }
+    else
+    {
+        d = (int)(-x_over / p->X_zero * p->deg_min);
+    }
     if(p->allow_multi_rounds)
         d += p->n_rounds * 360;
+    // ESP_LOGI("RotSensor", "x = %d, x0 = %d, d = %d ", (int)(x * 100.), (int)(p->X_zero*100.), d);
     //return n_rounds * 360 + d;
     return d;
 }

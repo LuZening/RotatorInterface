@@ -34,7 +34,7 @@ int LoopBuffer_get_latest(LoopBuffer *p)
 {
     if(LoopBuffer_is_empty(p))
     {
-        return -255;
+        return LOOP_BUFFER_INVALID_VALUE;
     }
     else
     {
@@ -45,7 +45,8 @@ int LoopBuffer_get_oldest(LoopBuffer *p)
 {
     if(LoopBuffer_is_empty(p))
     {
-        return -255;
+        return LOOP_BUFFER_INVALID_VALUE;
+       
     }
     else
     {

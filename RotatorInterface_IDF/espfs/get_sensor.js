@@ -82,13 +82,17 @@ ws_conn.onmessage = function (e) {
     msg = e.data;
     ws_heartCheck.reset();
     // Sensor Data
-    if (msg.includes("deg")) 
+    if(msg.includes("RS485"))
+    {
+        parseRS485Data(msg);
+    }
+    else if (msg.includes("deg")) 
     {
         parse_sensor_data_string_and_update_elements(msg);
     }
-    else if(msg.includes("RS485"))
+    else if(msg.includes("task"))
     {
-        parseRS485Data(msg);
+        parse_task_response_string_and_update_elements(msg);
     }
 };
 
@@ -105,7 +109,8 @@ function update_limit_indicator(motno, deg, limit) {
 }
 
 var azu_orig;
-
+DegreesOrig = [0, 0]; // true degree value, can be muliple round (<0, >= 360)
+DegreesADC = [0, 0];
 function azu_onupdatepos(motno, deg)
 {
     pos_fan[motno-1] = deg;
@@ -116,10 +121,13 @@ function parse_sensor_data_string_and_update_elements(s) {
     // num = 1 to N_SENSORS
     s_params = s.match(/-*\d+/g);
     motno = parseInt(s_params[0]);
+    imot = motno - 1;
     azu_orig = Number(s_params[2]);
+    DegreesOrig[imot] = azu_orig;
     azu = azu_orig % 360;
     if (azu < 0) azu += 360;
     ADC = parseInt(s_params[1]);
+    DegreesADC[imot] = ADC;
     busy = parseInt(s_params[3]);
     limit = parseInt(s_params[4]);
     speed100 = parseInt(s_params[5]);
@@ -139,7 +147,7 @@ function getSensorData() // request sensor data by AJAX
     var xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         if (this.status == 200 && this.responseText.length > 0) {
-            parseSensorData(this.responseText);
+            parse_sensor_data_string_and_update_elements(this.responseText);
         }
     }
     xhttp.open("GET", "getSensor", true);

@@ -26,8 +26,8 @@ img_cymap = new Image();
 img_azu = document.getElementById("azu_map");
 ctx_azu = img_azu.getContext("2d");
 data_azu = ctx_azu.createImageData(X_SIZE, Y_SIZE);
-img_cymap.src="world_map_cylindrical_tiny.png";
-is_projected = false; // indicate if the projection has been prepared
+img_cymap.src="world_map_cylindrical.png";
+var is_projected = false; // indicate if the projection has been prepared
 img_cymap.onload = function() // draw the picture on the canvas
 {  
     // img_cymap.style="display:none"

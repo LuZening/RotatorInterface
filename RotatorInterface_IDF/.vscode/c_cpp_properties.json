@@ -25,7 +25,11 @@
                 "limitSymbolsToIncludedHeaders": false
             },
             // "compileCommands": "${workspaceFolder}/build/compile_commands.json",
-            "defines": ["ESP32", "FREERTOS"]
+            "defines": [
+                "ESP32",
+                "FREERTOS"
+            ],
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
         }
     ],
     "version": 4

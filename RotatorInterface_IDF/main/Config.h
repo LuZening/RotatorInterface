@@ -1,7 +1,16 @@
 #pragma once
 
 #include "motor.h"
+
+#ifdef FREERTOS
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
+#define USE_MUTEX_ON_CFG 1
+#endif
 // by default use EEPROM 24C64 with 8KBytes capacity
+
+#define FS_BASE_PATH_CONFIG "/spiflash"
+#define FS_PATH_CONFIG_FILE "/spiflash/cfg.bin"
 
 #define VORTEX_VALID_STRING "VORTEX3"
 #define CONFIG_BYTESTRING_LEN 32
@@ -15,7 +24,7 @@ typedef unsigned char byte;
 #define N_MOT_OUTPUTS 2
 
 
-typedef enum
+typedef enum __attribute__((__packed__))
 {
     POT_3_WIRES,
     POT_2_WIRES
@@ -45,14 +54,18 @@ struct Config
     uint8_t inverse_ADC[N_POT_INPUTS];
     int deg_limit_CW[N_POT_INPUTS];
     int deg_limit_CCW[N_POT_INPUTS];
-    int brake_engage_defer[N_POT_INPUTS];
+    int brake_engage_defer[N_MOT_OUTPUTS];
+    int soft_start_duration[N_MOT_OUTPUTS];
     uint8_t is_ADC_calibrated[N_POT_INPUTS];
     uint8_t N_MOTs; // number of motors
     uint8_t motDriveModes[N_MOT_OUTPUTS];
+    uint8_t motSpeeds[N_MOT_OUTPUTS]; // 0 ~ 100
     // network access
     uint8_t use_WiFi;
     char WiFi_SSID[CONFIG_BYTESTRING_LEN];
     char WiFi_password[CONFIG_BYTESTRING_LEN];
+    uint8_t use_Ethernet;
+    uint8_t use_RS485;
 }; // size of config is around 192Bytes
 
 typedef struct Config Config;
@@ -103,6 +116,9 @@ typedef struct
 
 extern const config_var_map_t configNameMapper[];
 
+#ifdef USE_MUTEX_ON_CFG
+extern SemaphoreHandle_t mtxConfig;
+#endif
 
 void load_config(union ConfigWriteBlock* p_cfg);
 // if config read from EEPROM is not 
@@ -120,6 +136,7 @@ bool set_config_variable_by_name(const char* name, const void* pV);
 // @name the name of the config variable
 // @buf the memory to store the value of the variable. If the variable's value is a string, the size of the buf must >= 32 
 bool get_config_variable_by_name(const char* name, void* buf);
+bool get_if_config_modified();
 // get the pointer to the config variable by name
 // return NULL if not found
 config_var_map_t* get_config_variable_mapper_item_by_name(const char* name);
@@ -129,4 +146,4 @@ config_var_map_t* get_config_variable_mapper_item_by_name(const char* name);
 void push_config_to_volatile_variables(struct Config* p);
 
 
-int generate_config_string(char *buf, int lenbuf);
+int get_config_string(char *buf, int lenbuf);

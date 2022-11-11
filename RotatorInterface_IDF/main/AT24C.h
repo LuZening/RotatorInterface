@@ -24,7 +24,7 @@ typedef struct {
 
 extern EEPROM_t eeprom;
 
-esp_err_t EEPROM_init(EEPROM_t * dev, int16_t size, i2c_port_t i2c_port, int chip_addr, int i2c_gpio_sda, int i2c_gpio_scl, int pin_WP);
+esp_err_t EEPROM_init(bool initI2C, EEPROM_t * dev, int16_t size, i2c_port_t i2c_port, int chip_addr, int i2c_gpio_sda, int i2c_gpio_scl, int pin_WP);
 // get maximum  bytes
 uint16_t EEPROM_MaxAddress(EEPROM_t * dev);
 //static esp_err_t ReadReg8(EEPROM_t * dev, i2c_port_t i2c_port, int chip_addr, uint8_t data_addr, uint8_t * data);

@@ -1,6 +1,8 @@
 #pragma once
 #include "stdbool.h"
 #include "stdint.h"
+
+#define LOOP_BUFFER_INVALID_VALUE -10000
 typedef struct 
 {
     int len;
