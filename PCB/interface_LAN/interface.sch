@@ -543,28 +543,6 @@ Wire Wire Line
 Wire Wire Line
 	3500 6650 3650 6650
 $Comp
-L Memory_NVRAM:FM24C64B U13
-U 1 1 5EADC6FE
-P 4700 10050
-F 0 "U13" H 5150 9750 50  0000 C CNN
-F 1 "AT24C64" H 5000 9650 50  0000 C CNN
-F 2 "lc_lib:SOIC-8_150MIL" H 4700 10050 50  0001 C CNN
-F 3 "http://www.cypress.com/file/41651/download" H 4500 10400 50  0001 C CNN
-	1    4700 10050
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4300 9850 4250 9850
-Wire Wire Line
-	4250 9850 4250 9950
-Wire Wire Line
-	4250 10050 4300 10050
-Wire Wire Line
-	4300 9950 4250 9950
-Connection ~ 4250 9950
-Wire Wire Line
-	4250 9950 4250 10050
-$Comp
 L power:GNDS #PWR051
 U 1 1 5EC984F1
 P 2900 5500
@@ -577,109 +555,6 @@ F 3 "" H 2900 5500 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2900 5400 2900 5500
-$Comp
-L power:GNDS #PWR057
-U 1 1 5ECC6BFA
-P 4100 9950
-F 0 "#PWR057" H 4100 9700 50  0001 C CNN
-F 1 "GNDS" H 4105 9777 50  0000 C CNN
-F 2 "" H 4100 9950 50  0001 C CNN
-F 3 "" H 4100 9950 50  0001 C CNN
-	1    4100 9950
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR045
-U 1 1 5ED1282B
-P 4700 9500
-F 0 "#PWR045" H 4700 9350 50  0001 C CNN
-F 1 "+3.3V" H 4750 9650 50  0000 C CNN
-F 2 "" H 4700 9500 50  0001 C CNN
-F 3 "" H 4700 9500 50  0001 C CNN
-	1    4700 9500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C15
-U 1 1 5ED83481
-P 4550 9550
-F 0 "C15" H 4642 9596 50  0000 L CNN
-F 1 "104" H 4642 9505 50  0000 L CNN
-F 2 "lc_lib:0805_C" H 4550 9550 50  0001 C CNN
-F 3 "~" H 4550 9550 50  0001 C CNN
-	1    4550 9550
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:GNDS #PWR046
-U 1 1 5EDD67BE
-P 4400 9600
-F 0 "#PWR046" H 4400 9350 50  0001 C CNN
-F 1 "GNDS" H 4200 9550 50  0000 C CNN
-F 2 "" H 4400 9600 50  0001 C CNN
-F 3 "" H 4400 9600 50  0001 C CNN
-	1    4400 9600
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GNDS #PWR059
-U 1 1 5EF7AA9E
-P 4700 10500
-F 0 "#PWR059" H 4700 10250 50  0001 C CNN
-F 1 "GNDS" H 4705 10327 50  0000 C CNN
-F 2 "" H 4700 10500 50  0001 C CNN
-F 3 "" H 4700 10500 50  0001 C CNN
-	1    4700 10500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4700 10500 4700 10450
-$Comp
-L Device:R_Small R24
-U 1 1 5F369165
-P 5150 9750
-F 0 "R24" H 5350 9600 50  0000 R CNN
-F 1 "4.7K" H 5350 9700 50  0000 R CNN
-F 2 "lc_lib:0805_R" H 5150 9750 50  0001 C CNN
-F 3 "~" H 5150 9750 50  0001 C CNN
-	1    5150 9750
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R_Small R25
-U 1 1 5F38615D
-P 5300 9750
-F 0 "R25" H 5250 9600 50  0000 R CNN
-F 1 "4.7K" H 5250 9700 50  0000 R CNN
-F 2 "lc_lib:0805_R" H 5300 9750 50  0001 C CNN
-F 3 "~" H 5300 9750 50  0001 C CNN
-	1    5300 9750
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	5100 9950 5300 9950
-Wire Wire Line
-	5300 9950 5300 9850
-Wire Wire Line
-	5150 9850 5150 10150
-Wire Wire Line
-	5150 10150 5100 10150
-Wire Wire Line
-	5150 10150 5350 10150
-Connection ~ 5150 10150
-Wire Wire Line
-	5300 9950 5350 9950
-Connection ~ 5300 9950
-Wire Wire Line
-	5150 9650 5150 9600
-Wire Wire Line
-	5150 9600 5300 9600
-Wire Wire Line
-	5300 9600 5300 9650
-Text Label 5350 10150 0    50   ~ 0
-SCL
-Text Label 5350 9950 0    50   ~ 0
-SDA
 Wire Wire Line
 	14350 8300 14300 8300
 $Comp
@@ -769,17 +644,6 @@ F 3 "" H 2300 4050 50  0001 C CNN
 	1    2300 4050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4400 9600 4400 9550
-Wire Wire Line
-	4400 9550 4450 9550
-Wire Wire Line
-	4650 9550 4700 9550
-Connection ~ 4700 9550
-Wire Wire Line
-	4700 9550 4700 9650
-Wire Wire Line
-	4700 9500 4700 9550
 $Comp
 L Device:C_Small C6
 U 1 1 5C0781FD
@@ -821,8 +685,6 @@ F 3 "~" H 5550 1250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3300 1850 3300 1900
-Wire Wire Line
-	4250 9950 4100 9950
 Wire Wire Line
 	14050 8500 14300 8500
 Wire Wire Line
@@ -2441,7 +2303,7 @@ $EndComp
 Wire Wire Line
 	1600 4500 1950 4500
 Text Label 3000 7000 2    50   ~ 0
-BOOT_WP
+BOOT_PHYRST
 $Comp
 L MySchLib:OLED_128x32_4pin U6
 U 1 1 6A1C88D4
@@ -2491,8 +2353,6 @@ Text Label 6900 8750 0    50   ~ 0
 SCL
 Wire Wire Line
 	6900 8750 6800 8750
-Text Notes 4250 10850 0    50   ~ 0
-EEPROM I2C ADDR: 0x00
 Text Notes 5800 9000 0    50   ~ 0
 OLED I2C ADDR: 0x3C
 Wire Notes Line
@@ -2586,11 +2446,6 @@ Connection ~ 3750 7400
 Connection ~ 3850 7200
 Text Label 4200 7400 0    50   ~ 0
 485RXD
-Wire Wire Line
-	4700 9550 5150 9550
-Wire Wire Line
-	5150 9550 5150 9600
-Connection ~ 5150 9600
 $Comp
 L power:GNDS #PWR0146
 U 1 1 6AD12D96
@@ -2617,14 +2472,6 @@ Wire Notes Line
 	7300 9200 5600 9200
 Text Notes 5650 9150 0    50   ~ 0
 Display
-Wire Notes Line
-	3950 9300 3950 10900
-Wire Notes Line
-	3950 10900 5550 10900
-Wire Notes Line
-	5550 10900 5550 9300
-Wire Notes Line
-	5550 9300 3950 9300
 NoConn ~ 6950 7000
 Text Notes 5950 6800 0    50   ~ 0
 50MHz REFCLK from ESP32
@@ -3725,8 +3572,6 @@ F 3 "" H 7250 4950 50  0001 C CNN
 	1    7250 4950
 	1    0    0    -1  
 $EndComp
-Text Label 4300 10250 2    50   ~ 0
-BOOT_WP
 $Comp
 L Device:R_Small R69
 U 1 1 644958B1
@@ -4138,12 +3983,7 @@ Wire Wire Line
 Text Label 3050 8000 0    50   ~ 0
 LMTX2_TDO_PHYRST
 Wire Wire Line
-	4900 8000 5150 8000
-Wire Wire Line
-	5500 8000 5500 6800
-Connection ~ 4900 8000
-Wire Wire Line
-	5350 8000 5500 8000
+	5500 8000 5500 7750
 Wire Wire Line
 	5950 6800 5950 6600
 Wire Wire Line
@@ -4151,15 +3991,15 @@ Wire Wire Line
 $Comp
 L Device:R_Small R?
 U 1 1 631AA6BF
-P 5250 8000
+P 5500 7650
 AR Path="/626CC43F/631AA6BF" Ref="R?"  Part="1" 
 AR Path="/631AA6BF" Ref="R17"  Part="1" 
-F 0 "R17" V 5150 8000 50  0000 C CNN
-F 1 "4.7K" V 5350 8000 50  0000 C CNN
-F 2 "lc_lib:0805_R" H 5250 8000 50  0001 C CNN
-F 3 "~" H 5250 8000 50  0001 C CNN
-	1    5250 8000
-	0    1    1    0   
+F 0 "R17" V 5400 7650 50  0000 C CNN
+F 1 "4.7K" V 5600 7650 50  0000 C CNN
+F 2 "lc_lib:0805_R" H 5500 7650 50  0001 C CNN
+F 3 "~" H 5500 7650 50  0001 C CNN
+	1    5500 7650
+	1    0    0    -1  
 $EndComp
 Text Label 12800 4250 0    50   ~ 0
 LMTX2_TDO_PHYRST
@@ -4190,4 +4030,8 @@ F 3 "" H 8300 2000 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5500 6800 5950 6800
+Text Label 5500 8000 3    50   ~ 0
+BOOT_PHYRST
+Wire Wire Line
+	5500 6800 5500 7550
 $EndSCHEMATC

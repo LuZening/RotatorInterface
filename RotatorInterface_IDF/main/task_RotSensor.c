@@ -15,7 +15,6 @@ Task for reading rot sensor data from ADC
 #include "webserver.h"
 #include "stdint.h"
 #include "esp_log.h"
-#include "driver/adc.h"
 #define tag "task_rot_sensor"
 
 #define N_ROT_SENSORS 2

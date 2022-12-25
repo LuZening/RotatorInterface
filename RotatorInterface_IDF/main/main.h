@@ -30,8 +30,12 @@ extern EEPROM_t eeprom;
 // output board type
 #define OUTPUT_BOARD_TRIAC_RELAY
 // main event group
-#define SIGNAL_SAVE_CONFIG 0b10U
 #define SIGNAL_RESET 0b01U
+#define SIGNAL_SAVE_CONFIG 0b10U
+#define SPWM_UNIT_TEST 1
+#define SIGNAL_SPWM_START_UNIT_TEST 0b100U
+#define SIGNAL_SPWM_END_UNIT_TEST 0b1000U
+
 extern EventGroupHandle_t evtgrpMain;
 
 /* Language */

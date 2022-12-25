@@ -349,6 +349,10 @@ static void menu_btn_cb(struct _lv_obj_t * obj, lv_event_t event)
     {
         //ESP_LOGD(tag, "tiggered menu button event");
         display_menu();
+        #ifdef SPWM_UNIT_TEST
+        // test: start SPWM testing
+        xEventGroupSetBits(evtgrpMain, SIGNAL_SPWM_START_UNIT_TEST);
+        #endif
     }
 
 }
@@ -484,6 +488,11 @@ void dismiss_menu()
                 pContMenu = NULL;
             }
             iCurrentMenu = MENU_MAIN;
+            
+            #ifdef SPWM_UNIT_TEST
+            // test: SPWM unit test end
+            xEventGroupSetBits(evtgrpMain, SIGNAL_SPWM_END_UNIT_TEST);
+            #endif
         }
 
     }

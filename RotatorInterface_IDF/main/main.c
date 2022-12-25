@@ -36,7 +36,7 @@
 #define PIN_595_RCLK 4
 #define PIN_595_OE 16
 
-
+#include "SPWM.h"
 
 /* OS objects BEGIN */
 // main event group to respond to Reset/EEPROM writing
@@ -95,6 +95,7 @@ void setup(void)
         initConfig = true;
         ESP_LOGD(tag, "Config initialized");
     }
+
     /* init display */
     ESP_LOGD(tag, "starting task_display");
     mtxDisplay = xSemaphoreCreateMutex();
@@ -183,15 +184,24 @@ void app_main(void)
             ESP_LOGD(tag, "received request for RESET...");
             abort();
         }
+        if(bits & SIGNAL_SPWM_START_UNIT_TEST > 0)
+        {
+            ESP_LOGD(tag, "starting SPWM unit test...");
+            SPWM_unit_test_start();
+        }
+        if(bits & SIGNAL_SPWM_END_UNIT_TEST > 0)
+        {
+            ESP_LOGD(tag, "ending SPWM unit test...");
+            SPWM_stop(&spwm);
+        }
     }
     
         // taskEXIT_CRITICAL(&muxCritical);
 }
 
 
-char bufTaskList[1280];
-void print_task_status()
-{
-    vTaskList(bufTaskList);
-    ESP_LOGD("", "%s", bufTaskList);
-}
+// char bufTaskList[1280];
+// void print_task_status()
+// {
+//     vTaskList(bufTaskList);
+//     ESP_LOGD("", "%s", bufTaskList);

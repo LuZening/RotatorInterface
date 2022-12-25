@@ -6,7 +6,7 @@
     "idf.espIdfPathWin": "D:\\esp\\esp-idf",
     "idf.openOcdConfigs": [
         "interface/ftdi/esp32_devkitj_v1.cfg",
-        "target/esp32.cfg"
+        "target/esp32-solo-1.cfg"
     ],
     "idf.pythonBinPathWin": "d:\\.espressif\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "d:\\.espressif",
@@ -98,7 +98,13 @@
         "ff.h": "c",
         "esp_vfs.h": "c",
         "cstdio": "c",
-        "random": "c"
+        "random": "c",
+        "spwm.h": "c",
+        "ledc.h": "c",
+        "fastmath.h": "c",
+        "math.h": "c",
+        "timer.h": "c",
+        "gpio_hal.h": "c"
     },
     "idf.portWin": "COM3",
     "idf.flashType": "UART",

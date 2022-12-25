@@ -574,6 +574,8 @@ void init_webserver()
 
     esp_netif_init();
 
+    // TCP/IP
+    
     httpdFreertosInit(&httpdFreertosInstance,
                     builtInUrls,
                     LISTEN_PORT,

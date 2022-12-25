@@ -2,6 +2,7 @@
 #include "Lib595.h"
 // TODO: status update
 // TODO: REVERSE
+#include "SPWM.h"
 #include "driver/mcpwm.h"
 
 
@@ -25,8 +26,24 @@ typedef enum
 {
     MOT_RELAYS = 0, // use relays to control directon only
     MOT_PWM_RELAYS, // use relays to control direction, and use PWM to control speed
-    MOT_FULL_BRIDGE_DC, // drive DC motor using FULL_BRIDGE
-    MOT_FULL_BRIDGE_SPWM //drive 1ph AC async motor using SPWM and FULL_BRIDGE with DC power supply
+    /* MOT_FULL_BRIDGE_DC drive DC motor using FULL_BRIDGE
+    pin_PWM_A: PWM
+    pin_motor_N : polar
+    */
+    MOT_FULL_BRIDGE_DC, 
+    /* MOT_FULL_BRIDGE_SPWM drive 1ph AC async motor using SPWM and FULL_BRIDGE with DC power supply
+    pin_PWM_A: SPWM
+    pin_motor_N: polar
+    */
+    MOT_FULL_BRIDGE_SPWM, 
+    /* MOT_FULL_BRIDGE_SPWM_WITH_BRAKE drive 1ph AC async motor using SPWM and FULL_BRIDGE with DC power supply
+    also drives the brake solenoid with SPWM wave
+    pin_PWM_A: SPWM for motor
+    pin_motor_N: polar for motor
+    pin_PWM_B: SPWM for brake
+    pin_motor_P: polar for brake
+    */
+    MOT_FULL_BRIDGE_SPWM_WITH_BRAKE,
 } mot_drive_mode_t;
 
 typedef enum
@@ -39,11 +56,29 @@ typedef enum
 typedef struct
 {
     mot_drive_mode_t mode_drive;
-    int pin_brake; // set to MOT_PIN_NONE to ignore brake control
-    int pin_motor_P; // pin for master power
-    int pin_motor_N; // pin for direction
-    int pin_PWM_A;
-    int pin_PWM_B; // set to MOT_PIN_NONE if the motor's direction is not controlled by PWM
+    SPWM_t spwm, spwmBrake;
+    // set to MOT_PIN_NONE to ignore brake control
+    uint8_t pin_brake; 
+    /* pin_motor_P
+    MOT_PWM_RELAYS: pin for master power
+    MOT_FULL_BRIDGE_DC|MOT_FULL_BRIDGE_SPWM: None
+    */
+    uint8_t pin_motor_P; // pin for master power
+    /* pin_motor_N
+    MOT_PWM_RELAYS: pin for direction
+    MOT_FULL_BRIDGE_DC|MOT_FULL_BRIDGE_SPWM: pin for H-Bridge polarity (determin high side conduction at left or right bridge)
+    */
+    uint8_t pin_motor_N; // pin for direction
+    /* pin_PWM_A
+    MOT_PWM_RELAYS: None
+    MOT_FULL_BRIDGE_DC|MOT_FULL_BRIDGE_SPWM: pin for PWM
+    */
+    uint8_t pin_PWM_A;
+    /* pin_PWM_B
+    MOT_PWM_RELAYS: None
+    MOT_FULL_BRIDGE_DC|MOT_FULL_BRIDGE_SPWM: None
+    */
+    uint8_t pin_PWM_B; // set to MOT_PIN_NONE if the motor's direction is not controlled by PWM
     mcpwm_unit_t mcpwm_unit;
     bool is_brake_released;
     int brake_engage_defer; // the interval between motor stop and break engagement, unit 

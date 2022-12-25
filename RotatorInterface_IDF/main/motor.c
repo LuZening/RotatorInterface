@@ -11,6 +11,11 @@
 // -1: x < 0
 // 0: x == 0
 // 1: x > 0
+
+#define MOTOR_SPWM_BASE_FREQ_HZ 50
+#define MOTOR_SPWM_CARRIER_FREQ_HZ 2000
+
+
 int8_t sign_zero_int32(int32_t x)
 {
     return (int8_t)((x >> (31U - 7U)) | (x != 0));
@@ -23,7 +28,7 @@ static void DELAY_MS(int ms)
     vTaskDelay(pdMS_TO_TICKS(ms));
 }
 
-void init_motor(Motor* pmotor, mot_drive_mode_t mode_drive,
+void init_motor(Motor* pmotor, mot_drive_mode_t mode_drive, 
                 int pin_brake, int pin_motor_N, int pin_motor_P, int pin_PWM_A, int pin_PWM_B, mcpwm_unit_t mcpwm_unit,
                 int brake_engage_defer, uint32_t soft_start_duration_ms)
 {
@@ -43,8 +48,19 @@ void init_motor(Motor* pmotor, mot_drive_mode_t mode_drive,
     pmotor->soft_start_duration_ms = soft_start_duration_ms;
     pmotor->soft_start_counter = 0;
     // if motor uses PWM speed control, then initialize PWM device
-    if(pin_PWM_A != MOT_PIN_NONE)
+    if(mode_drive == MOT_PWM_RELAYS)
     {
+        /* Init Relay Control Pin */
+        // master power
+        if(!IS_PIN595(pin_motor_P))
+        {
+            gpio_set_direction(pin_motor_P, GPIO_MODE_OUTPUT);
+        }
+        SET_PIN(pin_motor_P, 0);
+        // direction
+        if(!IS_PIN595(pin_motor_N))
+            gpio_set_direction(pin_motor_N, GPIO_MODE_OUTPUT);
+        SET_PIN(pin_motor_N, 0);
         /* Init PWM device BEGIN */
         mcpwm_config_t mcpwm_config = {
             .frequency = 10,
@@ -53,28 +69,69 @@ void init_motor(Motor* pmotor, mot_drive_mode_t mode_drive,
             .duty_mode = MCPWM_DUTY_MODE_0,
             .counter_mode = MCPWM_UP_COUNTER
         };
-        /* Init PWM device END */
         mcpwm_gpio_init(mcpwm_unit, MCPWM0A, pmotor->pin_PWM_A);
-        if(pmotor->pin_PWM_B != MOT_PIN_NONE)
-            mcpwm_gpio_init(mcpwm_unit, MCPWM0B, pmotor->pin_PWM_B);
         mcpwm_init(mcpwm_unit, MCPWM_TIMER_0, &mcpwm_config);
         mcpwm_set_duty(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_A, 0);
         // mcpwm_set_duty_type(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_A, MCPWM_DUTY_MODE_0); // duty_type: ACTIVE HIGH
         mcpwm_set_signal_low(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_A);
-        if(pmotor->pin_PWM_B != MOT_PIN_NONE)
-        {
-            mcpwm_set_duty(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_B, 0);
-            mcpwm_set_signal_low(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_B);
-            // mcpwm_set_duty_type(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_B, MCPWM_DUTY_MODE_0); // duty_type: ACTIVE HIGH
-        }
-        // mcpwm_stop(mcpwm_unit, MCPWM_TIMER_0);
+        /* Init PWM device END */
     }
-    engage_brake(pmotor);
+    else if(mode_drive == MOT_FULL_BRIDGE_SPWM 
+        || mode_drive == MOT_FULL_BRIDGE_SPWM_WITH_BRAKE)
+    {
+        /* build a SPWM driver for motor */
+        // pin_motor_N: Polar signal
+        // pin_PWM_A: SPWM signal
+        SPWM_init(&(pmotor->spwm), SPWM_SINGLE_PWM_PIN,
+        pin_PWM_A, pin_motor_N, SPWM_PIN_NULL, SPWM_PIN_NULL, SPWM_PIN_NULL, 
+        MOTOR_SPWM_BASE_FREQ_HZ, MOTOR_SPWM_CARRIER_FREQ_HZ);
+
+        /* build a SPWM driver for brake solenoid */
+        // pin_motor_P: Polar signal
+        // pin_PWM_B: SPWM signal
+        if(mode_drive == MOT_FULL_BRIDGE_SPWM_WITH_BRAKE)
+        {
+            SPWM_init(&(pmotor->spwmBrake), SPWM_SINGLE_PWM_PIN,
+            pin_PWM_B, pin_motor_P, SPWM_PIN_NULL, SPWM_PIN_NULL, SPWM_PIN_NULL, 
+            MOTOR_SPWM_BASE_FREQ_HZ, MOTOR_SPWM_CARRIER_FREQ_HZ);
+        }
+    }
+    else if(mode_drive == MOT_FULL_BRIDGE_DC)
+    {
+        // init direction pin
+        if(!IS_PIN595(pin_motor_N))
+            gpio_set_direction(pin_motor_N, GPIO_MODE_OUTPUT);
+        SET_PIN(pin_motor_N, 0);
+        /* Init PWM device BEGIN */
+        // rather high frequency than MOT_PWM_RELAY which operates on AC
+        mcpwm_config_t mcpwm_config = {
+            .frequency = MOTOR_SPWM_CARRIER_FREQ_HZ,
+            .cmpr_a = 0.f, // PWM_A duty cycle %
+            .cmpr_b = 0.f, // PWM_B duty cycle %
+            .duty_mode = MCPWM_DUTY_MODE_0,
+            .counter_mode = MCPWM_UP_COUNTER
+        };
+        /* Init PWM device END */
+        mcpwm_gpio_init(mcpwm_unit, MCPWM0A, pmotor->pin_PWM_A);
+        mcpwm_init(mcpwm_unit, MCPWM_TIMER_0, &mcpwm_config);
+        mcpwm_set_duty(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_A, 0);
+        // mcpwm_set_duty_type(mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_A, MCPWM_DUTY_MODE_0); // duty_type: ACTIVE HIGH
+    }
+    if(pin_brake != MOT_PIN_NONE)
+    {
+        gpio_set_direction(pin_brake, GPIO_MODE_OUTPUT);
+        engage_brake(pmotor);
+    }
     pmotor->motStatus = MOT_BRAKED;
 }
 
 void engage_brake(Motor* pmotor)
 {
+    // use SPWM to excite brake solenoid
+    if(pmotor->mode_drive == MOT_FULL_BRIDGE_SPWM_WITH_BRAKE)
+    {
+
+    }
     if(pmotor->pin_brake == MOT_PIN_NONE)
         return;
     SET_PIN(pmotor->pin_brake, MOTOR_OFF);
@@ -121,14 +178,15 @@ static void motor_set_speed(Motor* pmotor, uint8_t speed100)
         mcpwm_set_duty_type(pmotor->mcpwm_unit, MCPWM_TIMER_0, MCPWM_GEN_A, MCPWM_DUTY_MODE_0);
         ESP_LOGD(tag, "speed set to %.1f", duty_pct);
     }
+    else if(pmotor->mode_drive == MOT_FULL_BRIDGE_SPWM)
+    {
+        // TODO: implement SPWM motor driving mode
+
+    }
     else if(pmotor->mode_drive == MOT_FULL_BRIDGE_DC)// two PWMs mode, for H-brige
     {
         mcpwm_set_duty(pmotor->mcpwm_unit, MCPWM_TIMER_0, ((pmotor->direction == MOT_CW)?(MCPWM_GEN_A):(MCPWM_GEN_B)), duty_pct);
         mcpwm_set_duty_type(pmotor->mcpwm_unit, MCPWM_TIMER_0, ((pmotor->direction == MOT_CW)?(MCPWM_GEN_A):(MCPWM_GEN_B)), MCPWM_DUTY_MODE_0);
-    }
-    else if(pmotor->mode_drive == MOT_FULL_BRIDGE_SPWM)
-    {
-        // TODO: implement SPWM motor driving mode
     }
 }
 

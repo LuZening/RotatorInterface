@@ -1,0 +1,402 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	2900 2600 2900 2350
+$Comp
+L Device:R_Small R?
+U 1 1 63F9B266
+P 3550 2550
+AR Path="/66CBFED4/63F9B266" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63F9B266" Ref="R?"  Part="1" 
+AR Path="/63F91570/63F9B266" Ref="R63"  Part="1" 
+F 0 "R63" H 3350 2600 50  0000 L CNN
+F 1 "100K" H 3300 2500 50  0000 L CNN
+F 2 "lc_lib:0805_R" H 3550 2550 50  0001 C CNN
+F 3 "~" H 3550 2550 50  0001 C CNN
+	1    3550 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 63F9B26C
+P 3550 3050
+AR Path="/66CBFED4/63F9B26C" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63F9B26C" Ref="R?"  Part="1" 
+AR Path="/63F91570/63F9B26C" Ref="R64"  Part="1" 
+F 0 "R64" H 3350 3100 50  0000 L CNN
+F 1 "14K" H 3350 3000 50  0000 L CNN
+F 2 "lc_lib:0805_R" H 3550 3050 50  0001 C CNN
+F 3 "~" H 3550 3050 50  0001 C CNN
+	1    3550 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 3150 3550 3350
+Connection ~ 2900 3350
+Wire Wire Line
+	2900 3350 2900 2800
+Wire Wire Line
+	3550 2450 3550 2350
+Connection ~ 3550 2350
+Wire Wire Line
+	3550 2350 3750 2350
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B27E
+P 3800 3050
+AR Path="/66CBFED4/63F9B27E" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B27E" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B27E" Ref="C33"  Part="1" 
+F 0 "C33" H 3650 2550 50  0000 L CNN
+F 1 "6.8pF" H 3600 2650 50  0000 L CNN
+F 2 "lc_lib:0805_C" H 3800 3050 50  0001 C CNN
+F 3 "~" H 3800 3050 50  0001 C CNN
+	1    3800 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B284
+P 3950 3050
+AR Path="/66CBFED4/63F9B284" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B284" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B284" Ref="C34"  Part="1" 
+F 0 "C34" H 3900 2450 50  0000 L CNN
+F 1 "3.9nF" H 3850 2350 50  0000 L CNN
+F 2 "lc_lib:0805_C" H 3950 3050 50  0001 C CNN
+F 3 "~" H 3950 3050 50  0001 C CNN
+	1    3950 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 63F9B28A
+P 3950 2800
+AR Path="/66CBFED4/63F9B28A" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63F9B28A" Ref="R?"  Part="1" 
+AR Path="/63F91570/63F9B28A" Ref="R65"  Part="1" 
+F 0 "R65" H 3900 2150 50  0000 L CNN
+F 1 "100K" H 3850 2050 50  0000 L CNN
+F 2 "lc_lib:0805_R" H 3950 2800 50  0001 C CNN
+F 3 "~" H 3950 2800 50  0001 C CNN
+	1    3950 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 2950 3950 2900
+Wire Wire Line
+	3950 2700 3950 2600
+Wire Wire Line
+	3800 2950 3800 2600
+Wire Wire Line
+	3800 2600 3950 2600
+Connection ~ 3950 2600
+Connection ~ 3550 3350
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B29C
+P 4100 3050
+AR Path="/66CBFED4/63F9B29C" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B29C" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B29C" Ref="C35"  Part="1" 
+F 0 "C35" H 4000 2550 50  0000 L CNN
+F 1 "6.8nF" H 3950 2650 50  0000 L CNN
+F 2 "lc_lib:0805_C" H 4100 3050 50  0001 C CNN
+F 3 "~" H 4100 3050 50  0001 C CNN
+	1    4100 3050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B2AD
+P 5500 2200
+AR Path="/66CBFED4/63F9B2AD" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B2AD" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B2AD" Ref="C36"  Part="1" 
+F 0 "C36" V 5271 2200 50  0000 C CNN
+F 1 "104" V 5362 2200 50  0000 C CNN
+F 2 "lc_lib:0805_C" H 5500 2200 50  0001 C CNN
+F 3 "~" H 5500 2200 50  0001 C CNN
+	1    5500 2200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:L_Core_Ferrite L?
+U 1 1 63F9B2B3
+P 5900 2350
+AR Path="/66CBFED4/63F9B2B3" Ref="L?"  Part="1" 
+AR Path="/63E76FBF/63F9B2B3" Ref="L?"  Part="1" 
+AR Path="/63F91570/63F9B2B3" Ref="L2"  Part="1" 
+F 0 "L2" V 6125 2350 50  0000 C CNN
+F 1 "100uH" V 6034 2350 50  0000 C CNN
+F 2 "MyPCBLib:L_12.6mm_13.5mm" H 5900 2350 50  0001 C CNN
+F 3 "~" H 5900 2350 50  0001 C CNN
+	1    5900 2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5750 2350 5600 2350
+Wire Wire Line
+	5600 2350 5600 2550
+Connection ~ 5600 2550
+Wire Wire Line
+	5600 2550 5300 2550
+$Comp
+L MySchLib:D_Schottky_Small D?
+U 1 1 63F9B2BF
+P 5600 2950
+AR Path="/66CBFED4/63F9B2BF" Ref="D?"  Part="1" 
+AR Path="/63E76FBF/63F9B2BF" Ref="D?"  Part="1" 
+AR Path="/63F91570/63F9B2BF" Ref="D9"  Part="1" 
+F 0 "D9" V 5554 3018 50  0000 L CNN
+F 1 "SS34" V 5645 3018 50  0000 L CNN
+F 2 "MyPCBLib:SMA(DO-214AC)_S1" V 5600 2950 50  0001 C CNN
+F 3 "~" V 5600 2950 50  0001 C CNN
+	1    5600 2950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5600 2850 5600 2550
+Wire Wire Line
+	5600 3050 5600 3350
+Connection ~ 4750 3350
+$Comp
+L Device:R_Small R?
+U 1 1 63F9B2C9
+P 6200 2600
+AR Path="/66CBFED4/63F9B2C9" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63F9B2C9" Ref="R?"  Part="1" 
+AR Path="/63F91570/63F9B2C9" Ref="R67"  Part="1" 
+F 0 "R67" H 6259 2646 50  0000 L CNN
+F 1 "130K 1%" H 6259 2555 50  0000 L CNN
+F 2 "lc_lib:0805_R" H 6200 2600 50  0001 C CNN
+F 3 "~" H 6200 2600 50  0001 C CNN
+	1    6200 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 63F9B2CF
+P 6200 3050
+AR Path="/66CBFED4/63F9B2CF" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63F9B2CF" Ref="R?"  Part="1" 
+AR Path="/63F91570/63F9B2CF" Ref="R68"  Part="1" 
+F 0 "R68" H 6259 3096 50  0000 L CNN
+F 1 "9.1K 1%" H 6259 3005 50  0000 L CNN
+F 2 "lc_lib:0805_R" H 6200 3050 50  0001 C CNN
+F 3 "~" H 6200 3050 50  0001 C CNN
+	1    6200 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 3150 6200 3350
+Wire Wire Line
+	4750 3350 5300 3350
+Connection ~ 5600 3350
+Wire Wire Line
+	5600 3350 6200 3350
+Wire Wire Line
+	6200 2500 6200 2350
+Wire Wire Line
+	6200 2350 6750 2350
+Wire Wire Line
+	6750 2350 6750 2700
+Connection ~ 6200 2350
+Wire Wire Line
+	6750 2900 6750 3350
+Wire Wire Line
+	6750 3350 6200 3350
+Connection ~ 6200 3350
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B2E5
+P 6750 2800
+AR Path="/66CBFED4/63F9B2E5" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B2E5" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B2E5" Ref="C37"  Part="1" 
+F 0 "C37" H 6550 2800 50  0000 L CNN
+F 1 "10uF 50V" H 6350 2700 50  0000 L CNN
+F 2 "lc_lib:1210_C" H 6750 2800 50  0001 C CNN
+F 3 "~" H 6750 2800 50  0001 C CNN
+	1    6750 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B2EB
+P 2900 2700
+AR Path="/66CBFED4/63F9B2EB" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B2EB" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B2EB" Ref="C31"  Part="1" 
+F 0 "C31" H 2700 2700 50  0000 L CNN
+F 1 "10uF 50V" H 2500 2600 50  0000 L CNN
+F 2 "lc_lib:1210_C" H 2900 2700 50  0001 C CNN
+F 3 "~" H 2900 2700 50  0001 C CNN
+	1    2900 2700
+	1    0    0    -1  
+$EndComp
+Text HLabel 2700 2350 0    50   Input ~ 0
+Buck_in
+Text HLabel 7150 2350 2    50   Output ~ 0
+Buck_out
+Wire Wire Line
+	6750 2350 7150 2350
+Connection ~ 6750 2350
+Wire Wire Line
+	2700 2350 2900 2350
+Connection ~ 2900 2350
+Text HLabel 2900 3550 3    50   UnSpc ~ 0
+Buck_GND
+Wire Wire Line
+	2900 3350 2900 3550
+$Comp
+L MySchLib:TPS54160 U22
+U 1 1 63F9C888
+P 4600 2250
+F 0 "U22" H 4775 2415 50  0000 C CNN
+F 1 "TPS54160" H 4775 2324 50  0000 C CNN
+F 2 "digikey-footprints:MSOP-10-1EP_W3mm" H 4600 2250 50  0001 C CNN
+F 3 "" H 4600 2250 50  0001 C CNN
+	1    4600 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4750 3150 4750 3350
+Wire Wire Line
+	3550 3350 3800 3350
+Wire Wire Line
+	3550 2650 3550 2850
+Wire Wire Line
+	3950 2600 4250 2600
+Wire Wire Line
+	3800 3150 3800 3350
+Connection ~ 3800 3350
+Wire Wire Line
+	3950 3150 3950 3350
+Wire Wire Line
+	3800 3350 3950 3350
+Connection ~ 3950 3350
+Wire Wire Line
+	6200 2700 6200 2850
+Wire Wire Line
+	5300 2700 5800 2700
+Wire Wire Line
+	5800 2700 5800 2850
+Wire Wire Line
+	5800 2850 6200 2850
+Connection ~ 6200 2850
+Wire Wire Line
+	6200 2850 6200 2950
+Wire Wire Line
+	3550 2850 3700 2850
+Wire Wire Line
+	3700 2850 3700 2450
+Wire Wire Line
+	3700 2450 4250 2450
+Connection ~ 3550 2850
+Wire Wire Line
+	3550 2850 3550 2950
+Wire Wire Line
+	5300 2800 5300 3350
+Connection ~ 5300 3350
+Wire Wire Line
+	5300 3350 5600 3350
+$Comp
+L Device:C_Small C?
+U 1 1 63F9B2FF
+P 3100 2700
+AR Path="/66CBFED4/63F9B2FF" Ref="C?"  Part="1" 
+AR Path="/63E76FBF/63F9B2FF" Ref="C?"  Part="1" 
+AR Path="/63F91570/63F9B2FF" Ref="C32"  Part="1" 
+F 0 "C32" H 2900 2700 50  0000 L CNN
+F 1 "10uF 50V" H 2700 2600 50  0000 L CNN
+F 2 "lc_lib:1210_C" H 3100 2700 50  0001 C CNN
+F 3 "~" H 3100 2700 50  0001 C CNN
+	1    3100 2700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 2350 3100 2350
+Wire Wire Line
+	3100 2350 3550 2350
+Connection ~ 3100 2350
+Wire Wire Line
+	3100 2600 3100 2350
+Wire Wire Line
+	3550 3350 3100 3350
+Wire Wire Line
+	3100 3350 2900 3350
+Connection ~ 3100 3350
+Wire Wire Line
+	3100 2800 3100 3350
+Wire Wire Line
+	5400 2200 5400 2450
+Wire Wire Line
+	5400 2450 5300 2450
+Wire Wire Line
+	5600 2200 5600 2350
+Connection ~ 5600 2350
+$Comp
+L Device:R_Small R?
+U 1 1 63FD299D
+P 4250 3050
+AR Path="/66CBFED4/63FD299D" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63FD299D" Ref="R?"  Part="1" 
+AR Path="/63F91570/63FD299D" Ref="R66"  Part="1" 
+F 0 "R66" H 4309 3096 50  0000 L CNN
+F 1 "390K" H 4309 3005 50  0000 L CNN
+F 2 "lc_lib:0805_R" H 4250 3050 50  0001 C CNN
+F 3 "~" H 4250 3050 50  0001 C CNN
+	1    4250 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 2800 4250 2950
+Wire Wire Line
+	4250 3150 4250 3350
+Connection ~ 4250 3350
+Wire Wire Line
+	4250 3350 4750 3350
+Wire Wire Line
+	6200 2350 6050 2350
+Wire Wire Line
+	3950 3350 4100 3350
+Wire Wire Line
+	4100 3150 4100 3350
+Connection ~ 4100 3350
+Wire Wire Line
+	4100 3350 4250 3350
+Wire Wire Line
+	4100 2950 4100 2700
+Wire Wire Line
+	4100 2700 4250 2700
+$Comp
+L Device:R_Small R?
+U 1 1 63F53C15
+P 3850 2350
+AR Path="/66CBFED4/63F53C15" Ref="R?"  Part="1" 
+AR Path="/63E76FBF/63F53C15" Ref="R?"  Part="1" 
+AR Path="/63F91570/63F53C15" Ref="R16"  Part="1" 
+F 0 "R16" V 3800 2500 50  0000 L CNN
+F 1 "0" H 3750 2300 50  0000 L CNN
+F 2 "lc_lib:0201" H 3850 2350 50  0001 C CNN
+F 3 "~" H 3850 2350 50  0001 C CNN
+	1    3850 2350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3950 2350 4250 2350
+$EndSCHEMATC
